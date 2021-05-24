@@ -11,3 +11,9 @@ $heading-font: "Montserrat",
 Tahoma,
 Geneva,
 sans-serif;
+
+@mixin reset-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

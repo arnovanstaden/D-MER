@@ -6,7 +6,7 @@ import Footer from '../components/UI/Footer/Footer';
 
 // Global Styles
 import '../styles/global.scss';
-// import "../assets/icons/style.css";
+import "../assets/icons/style.css";
 
 // Fonts
 import "typeface-montserrat";

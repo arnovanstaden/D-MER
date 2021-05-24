@@ -11,10 +11,6 @@ interface IProps {
         description: string;
         canonical: string;
         robots?: boolean;
-    },
-    landing?: {
-        text: string;
-        image: string;
     }
     className: string
 }
@@ -26,7 +22,6 @@ const Page = (props: IProps) => {
                 {...props.head}
             />
             <main className={props.className}>
-                {props.landing ? <Landing {...props.landing} /> : null}
                 {props.children}
             </main>
         </>
