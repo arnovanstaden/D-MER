@@ -51,7 +51,7 @@
         }
 
         .content {
-            width: 75%;
+            width: 65%;
 
             h3 {
                 font-weight: 600;
@@ -76,6 +76,14 @@
         .grid {
             flex-direction: row-reverse;
             text-align: right;
+
+            .content {
+                .heading {
+                    padding-right: 0;
+                    padding-left: 0;
+
+                }
+            }
 
         }
     }

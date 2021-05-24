@@ -8,15 +8,17 @@ import styles from "./section.module.scss";
 
 interface IProps {
     children: React.ReactNode;
+    className?: string;
     heading: React.ReactChild;
     reverse?: boolean;
     keywords: string;
 }
 
-const Section = ({ children, heading, reverse, keywords }: IProps) => {
+const Section = ({ children, heading, reverse, keywords, className }: IProps) => {
 
     const classes = ClassNames(
         styles.section,
+        className,
         reverse ? styles.reverse : null
     )
 
