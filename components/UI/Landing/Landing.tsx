@@ -34,10 +34,10 @@ const Landing = ({ children, image }: IProps) => {
                 </div>
             </Container>
             <div className={styles.social}>
-                <a href="">
+                <a href="https://www.facebook.com/DMERWorldwide/" target="blank">
                     <i className="icon-facebook"></i>
                 </a>
-                <a href="">
+                <a href="https://www.linkedin.com/feed/" target="blank">
                     <i className="icon-linkedin"></i>
                 </a>
             </div>

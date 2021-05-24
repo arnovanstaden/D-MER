@@ -3,7 +3,7 @@ import styles from "./section.module.scss";
 
 const Section = () => {
     return (
-        <section>
+        <section className={styles.section}>
 
         </section>
     )
