@@ -16,6 +16,8 @@
         }
 
         .content {
+            padding-bottom: 0.5rem;
+
             .menu {
                 @include reset-list;
                 display: flex;
