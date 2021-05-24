@@ -1,0 +1,65 @@
+@import "../../../styles/variables.scss";
+
+.banner {
+    position: relative;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        z-index: 1;
+        background-color: $grey;
+        opacity: 0.8;
+    }
+
+    .inner {
+        display: flex;
+        width: 100%;
+
+        .content {
+            padding: 4rem 0;
+            position: relative;
+            z-index: 2;
+            width: 50%;
+            box-sizing: border-box;
+            padding-right: 2rem;
+
+            h2 {
+                font-weight: 600;
+
+                span {
+                    color: $red;
+                }
+            }
+
+            p {
+                font-weight: 500;
+                margin: 0.1rem 0;
+                font-size: 1.1rem;
+
+                i {
+                    color: $red;
+                }
+            }
+        }
+
+    }
+
+    &.reverse {
+        .overlay {
+            left: 50%;
+        }
+
+        .inner {
+            justify-content: flex-end;
+
+            .content {
+                padding-right: 0;
+                padding-left: 3rem;
+            }
+        }
+    }
+
+}

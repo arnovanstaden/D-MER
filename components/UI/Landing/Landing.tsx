@@ -1,6 +1,6 @@
 // Components
 import Container from "../Library/Container/Container";
-import NextImage from "../NextImage/NextImage";
+import NextImage from "../Library/NextImage/NextImage";
 import Button from "../Library/Button/Button";
 
 // Styles

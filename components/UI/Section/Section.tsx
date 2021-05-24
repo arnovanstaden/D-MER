@@ -13,25 +13,25 @@ interface IProps {
     keywords: string;
 }
 
-const Section = (props: IProps) => {
+const Section = ({ children, heading, reverse, keywords }: IProps) => {
 
     const classes = ClassNames(
         styles.section,
-        props.reverse ? styles.reverse : null
+        reverse ? styles.reverse : null
     )
 
     return (
         <section className={classes}>
             <div className={styles.keywords}>
-                <p>{props.keywords}</p>
+                <p>{keywords}</p>
             </div>
             <Container>
                 <div className={styles.grid}>
                     <div className={styles.heading}>
-                        {props.heading}
+                        {heading}
                     </div>
                     <div className={styles.content}>
-                        {props.children}
+                        {children}
                     </div>
                 </div>
             </Container>
