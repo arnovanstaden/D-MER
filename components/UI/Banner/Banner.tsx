@@ -2,7 +2,6 @@ import { Parallax } from 'react-parallax';
 import ClassNames from "classnames";
 
 import Container from "../Library/Container/Container";
-import NextImage from "../Library/NextImage/NextImage"
 
 import styles from "./banner.module.scss";
 

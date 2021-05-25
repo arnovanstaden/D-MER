@@ -31,6 +31,7 @@
         display: flex;
         position: relative;
         z-index: 2;
+        justify-content: space-between;
 
         >div {
             box-sizing: border-box;
@@ -38,7 +39,6 @@
 
         .heading {
             width: 35%;
-            padding-right: 1rem;
 
             h2 {
                 font-size: 1.5rem;
@@ -51,7 +51,7 @@
         }
 
         .content {
-            width: 65%;
+            width: 60%;
 
             h3 {
                 font-weight: 600;
@@ -76,15 +76,6 @@
         .grid {
             flex-direction: row-reverse;
             text-align: right;
-
-            .content {
-                .heading {
-                    padding-right: 0;
-                    padding-left: 0;
-
-                }
-            }
-
         }
     }
 }

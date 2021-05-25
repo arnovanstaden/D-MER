@@ -9,9 +9,9 @@ import styles from "./section.module.scss";
 interface IProps {
     children: React.ReactNode;
     className?: string;
-    heading: React.ReactChild;
+    heading?: React.ReactChild;
     reverse?: boolean;
-    keywords: string;
+    keywords?: string;
 }
 
 const Section = ({ children, heading, reverse, keywords, className }: IProps) => {

@@ -5,7 +5,6 @@ import Section from "../components/UI/Section/Section";
 import Banner from "../components/UI/Banner/Banner";
 import Button from "../components/UI/Library/Button/Button";
 
-
 // Styles
 import styles from "../styles/pages/contact.module.scss";
 
