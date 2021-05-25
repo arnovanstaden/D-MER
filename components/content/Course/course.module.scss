@@ -1,0 +1,47 @@
+@import "../../../styles/variables.scss";
+
+.course {
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+    border: 2px solid $lightgrey;
+    gap: 2rem;
+    padding: 2rem;
+
+    .image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .content {
+        h3 {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .row {
+            margin-bottom: 1rem;
+
+            h5 {
+                margin: 0 0 0.25rem 0;
+                font-weight: 600;
+                font-size: 1rem;
+                color: $red;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+                font-weight: 300;
+                margin: 0;
+            }
+        }
+
+        button {
+            float: right;
+            border-color: $red;
+        }
+    }
+}

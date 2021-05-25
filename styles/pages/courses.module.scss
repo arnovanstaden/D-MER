@@ -1,1 +1,9 @@
 @import "../variables.scss";
+
+.courses {
+    background-color: $grey;
+
+    section {
+        padding: 8rem 0;
+    }
+}
