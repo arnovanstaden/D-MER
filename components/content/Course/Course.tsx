@@ -32,7 +32,9 @@ const Course = () => {
                     <h5>Price</h5>
                     <p>R 900</p>
                 </div>
-                <Button icon>Book</Button>
+                <div className={styles.button}>
+                    <Button icon>Book</Button>
+                </div>
             </div>
         </article>
     )

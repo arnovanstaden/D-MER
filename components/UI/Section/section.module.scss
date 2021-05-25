@@ -78,4 +78,23 @@
             text-align: right;
         }
     }
+
+    @media screen and (max-width: 768px) {
+        .grid {
+            flex-wrap: wrap;
+
+            .heading,
+            .content {
+                width: 100%;
+                padding: 0;
+            }
+        }
+
+        &.reverse {
+            .grid {
+                flex-direction: row-reverse;
+                text-align: left;
+            }
+        }
+    }
 }

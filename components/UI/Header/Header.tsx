@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useRef } from "react";
-import { useMediaQuery } from 'react-responsive'
 
 // Components
 import Container from "../Library/Container/Container"
@@ -12,7 +11,6 @@ const Header = () => {
     // Config
     const headerRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const mobileNavRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-    const isMobile = useMediaQuery({ query: '(max-width: 991px)' })
 
     if (typeof window !== "undefined") {
         let prevScrollpos = window.pageYOffset;
@@ -77,25 +75,19 @@ const Header = () => {
                             </a>
                         </Link>
                     </div>
-                    {!isMobile ?
-                        <>
+                    <Menu />
+                    <div className={styles.bookings}>
+                        <Link href="/courses">
+                            Book a Course
+                        </Link>
+                    </div>
+                    <i className={`icon-menu ${styles.mobileButton}`} onClick={handleToggleMobileNav}></i>
+                    <div className={styles.mobile} ref={mobileNavRef}>
+                        <i className="icon-clear" onClick={handleToggleMobileNav}></i>
+                        <div className={styles.inner} onClick={handleToggleMobileNav}>
                             <Menu />
-                            <div className={styles.bookings}>
-                                <Link href="/courses">
-                                    Book a Course
-                            </Link>
-                            </div>
-                        </>
-                        :
-                        <>
-                            <i className="icon-menu" onClick={handleToggleMobileNav}></i>
-                            <div className={styles.mobileNav} ref={mobileNavRef}>
-                                <i className="icon-clear" onClick={handleToggleMobileNav}></i>
-                                <div className={styles.inner} onClick={handleToggleMobileNav}>
-                                    <Menu />
-                                </div>
-                            </div>
-                        </>}
+                        </div>
+                    </div>
                 </nav>
             </Container>
         </header>

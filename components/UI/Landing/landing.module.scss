@@ -72,7 +72,13 @@
                 color: $red;
             }
         }
+    }
 
-
+    @media screen and (max-width: 600px) {
+        .content {
+            h1 {
+                font-size: 2rem;
+            }
+        }
     }
 }

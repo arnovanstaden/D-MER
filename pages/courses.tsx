@@ -11,9 +11,9 @@ const Courses = () => {
     return (
         <Page
             head={{
-                title: "About | D-MER",
+                title: "Courses | D-MER",
                 description: "Book an online CPD course.",
-                canonical: "/about",
+                canonical: "/courses",
             }}
             className={styles.courses}
         >

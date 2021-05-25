@@ -35,18 +35,19 @@
             }
         }
 
-        i {
+        .mobileButton {
             font-size: 1.5rem;
             padding: 0.5rem;
             cursor: pointer;
             transition: 0.3s ease-in-out;
+            display: none;
 
             &:hover {
                 color: $red;
             }
         }
 
-        .mobileNav {
+        .mobile {
             position: fixed;
             top: 0;
             right: 0;
@@ -102,5 +103,18 @@
         top: -150px;
     }
 
+    @media screen and (max-width: 768px) {
 
+        .nav {
+            .mobileButton {
+                display: block;
+            }
+
+            >.menu,
+            .bookings {
+                display: none;
+            }
+        }
+
+    }
 }

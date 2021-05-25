@@ -6,6 +6,7 @@
     border: 2px solid $lightgrey;
     gap: 2rem;
     padding: 2rem;
+    box-sizing: border-box;
 
     .image {
         display: flex;
@@ -39,9 +40,21 @@
             }
         }
 
-        button {
-            float: right;
-            border-color: $red;
+        .button {
+            display: flex;
+            justify-content: flex-end;
+
+            button {
+                border-color: $red;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        display: block;
+
+        .image {
+            display: none;
         }
     }
 }

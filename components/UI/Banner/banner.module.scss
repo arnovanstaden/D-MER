@@ -64,4 +64,21 @@
         }
     }
 
+    @media screen and (max-width: 600px) {
+
+        .overlay,
+        .inner .content {
+            left: 0;
+            width: 100%;
+            padding: 0 !important;
+        }
+
+        &.reverse {
+            .overlay {
+                left: 0;
+                padding: 0 !important;
+            }
+        }
+
+    }
 }
