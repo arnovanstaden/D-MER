@@ -13,7 +13,7 @@ const Contact = () => {
         <Page
             head={{
                 title: "Contact | D-MER",
-                description: "Have a burning question? Get in Touch!",
+                description: "Have a burning question? Get in touch!",
                 canonical: "/contact",
             }}
             className={styles.contact}

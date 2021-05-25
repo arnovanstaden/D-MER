@@ -14,14 +14,14 @@ const Shop = () => {
         <Page
             head={{
                 title: "Shop | D-MER",
-                description: "Have a burning question? Get in Touch!",
-                canonical: "/contact",
+                description: "Shop all the equipment and important documents you need.",
+                canonical: "/shop",
             }}
             className={styles.contact}
         >
 
             <Landing
-                image="/images/pages/contact/landing.jpeg">
+                image="/images/pages/shop/landing.jpg">
                 <h1>All The <span>Equipment</span> And <span>Important Documents</span> You Need</h1>
             </Landing>
 

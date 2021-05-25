@@ -20,9 +20,13 @@ const Button = ({ link, children, icon }: IProps) => {
     }
 
     if (link) {
-        <Link href={link}>
-            <Inner />
-        </Link>
+        return (
+            <Link href={link}>
+                <a>
+                    <Inner />
+                </a>
+            </Link>
+        )
     }
 
     return (
