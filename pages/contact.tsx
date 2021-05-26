@@ -1,3 +1,7 @@
+import { useRef } from "react";
+import toaster from "toasted-notes";
+import axios from "axios"
+
 // Components
 import Page from "../components/UI/Page/Page";
 import Landing from "../components/UI/Landing/Landing";
@@ -9,6 +13,34 @@ import Button from "../components/UI/Library/Button/Button";
 import styles from "../styles/pages/contact.module.scss";
 
 const Contact = () => {
+    // Config
+    const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
+
+    // Handlers
+    const submitContactForm = (e: Event) => {
+        e.preventDefault();
+        const form = formRef.current
+
+        if (form.checkValidity() === false) {
+            return toaster.notify("Please fill in all the required fields correctly.");
+        }
+
+        let enquiry: any = {}
+        const formData = new FormData(form);
+        formData.forEach((value, key) => enquiry[key] = value);
+
+        axios({
+            method: "POST",
+            url: `${process.env.NEXT_PUBLIC_LOCAL_API_URL}/enquiry/contact`,
+            data: enquiry
+        })
+            .then(result => {
+                form.reset()
+                toaster.notify("Thank you for your message. We'll get back to you soon!");
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <Page
             head={{
@@ -62,20 +94,20 @@ const Contact = () => {
                 className={styles.form}
                 reverse
             >
-                <form>
+                <form ref={formRef}>
                     <div className={styles.row}>
                         <label htmlFor="Name">Your Name</label>
-                        <input type="text" name="Name" />
+                        <input type="text" name="Name" required />
                     </div>
                     <div className={styles.row}>
                         <label htmlFor="Email">Your Email</label>
-                        <input type="email" name="Email" />
+                        <input type="email" name="Email" required />
                     </div>
                     <div className={styles.row}>
                         <label htmlFor="Message">Your Message</label>
-                        <textarea name="Message"></textarea>
+                        <textarea name="Message" required></textarea>
                     </div>
-                    <Button icon>
+                    <Button icon onClick={submitContactForm}>
                         Send Message
                     </Button>
                 </form>

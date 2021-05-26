@@ -7,6 +7,7 @@ import Footer from '../components/UI/Footer/Footer';
 // Global Styles
 import '../styles/global.scss';
 import "../assets/icons/style.css";
+import "toasted-notes/src/styles.css";
 
 // Fonts
 import "typeface-montserrat";
