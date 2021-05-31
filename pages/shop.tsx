@@ -84,7 +84,7 @@ const Shop = ({ products }: { products: IProduct[] }) => {
 export default Shop
 
 export const getStaticProps: GetStaticProps = async () => {
-    const productResponse = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/products`);
+    const productResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
     const products = await productResponse.json();
 
     return {

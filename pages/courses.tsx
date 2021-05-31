@@ -42,7 +42,7 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
 export default Courses
 
 export const getStaticProps: GetStaticProps = async () => {
-    const coursesResponse = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/courses`);
+    const coursesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/courses`);
     const courses = await coursesResponse.json();
 
     return {

@@ -133,10 +133,10 @@ export default function Cart({ products, shopSettings }: { products: IProduct[],
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const productResponse = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/products`);
+    const productResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
     const products = await productResponse.json();
 
-    const settingsResponse = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/shopSettings`);
+    const settingsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/shopSettings`);
     const shopSettings = await settingsResponse.json();
 
     return {

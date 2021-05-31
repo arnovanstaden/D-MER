@@ -58,7 +58,7 @@ export default function Checkout({ shopSettings, total, products }: ICheckout) {
 
         axios({
             method: "POST",
-            url: `${process.env.NEXT_PUBLIC_LOCAL_API_URL}/orders/confirmation`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/orders/confirmation`,
             data: order
         })
             .then(result => {

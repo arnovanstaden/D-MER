@@ -31,7 +31,7 @@ const Contact = () => {
 
         axios({
             method: "POST",
-            url: `${process.env.NEXT_PUBLIC_LOCAL_API_URL}/enquiry/contact`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/enquiry/contact`,
             data: enquiry
         })
             .then(result => {
