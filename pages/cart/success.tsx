@@ -2,8 +2,9 @@ import { clearCart } from "../../utils/cart";
 import { useEffect } from "react"
 
 // Components
-import Layout from "../../components/Layout/Layout";
-import Section from "../../components/Section/Section";
+import Page from "../../components/UI/Page/Page";
+import Section from "../../components/UI/Section/Section";
+import Button from "../../components/UI/Library/Button/Button";
 
 // Styles
 import styles from "../../styles/pages/cart/success.module.scss";
@@ -15,27 +16,28 @@ export default function Success() {
     }, []);
 
     return (
-        <Layout
+        <Page
             head={{
                 title: "Success | D-MER",
-                description: "Transaction Successful",
-                canonical: "/success",
+                description: "",
+                canonical: "/cart/success",
                 robots: false
             }}
-            noLanding={true}
-
+            className={styles.success}
         >
 
             <Section
-                heading="Success."
-                classNameProp={styles.success}
+                heading={<h2>Transaction <span>Successful</span></h2>}
             >
                 <div className={styles.content}>
-                    <h5>Your transaction has been successful!</h5>
+                    <h3>Your transaction has been successful!</h3>
                     <p>You will receive emails confirming your order and payment.</p>
                     <p>(Be sure to check your spam box if you don't see anything)</p>
+                    <Button link="/">
+                        Go Home
+                    </Button>
                 </div>
             </Section>
-        </Layout>
+        </Page>
     )
 }
