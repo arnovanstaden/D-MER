@@ -1,5 +1,6 @@
 // Interfaces
 import { ICartItem, IProduct } from "./interfaces";
+import toaster from "toasted-notes";
 
 
 // INTERNAL HELPER FUNCTIONS
@@ -69,7 +70,7 @@ export const updateCart = (product: IProduct, quantity: number) => {
     if (typeof window !== 'undefined') {
         localStorage.setItem("dmer-cart", JSON.stringify(currentCart));
     }
-    // sendNotification("Cart Updated")
+    toaster.notify("Cart Updated")
 }
 
 export const removeFromCart = (productID: string, notify?: boolean) => {
@@ -84,9 +85,8 @@ export const removeFromCart = (productID: string, notify?: boolean) => {
     }
     // updateCartCounter();
     if (notify) {
-        // sendNotification("Item removed from cart")
+        toaster.notify("Item removed from cart")
     }
-
 }
 
 export const getCart = (): ICartItem[] => {

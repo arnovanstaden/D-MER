@@ -29,6 +29,7 @@ export default function Product({ product }: { product: IProduct }) {
                 </div>
             )
         }
+
         return (
             <div className={styles.cart}>
                 <div className={styles.quantity}>

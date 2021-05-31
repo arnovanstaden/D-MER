@@ -30,9 +30,27 @@
 
             li {
                 margin: 0 1rem;
-                font-size: 0.9rem;
+                font-size: 0.95rem;
                 font-weight: 500;
+
+                &:hover {
+                    color: $red;
+                }
             }
+        }
+
+        .options {
+
+            a {
+                font-size: 0.95rem;
+
+                i {
+                    color: $red;
+                    margin-left: 0.5rem;
+                    vertical-align: middle;
+                }
+            }
+
         }
 
         .mobileButton {
@@ -111,7 +129,7 @@
             }
 
             >.menu,
-            .bookings {
+            .options {
                 display: none;
             }
         }

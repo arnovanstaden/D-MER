@@ -22,28 +22,28 @@ const Footer = () => {
                         <ul className={styles.menu}>
                             <li>
                                 <Link href="/">
-                                    Home
-                            </Link>
+                                    <a>Home</a>
+                                </Link>
                             </li>
                             <li>
                                 <Link href="/about">
-                                    About
-                            </Link>
+                                    <a>About</a>
+                                </Link>
                             </li>
                             <li>
                                 <Link href="/courses">
-                                    Courses
-                            </Link>
+                                    <a>Courses</a>
+                                </Link>
                             </li>
                             <li>
                                 <Link href="/shop">
-                                    Shop
-                            </Link>
+                                    <a>Shop</a>
+                                </Link>
                             </li>
                             <li>
                                 <Link href="/contact">
-                                    Contact
-                            </Link>
+                                    <a>Contact</a>
+                                </Link>
                             </li>
                         </ul>
                         <div className={styles.social}>

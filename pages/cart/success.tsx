@@ -25,7 +25,6 @@ export default function Success() {
             }}
             className={styles.success}
         >
-
             <Section
                 heading={<h2>Transaction <span>Successful</span></h2>}
             >
