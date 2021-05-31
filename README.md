@@ -1,14 +1,14 @@
 # D-MER
-A full-stack online shop & catalogue ordering system combined with a brochure site.
+A brochure site with course booking functionality & and online shop.
 
 ## Link
 You can visit the site [here](https://d-mer.vercel.app/).
 
 ## Features
-* Dynamic product pages
-* Local payment portal integration
-* Custom catalogue & course order system
-* Custom dashboard (CMS) for managing products, orders, blog posts & shop settings
+Dynamic Product Pages
+Local Payment Portal Integration
+Custom Course Booking System
+Custom Dashboard (CMS) For Managing Products, Orders, Courses & Shop Settings
 
 ## Additional Information
 
@@ -22,7 +22,7 @@ Full Stack Web Application
 * Typescript
 
 ### Industry
-Diving & Training | E-Commerce
+Education | E-Commerce
 
 ### Date
 May 2021

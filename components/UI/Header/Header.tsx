@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useRouter } from 'next/router';
 
 // Components
 import Container from "../Library/Container/Container"
@@ -11,6 +12,16 @@ const Header = () => {
     // Config
     const headerRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const mobileNavRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    const router = useRouter()
+
+    // State
+    const [inShop, setInShop] = useState(false);
+
+    useEffect(() => {
+        const verifyShop = router.pathname.includes("/shop") || router.pathname.includes("/cart");
+        console.log(verifyShop)
+        setInShop(verifyShop)
+    })
 
     if (typeof window !== "undefined") {
         let prevScrollpos = window.pageYOffset;
@@ -28,7 +39,6 @@ const Header = () => {
             } else {
                 headerRef.current.classList.add(styles.hide)
             }
-
             prevScrollpos = currentScrollPos;
         }
     }
@@ -38,22 +48,34 @@ const Header = () => {
             <ul className={styles.menu}>
                 <li>
                     <Link href="/about">
-                        Who We Are
+
+                        <a>
+                            Who We Are
+                        </a>
                     </Link>
                 </li>
                 <li>
                     <Link href="/courses">
-                        Our Courses
+
+                        <a>
+                            Our Courses
+                        </a>
                     </Link>
                 </li>
                 <li>
                     <Link href="/shop">
-                        Our Products
+
+                        <a>
+                            Our Products
+                        </a>
                     </Link>
                 </li>
                 <li>
                     <Link href="/contact">
-                        Contact Us
+
+                        <a>
+                            Contact Us
+                        </a>
                     </Link>
                 </li>
             </ul>
@@ -76,10 +98,22 @@ const Header = () => {
                         </Link>
                     </div>
                     <Menu />
-                    <div className={styles.bookings}>
-                        <Link href="/courses">
-                            Book a Course
-                        </Link>
+                    <div className={styles.options}>
+                        {inShop ?
+                            <Link href="/cart">
+                                <a>
+                                    Your Cart
+                                    <i className="icon-cart"></i>
+                                </a>
+
+                            </Link>
+                            :
+                            <Link href="/courses">
+                                <a>
+                                    Book a Course
+                                    <i className="icon-arrow-right" />
+                                </a>
+                            </Link>}
                     </div>
                     <i className={`icon-menu ${styles.mobileButton}`} onClick={handleToggleMobileNav}></i>
                     <div className={styles.mobile} ref={mobileNavRef}>

@@ -39,7 +39,7 @@ const Home = () => {
 
       </Section>
 
-      <Banner image="/images/pages/home/banner1.jpeg">
+      <Banner image="/images/pages/home/banner1.jpg">
         <h2>The D-MER <span>Golden Thread</span></h2>
         <p> <i className="icon-plus"></i> The Right People</p>
         <p> <i className="icon-plus"></i> The Right Equipment</p>

@@ -18,7 +18,9 @@ const Banner = ({ children, image, reverse }: IProps) => {
     )
     return (
         <section className={classes}>
-            <Parallax strength={100} bgImage={image} bgImageAlt="Parallax Image">
+            <Parallax strength={100} bgImage={image} bgImageAlt="Parallax Image"
+                bgImageStyle={{ objectFit: "center center" }}
+            >
                 <Container>
                     <div className={styles.inner}>
                         <div className={styles.content}>

@@ -30,9 +30,27 @@
 
             li {
                 margin: 0 1rem;
-                font-size: 0.9rem;
+                font-size: 0.95rem;
                 font-weight: 500;
+
+                &:hover {
+                    color: $red;
+                }
             }
+        }
+
+        .options {
+
+            a {
+                font-size: 0.95rem;
+
+                i {
+                    color: $red;
+                    margin-left: 0.5rem;
+                    vertical-align: middle;
+                }
+            }
+
         }
 
         .mobileButton {
@@ -53,7 +71,7 @@
             right: 0;
             height: 100vh;
             width: 0;
-            background-color: rgba($color: $darkgrey, $alpha: 0.85);
+            background-color: rgba($color: $darkgrey, $alpha: 0.95);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -111,7 +129,7 @@
             }
 
             >.menu,
-            .bookings {
+            .options {
                 display: none;
             }
         }
