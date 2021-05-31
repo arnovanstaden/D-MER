@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+
 // Components
 import Container from "../Library/Container/Container";
 import NextImage from "../Library/NextImage/NextImage";
@@ -12,6 +14,10 @@ interface IProps {
 }
 
 const Landing = ({ children, image }: IProps) => {
+
+    // Config
+    const router = useRouter()
+
     return (
         <section className={styles.landing}>
             <div className={styles.image}>
@@ -28,9 +34,14 @@ const Landing = ({ children, image }: IProps) => {
                 <div className={styles.content}>
                     {children}
                     <hr />
-                    <Button icon>
-                        Book a Course
-                    </Button>
+                    {router.pathname === "/shop"
+                        ? <Button icon link="/cart">
+                            Your Cart
+                        </Button>
+                        : <Button icon>
+                            Book a Course
+                        </Button>
+                    }
                 </div>
             </Container>
             <div className={styles.social}>

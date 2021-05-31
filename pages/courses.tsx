@@ -1,3 +1,6 @@
+import { GetStaticProps } from 'next';
+import { ICourse } from "../utils/interfaces";
+
 // Components
 import Page from "../components/UI/Page/Page";
 import Landing from "../components/UI/Landing/Landing";
@@ -7,7 +10,7 @@ import Course from "../components/content/Course/Course";
 // Styles
 import styles from "../styles/pages/courses.module.scss";
 
-const Courses = () => {
+const Courses = ({ courses }: { courses: ICourse[] }) => {
     return (
         <Page
             head={{
@@ -26,7 +29,7 @@ const Courses = () => {
             <section>
                 <Container>
                     <div className={styles.grid}>
-                        <Course />
+                        {courses.map((course, index) => (<Course {...course} key={index} />))}
                     </div>
                 </Container>
             </section>
@@ -37,3 +40,14 @@ const Courses = () => {
 }
 
 export default Courses
+
+export const getStaticProps: GetStaticProps = async () => {
+    const coursesResponse = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_API_URL}/courses`);
+    const courses = await coursesResponse.json();
+
+    return {
+        props: {
+            courses
+        },
+    }
+}

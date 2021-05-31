@@ -30,4 +30,13 @@
             margin-left: 1rem;
         }
     }
+
+    &.fill {
+        background-color: $red;
+        border-color: $red;
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
 }

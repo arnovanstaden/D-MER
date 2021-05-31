@@ -1,25 +1,5 @@
-import { sendNotification } from "../components/Notification/Notification";
-
 // Interfaces
-
-export interface ICartItem {
-    id: string;
-    quantity: number;
-    price: number;
-}
-
-export interface IProduct {
-    id: string;
-    name: string;
-    description: string;
-    details: string;
-    visibility: boolean;
-    price: number;
-    category: string
-    thumbnail: string;
-    digital?: boolean;
-    document?: string
-}
+import { ICartItem, IProduct } from "./interfaces";
 
 
 // INTERNAL HELPER FUNCTIONS
@@ -87,9 +67,9 @@ export const updateCart = (product: IProduct, quantity: number) => {
 
     // Save
     if (typeof window !== 'undefined') {
-        localStorage.setItem("cart", JSON.stringify(currentCart));
+        localStorage.setItem("dmer-cart", JSON.stringify(currentCart));
     }
-    sendNotification("Cart Updated")
+    // sendNotification("Cart Updated")
 }
 
 export const removeFromCart = (productID: string, notify?: boolean) => {
@@ -100,11 +80,11 @@ export const removeFromCart = (productID: string, notify?: boolean) => {
     // Update Cart
     currentCart.splice(index, 1);
     if (typeof window !== 'undefined') {
-        localStorage.setItem("cart", JSON.stringify(currentCart));
+        localStorage.setItem("dmer-cart", JSON.stringify(currentCart));
     }
     // updateCartCounter();
     if (notify) {
-        sendNotification("Item removed from cart")
+        // sendNotification("Item removed from cart")
     }
 
 }
@@ -112,12 +92,12 @@ export const removeFromCart = (productID: string, notify?: boolean) => {
 export const getCart = (): ICartItem[] => {
     let currentCart
     if (typeof window !== 'undefined') {
-        currentCart = JSON.parse(localStorage.getItem("cart"));
+        currentCart = JSON.parse(localStorage.getItem("dmer-cart") || "[]");
     }
     return currentCart
 }
 
-export const checkCartValidity = (products) => {
+export const checkCartValidity = (products: IProduct[]) => {
     let currentCart = getCart();
 
     if (currentCart) {
@@ -149,14 +129,14 @@ export const getCartTotal = (): number => {
 }
 
 
-export const clearCart = () => {
+export const clearCart = (): void => {
     if (typeof window !== 'undefined') {
-        localStorage.removeItem("cart");
+        localStorage.removeItem("dmer-cart");
     }
 }
 
 
-export const checkDigitalOnlyCart = (products): boolean => {
+export const checkDigitalOnlyCart = (products: IProduct[]): boolean => {
     const currentCart = getCart();
     let digitalOnly = true;
 

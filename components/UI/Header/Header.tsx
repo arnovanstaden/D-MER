@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useRouter } from 'next/router';
 
 // Components
 import Container from "../Library/Container/Container"
@@ -11,6 +12,11 @@ const Header = () => {
     // Config
     const headerRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const mobileNavRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    const router = useRouter()
+
+    // State
+    const verifyShop = router.pathname.includes("/shop");
+    const [inShop, setInShop] = useState(verifyShop);
 
     if (typeof window !== "undefined") {
         let prevScrollpos = window.pageYOffset;
@@ -28,7 +34,6 @@ const Header = () => {
             } else {
                 headerRef.current.classList.add(styles.hide)
             }
-
             prevScrollpos = currentScrollPos;
         }
     }
@@ -77,9 +82,14 @@ const Header = () => {
                     </div>
                     <Menu />
                     <div className={styles.bookings}>
-                        <Link href="/courses">
-                            Book a Course
-                        </Link>
+                        {inShop ?
+                            <Link href="/cart">
+                                Go to Cart
+                            </Link>
+                            :
+                            <Link href="/courses">
+                                Book a Course
+                            </Link>}
                     </div>
                     <i className={`icon-menu ${styles.mobileButton}`} onClick={handleToggleMobileNav}></i>
                     <div className={styles.mobile} ref={mobileNavRef}>
