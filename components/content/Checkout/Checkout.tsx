@@ -71,8 +71,7 @@ export default function Checkout({ shopSettings, total, products }: ICheckout) {
     const initPayment = (order: IOrder, order_number: string) => {
         amountRef.current.value = `${order.amount_gross}`;
         orderNumberRef.current.value = order_number;
-        c
-        // formRef.current.submit()
+        formRef.current.submit()
     }
 
     return (
