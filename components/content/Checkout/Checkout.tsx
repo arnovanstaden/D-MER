@@ -111,6 +111,7 @@ export default function Checkout({ shopSettings, total, products }: ICheckout) {
                     <input type="hidden" name="merchant_id" value={process.env.NEXT_PUBLIC_PAYFAST_MERCHANT_ID} />
                     <input type="hidden" name="merchant_key" value={process.env.NEXT_PUBLIC_PAYFAST_MERCHANT_KEY} />
                     <input type="hidden" name="return_url" value="http://www.dmerworldwide.com/success" />
+                    <input type="hidden" name="notify_url" value={`${process.env.NEXT_PUBLIC_API_URL}/orders/`} />
                     <input type="hidden" name="cancel_url" value="http://www.dmerworldwide.com/cart" />
                     <input type="hidden" name="item_name" value="D-MER Cart" />
                     <input type="hidden" name="amount" value="" ref={amountRef} />
