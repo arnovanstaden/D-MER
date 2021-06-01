@@ -48,7 +48,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
         toaster.notify("Validating Code. Hang tight...");
         axios({
             method: "post",
-            url: `${process.env.NEXT_PUBLIC_LOCAL_API_URL}/coupons/validate`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/coupons/validate`,
             data: {
                 code
             }
@@ -108,7 +108,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
 
         axios({
             method: "POST",
-            url: `${process.env.NEXT_PUBLIC_LOCAL_API_URL}/courses/book`,
+            url: `${process.env.NEXT_PUBLIC_API_URL}/courses/book`,
             data: formData
         })
             .then(result => {
