@@ -62,7 +62,7 @@ export default function Checkout({ shopSettings, total, products }: ICheckout) {
             data: order
         })
             .then(result => {
-                toaster.notify("Thank you for your message. We'll get back to you soon!");
+                toaster.notify("Order confirmed. Redirecting to Payfast");
                 initPayment(order, result.data.order_number)
             })
             .catch(err => console.log(err))
