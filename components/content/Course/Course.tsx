@@ -8,7 +8,7 @@ import Button from "../../UI/Library/Button/Button"
 import styles from "./course.module.scss";
 
 
-const Course = (course: ICourse) => {
+const Course = ({ course }: { course: ICourse, toggle: () => any }) => {
     return (
         <article className={styles.course}>
             <div className={styles.image}>

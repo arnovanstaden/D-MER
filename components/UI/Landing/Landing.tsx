@@ -38,7 +38,7 @@ const Landing = ({ children, image }: IProps) => {
                         ? <Button icon link="/cart">
                             Your Cart
                         </Button>
-                        : <Button icon>
+                        : <Button icon link="/courses#book">
                             Book a Course
                         </Button>
                     }

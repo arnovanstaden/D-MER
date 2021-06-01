@@ -1,12 +1,13 @@
 @import "../../../styles/variables.scss";
 
 .landing {
-    min-height: 100vh;
+    height: 100vh;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: $grey;
+    box-sizing: border-box;
 
     .image {
         position: absolute;

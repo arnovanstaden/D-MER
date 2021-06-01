@@ -6,11 +6,23 @@ import Page from "../components/UI/Page/Page";
 import Landing from "../components/UI/Landing/Landing";
 import Container from "../components/UI/Library/Container/Container";
 import Course from "../components/content/Course/Course";
-
+import Bookings from "../components/content/CourseBookings/CourseBookings"
 // Styles
 import styles from "../styles/pages/courses.module.scss";
 
 const Courses = ({ courses }: { courses: ICourse[] }) => {
+
+    const handleBookingToggle = () => {
+        // const courses = document.querySelector(`.${courseStyles.courses}`);
+        // if (courses.classList.contains(courseStyles.open)) {
+        //     courses.classList.remove(courseStyles.open);
+        //     document.body.classList.remove("noscroll")
+        // } else {
+        //     courses.classList.add(courseStyles.open);
+        //     document.body.classList.add("noscroll")
+        // }
+    }
+
     return (
         <Page
             head={{
@@ -28,13 +40,13 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
 
             <section>
                 <Container>
-                    <div className={styles.grid}>
-                        {courses.map((course, index) => (<Course {...course} key={index} />))}
+                    <div className={styles.grid} id="book">
+                        {courses.map((course, index) => (<Course course={course} key={index} toggle={handleBookingToggle} />))}
                     </div>
                 </Container>
             </section>
 
-
+            <Bookings courses={courses} />
         </Page>
     )
 }
