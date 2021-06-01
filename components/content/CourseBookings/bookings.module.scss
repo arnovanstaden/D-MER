@@ -197,6 +197,10 @@
 
         .coupon {
             padding: 2rem 0;
+
+            input {
+                text-align: center;
+            }
         }
 
         .pop {
@@ -216,5 +220,40 @@
             display: flex;
             justify-content: center;
         }
+    }
+
+    @media screen and (max-width: 768px) {
+        .grid {
+            .course {
+                grid-template-columns: 1fr 1fr;
+                row-gap: 1rem;
+
+                .text {
+                    grid-column: 1/3;
+                }
+
+                .price {
+                    justify-content: flex-start;
+                }
+
+                .check {
+                    justify-content: flex-end;
+                }
+            }
+        }
+
+        .form {
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .paymentDetails ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
     }
 }

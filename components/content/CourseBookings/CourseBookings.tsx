@@ -28,6 +28,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     // Config
     const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
     const couponRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+    const popRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
     // State
     const [coupon, setCoupon] = useState<ICoupon>()
@@ -35,7 +36,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
 
     useEffect(() => {
         setTotal(handleUpdateTotal())
-    }, [ticked])
+    }, [ticked, coupon])
 
     // Handlers
     const handleCouponVerification = (e: Event) => {
@@ -47,7 +48,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
         toaster.notify("Validating Code. Hang tight...");
         axios({
             method: "post",
-            url: `${process.env.NEXT_PUBLIC_API_URL}/coupons/validate`,
+            url: `${process.env.NEXT_PUBLIC_LOCAL_API_URL}/coupons/validate`,
             data: {
                 code
             }
@@ -72,18 +73,49 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
             return toaster.notify("Please fill in all the required fields correctly.");
         }
 
-        let enquiry: any = {}
-        const formData = new FormData(form);
-        formData.forEach((value, key) => enquiry[key] = value);
+        let booking: any = {}
+        let prevFormData = new FormData(form);
+        prevFormData.forEach((value, key) => booking[key] = value);
+
+        // Add 
+        if (coupon) {
+            booking["Coupon Discount"] = `${coupon.discount}%`;
+        }
+        booking.Total = total;
+        const bookedCourses = ticked!.map(item => {
+            const course = courses.find(course => course._id === item)
+            if (course) {
+                return `${course.name}`
+            }
+        })
+        booking["Course(s)"] = bookedCourses.join("; ")
+
+        // Remove
+        delete booking["Proof of Payment"];
+
+        let formData = new FormData();
+        formData.append("booking", JSON.stringify(booking))
+
+
+        let fileElement = document.getElementById('ProofOfPayment') as HTMLInputElement;
+        let ProofOfPayment = fileElement.files && fileElement.files[0];
+        formData.append("ProofOfPayment", ProofOfPayment || "");
+
+        formData.forEach((value, key) => console.log(key, value));
+
+
+        toaster.notify("Booking Course. Hang tight...");
 
         axios({
             method: "POST",
-            url: `${process.env.NEXT_PUBLIC_API_URL}/enquiry/contact`,
-            data: enquiry
+            url: `${process.env.NEXT_PUBLIC_LOCAL_API_URL}/courses/book`,
+            data: formData
         })
             .then(result => {
-                form.reset()
-                toaster.notify("Thank you for your message. We'll get back to you soon!");
+                form.reset();
+                toaster.notify("Thank you for your course booking. We'll get back to you soon!");
+                toggle()
+                setCoupon(undefined)
             })
             .catch(err => console.log(err))
     }
@@ -96,6 +128,11 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
                 total += course.price
             }
         })
+
+        if (coupon) {
+            total = Math.round(total * ((100 - coupon.discount) / 100))
+            return total
+        }
         return total
     }
 
@@ -180,12 +217,12 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
                             </div>
                             <Button onClick={handleCouponVerification}>
                                 Apply Code
-                                </Button>
+                            </Button>
                         </div>
                     </div>
                     <div className={styles.pop}>
                         <label htmlFor="Proof of Payment">Proof of Payment</label>
-                        <input type="file" name="Proof of Payment" id="ProofOfPayment" required accept="application/pdf" />
+                        <input type="file" id="ProofOfPayment" name="Proof of Payment" required accept="application/pdf" ref={popRef} />
                     </div>
                     <div className={styles.submit}>
                         <Button fill onClick={handleSubmitBooking}>
