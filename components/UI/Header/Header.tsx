@@ -78,7 +78,7 @@ const Header = () => {
                     </Link>
                 </li>
                 {inShop ?
-                    <li>
+                    <li className={styles.cartLink}>
                         <Link href="/cart">
                             <a>
                                 Your Cart

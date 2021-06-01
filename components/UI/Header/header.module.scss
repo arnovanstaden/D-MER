@@ -36,7 +36,13 @@
                 &:hover {
                     color: $red;
                 }
+
+                &.cartLink {
+                    display: none;
+                }
             }
+
+
         }
 
         .options {
@@ -103,6 +109,10 @@
                     li {
                         font-size: 1.25rem;
                         margin: 0.5rem 0;
+
+                        &.cartLink {
+                            display: block
+                        }
 
                         a i {
                             color: $red;
