@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { GetStaticProps } from 'next';
 import { updateCart } from "../../utils/cart";
-import Link from "next/link";
 import { IProduct } from "../../utils/interfaces"
 
 // Components

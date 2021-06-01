@@ -79,7 +79,7 @@
             box-sizing: border-box;
             transition: 0.3s ease-in-out;
 
-            i {
+            >i {
                 position: absolute;
                 top: 1rem;
                 right: 1rem;
@@ -103,6 +103,12 @@
                     li {
                         font-size: 1.25rem;
                         margin: 0.5rem 0;
+
+                        a i {
+                            color: $red;
+                            font-size: 1.1rem;
+                            margin-left: 0.5rem;
+                        }
                     }
                 }
             }

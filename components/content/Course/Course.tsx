@@ -8,7 +8,7 @@ import Button from "../../UI/Library/Button/Button"
 import styles from "./course.module.scss";
 
 
-const Course = (course: ICourse) => {
+const Course = ({ course, toggle }: { course: ICourse, toggle: () => any }) => {
     return (
         <article className={styles.course}>
             <div className={styles.image}>
@@ -30,7 +30,7 @@ const Course = (course: ICourse) => {
                     <p>R {course.price}</p>
                 </div>
                 <div className={styles.button}>
-                    <Button icon>Book</Button>
+                    <Button icon onClick={toggle}>Book</Button>
                 </div>
             </div>
         </article>

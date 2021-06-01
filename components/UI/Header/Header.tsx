@@ -19,7 +19,6 @@ const Header = () => {
 
     useEffect(() => {
         const verifyShop = router.pathname.includes("/shop") || router.pathname.includes("/cart");
-        console.log(verifyShop)
         setInShop(verifyShop)
     })
 
@@ -78,6 +77,16 @@ const Header = () => {
                         </a>
                     </Link>
                 </li>
+                {inShop ?
+                    <li>
+                        <Link href="/cart">
+                            <a>
+                                Your Cart
+                                <i className="icon-cart"></i>
+                            </a>
+                        </Link>
+                    </li>
+                    : null}
             </ul>
         )
     }
@@ -105,10 +114,9 @@ const Header = () => {
                                     Your Cart
                                     <i className="icon-cart"></i>
                                 </a>
-
                             </Link>
                             :
-                            <Link href="/courses">
+                            <Link href="/courses#book">
                                 <a>
                                     Book a Course
                                     <i className="icon-arrow-right" />

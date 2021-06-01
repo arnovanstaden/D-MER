@@ -156,3 +156,13 @@ a {
     }
   }
 }
+
+
+// Checkboxes 
+.MuiCheckbox-colorSecondary.Mui-checked {
+  color: $red !important;
+}
+
+.MuiCheckbox-root {
+  color: $white !important;
+}
