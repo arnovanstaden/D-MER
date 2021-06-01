@@ -1,5 +1,5 @@
 import { ICourse } from "../../../utils/interfaces";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import toaster from "toasted-notes";
 import axios from "axios"
 
@@ -11,13 +11,31 @@ import Checkbox from '@bit/mui-org.material-ui.checkbox';
 // Style
 import styles from "./bookings.module.scss";
 
-const CourseBookings = ({ courses, toggle, show }: { courses: ICourse[], toggle: () => void, show: boolean }) => {
+interface IProps {
+    courses: ICourse[],
+    toggle: () => void,
+    show: boolean,
+    ticked?: string[],
+    handleTick: (course_id: string) => void
+}
+
+interface ICoupon {
+    discount: number;
+    code: string;
+}
+
+const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) => {
     // Config
     const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
     const couponRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
     // State
-    const [coupon, setCoupon] = useState(undefined)
+    const [coupon, setCoupon] = useState<ICoupon>()
+    const [total, setTotal] = useState<number>(handleUpdateTotal())
+
+    useEffect(() => {
+        setTotal(handleUpdateTotal())
+    }, [ticked])
 
     // Handlers
     const handleCouponVerification = (e: Event) => {
@@ -70,7 +88,16 @@ const CourseBookings = ({ courses, toggle, show }: { courses: ICourse[], toggle:
             .catch(err => console.log(err))
     }
 
-
+    function handleUpdateTotal(): number {
+        let total = 0;
+        ticked && ticked.forEach(item => {
+            const course = courses.find(course => course._id === item)
+            if (course) {
+                total += course.price
+            }
+        })
+        return total
+    }
 
     const Course = (course: ICourse) => {
         return (
@@ -84,7 +111,8 @@ const CourseBookings = ({ courses, toggle, show }: { courses: ICourse[], toggle:
                 </div>
                 <div className={styles.check}>
                     <Checkbox
-
+                        onChange={() => handleTick(course._id)}
+                        checked={ticked!.includes(course._id)}
                     />
                 </div>
             </div>
@@ -133,6 +161,7 @@ const CourseBookings = ({ courses, toggle, show }: { courses: ICourse[], toggle:
                     </div>
                     <div className={styles.paymentDetails}>
                         <h4><span>Payment</span> Details</h4>
+                        <p>Please make an EFT payment using the details below and attach your Proof of Payment.</p>
                         <ul>
                             <li><span>Bank:</span> ABSA Bank</li>
                             <li><span>Sort Code:</span> 632 005</li>
@@ -140,13 +169,7 @@ const CourseBookings = ({ courses, toggle, show }: { courses: ICourse[], toggle:
                             <li><span>SWIFT code:</span> 7ABSAZAJJXXX</li>
                             <li><span>Reference :</span> FIRST NAME/SURNAME/COURSE</li>
                             <li><span>Amount :</span>
-                                {/* <p className={styles.total}
-                                        id="booking-total"
-                                    >
-                                        {selectedCourse ?
-                                            `R ${selectedCourse.price - (coupon ? selectedCourse.price * (coupon.discount / 100) : 0)}`
-                                            : "Select Course"}
-                                    </p> */}
+                                <p>R {total}</p>
                             </li>
 
                         </ul>

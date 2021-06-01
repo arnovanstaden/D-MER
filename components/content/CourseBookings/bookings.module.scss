@@ -158,6 +158,18 @@
         .paymentDetails {
             text-align: center;
 
+            >h4 {
+                margin: 0
+            }
+
+            >p {
+                font-weight: 300;
+                color: $lightgrey;
+                margin: 0;
+                margin-bottom: 2rem;
+                font-size: 0.9rem;
+            }
+
             ul {
                 @include reset-list;
                 display: grid;
@@ -170,6 +182,14 @@
                         font-weight: 500;
                         color: $red;
                         display: block;
+                    }
+
+                    p {
+                        background-color: red;
+                        color: $white;
+                        font-weight: 500;
+                        display: inline-block;
+                        padding: 0.25rem 0.5rem;
                     }
                 }
             }
