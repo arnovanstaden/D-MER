@@ -11,7 +11,7 @@ import Checkbox from '@bit/mui-org.material-ui.checkbox';
 // Style
 import styles from "./bookings.module.scss";
 
-const CourseBookings = ({ courses }: { courses: ICourse[] }) => {
+const CourseBookings = ({ courses, toggle, show }: { courses: ICourse[], toggle: () => void, show: boolean }) => {
     // Config
     const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
     const couponRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -91,9 +91,13 @@ const CourseBookings = ({ courses }: { courses: ICourse[] }) => {
         )
     }
 
+    if (!show) {
+        return null
+    }
+
     return (
         <section className={styles.bookings}>
-            <i className="icon-clear"></i>
+            <i className="icon-clear" onClick={toggle}></i>
             <Container>
                 <div className={styles.heading}>
                     <h2>Book <span>Courses</span></h2>

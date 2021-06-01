@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import { ICourse } from "../utils/interfaces";
+import { useState } from "react"
 
 // Components
 import Page from "../components/UI/Page/Page";
@@ -12,16 +13,12 @@ import styles from "../styles/pages/courses.module.scss";
 
 const Courses = ({ courses }: { courses: ICourse[] }) => {
 
+    const [showBookings, setShowBookings] = useState(false)
+
     const handleBookingToggle = () => {
-        // const courses = document.querySelector(`.${courseStyles.courses}`);
-        // if (courses.classList.contains(courseStyles.open)) {
-        //     courses.classList.remove(courseStyles.open);
-        //     document.body.classList.remove("noscroll")
-        // } else {
-        //     courses.classList.add(courseStyles.open);
-        //     document.body.classList.add("noscroll")
-        // }
+        setShowBookings(prev => !prev);
     }
+
 
     return (
         <Page
@@ -46,7 +43,7 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
                 </Container>
             </section>
 
-            <Bookings courses={courses} />
+            <Bookings show={showBookings} toggle={handleBookingToggle} courses={courses} />
         </Page>
     )
 }
