@@ -6,7 +6,7 @@ import axios from "axios"
 // Components
 import Container from "../../UI/Library/Container/Container"
 import Button from "../../UI/Library/Button/Button"
-import Checkbox from '@bit/mui-org.material-ui.checkbox';
+import Checkbox from '@material-ui/core/Checkbox/Checkbox';
 
 // Style
 import styles from "./bookings.module.scss";
