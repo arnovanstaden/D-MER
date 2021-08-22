@@ -52,7 +52,7 @@ const Contact = () => {
         >
 
             <Landing
-                image="/images/pages/contact/landing.jpeg">
+                image="/images/pages/contact/landing.jpg">
                 <h1>Find Out More By <span>Getting In Touch</span></h1>
             </Landing>
 

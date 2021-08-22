@@ -20,7 +20,7 @@ const Home = () => {
     >
 
       <Landing
-        image="/images/pages/home/landing.jpeg">
+        image="/images/pages/home/landing.jpg">
         <h1>Online <span>learning platform</span> and competence management system</h1>
       </Landing>
 

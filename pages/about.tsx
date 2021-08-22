@@ -22,7 +22,7 @@ const About = () => {
         >
 
             <Landing
-                image="/images/pages/about/landing.jpeg">
+                image="/images/pages/about/landing.jpg">
                 <h1>Skills Development <span>+</span> Accessible To All</h1>
             </Landing>
 
@@ -110,21 +110,21 @@ const About = () => {
                             <h5>People Management</h5>
                             <p>
                                 For companies to ensure Continuous Professional Development (CPD) the superintendent has a responsibility to manage the provision for training. They are expected to understand the Impact of training, supervision, support and coaching on the safety performance of personnel.
-                    </p>
+                            </p>
                         </div>
                         <div className={styles.block}>
                             <img src="/images/icons/verify.svg" alt="Icon" />
                             <h5>Industry Alignment</h5>
                             <p>
                                 D+MER offers quality control and assurance in accordance with IMCA C003: Guidance on competence assurance and assessment.
-                    </p>
+                            </p>
                         </div>
                         <div className={styles.block}>
                             <img src="/images/icons/search.svg" alt="Icon" />
                             <h5>Quality Assurance</h5>
                             <p>
                                 D+MER indicates quality assurance, giving industry the confidence in knowing that there is a robust quality check on training which is cross referenced to industry guidance.
-                    </p>
+                            </p>
                         </div>
                     </div>
                 </Container>

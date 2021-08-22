@@ -48,7 +48,7 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
         >
 
             <Landing
-                image="/images/pages/courses/landing.jpeg">
+                image="/images/pages/courses/landing.jpg">
                 <h1><span>Online</span> Continuous Professional Development <span>Courses</span></h1>
             </Landing>
 
