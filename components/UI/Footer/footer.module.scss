@@ -26,6 +26,10 @@
                     margin-left: 0.75rem;
                     font-size: 0.8rem;
                     font-weight: 500;
+
+                    &:hover {
+                        color: $red;
+                    }
                 }
             }
 
@@ -54,6 +58,7 @@
                 font-weight: 300;
                 font-size: 0.65rem;
                 color: $lightgrey;
+                margin: 0;
 
                 a {
                     color: white;
@@ -61,6 +66,15 @@
                     &:hover {
                         color: $red;
                     }
+                }
+            }
+
+            >a {
+                font-size: 0.65rem;
+                color: white;
+
+                &:hover {
+                    color: $red;
                 }
             }
         }

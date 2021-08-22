@@ -57,6 +57,7 @@ const Footer = () => {
                     </div>
                     <div className={styles.copy}>
                         <p>© 2021 - D-MER Worldwide</p>
+                        <a href="/documents/D-MER - POPIA and PAIA Privacy Policy.pdf" target="download" className={styles.privacy}>Privacy Policy</a>
                         <p>Design &amp; Development by <a href="https://webdacity.dev/" target="blank">Webdacity</a></p>
                     </div>
                 </div>
