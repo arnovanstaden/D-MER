@@ -29,13 +29,20 @@ const Home = () => {
         keywords="Who Are We?"
       >
         <h3>The D+MER Golden Thread</h3>
-        <p>
-          Our team firmly believe that Every member of a commercial dive operation must follow the golden thread to ensure an effective outcome in the event of a medical emergency. The Golden Thread ensures The Right People + The Right Equipment + The Right Training to ensure an Effective and Efficient Outcome for all in the event of a Medical Emergency.
-        </p>
+        <p>Our team firmly believe that every member of a commercial dive operation must follow the
+          golden thread to ensure an effective outcome in the event of a medical emergency.</p>
 
-        <p>
-          D+MER Worldwide offers the Commercial Diving Community - Online Knowledge modules to stay in-date! Access to on-site Skills assessment and training centres globally. The right Equipment: DMAC 015 compliant medical kits, tailor made to suit your dive spread and needs.
-        </p>
+        <p>The Golden Thread ensures The Right People + The Right Equipment + The Right Training =
+          Effective and Efficient Outcome.</p>
+
+        <p>D+MER Worldwide offers the Commercial Diving Community Online Knowledge Modules
+          to stay in-date and avoid skill fade!</p>
+
+        <p>We provide access to on-site skills assessment and training centres globally.</p>
+
+        <p>We offer DMAC 015 compliant medical kits for offshore dive operations, inshore compliant
+          medical equipment, as well as personalised first aid equipment. Our equipment is tailor made
+          to suit your dive spread and dive needs.</p>
 
       </Section>
 
@@ -52,14 +59,13 @@ const Home = () => {
         reverse
       >
         <h3>20+ Years Industry Experience</h3>
-        <p>
-          With 20 years’ experience in the Commercial Diving industry, we have developed D+MER learning platform over the past 5 years to ensure all dive team members have the ability to refresh their knowledge of industry standards and expectations in their given position within a dive team.
-        </p>
+        <p>With over 20 years’ experience in the Commercial Diving industry, we have developed the
+          D+MER learning platform, to ensure all dive team members have the ability to refresh their
+          knowledge of industry standards and expectations in their given dive team position.</p>
 
-        <p>
-          Companies are offered access to their members portfolios as a means of measuring and gauging competency in the workplace, through Continued Professional Development (C.P.D.) modules completed for each discipline by the dive team's respective personnel.
-
-        </p>
+        <p>Companies are offered access to their members portfolios as a means of measuring competency
+          in the workplace. This is ensured through Continued Professional Development (CPD)
+          modules, completed for each discipline by the dive team's respective personnel.</p>
       </Section>
 
       <Banner image="/images/pages/home/banner2.jpg" reverse>
@@ -74,19 +80,19 @@ const Home = () => {
         keywords="Why Us?"
       >
         <h3>We are passionate about diver safety</h3>
-        <p>
-          Our team comprises subject matter experts with extensive experience across various faculties of the Commercial Diving arena globally. Including consulting, training, design and manufacture of DMAC 015 medical equipment kits and online D+MER blended learning development.
+        <p> Our team comprises subject matter experts with extensive experience across various faculties
+          of the Commercial Diving arena globally, where these experts collaborated in the consulting,
+          training, design and manufacturing of the DMAC 015 medical equipment kits and development
+          of the online D+MER blended learning courses.</p>
 
-        </p>
+        <p>D+MER offers a unique way to mitigate knowledge gaps and lower skill fade. For added value,
+          all participants have access to an online coach if required for guidance. Furthermore, the DMT
+          or First Aider can have a full skill assessment of required competencies carried out at various
+          Skill Assessment Centres globally, for added member convenience and quality assurance for
+          industry.</p>
 
-        <p>
-          D+MER offers a unique way to ensure knowledge gap removal and lower skill fade. All participants have an online coach, if required for guidance. Furthermore, the DMT or First Aider can have a full skill assessment of required competencies carried at various Skill Assessment Centers globally, for added member convenience and quality assurance for industry.
-        </p>
-
-        <p>
-          Each member of the team and is passionate about diver safety in industry from Dive Tender to the Diver Medic, complete dive team with Supervisor and Dive Superintendent.
-        </p>
-
+        <p>Each member of our team is passionate about diver safety in industry, from the Dive Tender,
+          Diver Medic, Supervisor and Dive Superintendent to the appointed DMA.</p>
       </Section>
 
     </Page >

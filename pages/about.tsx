@@ -27,17 +27,20 @@ const About = () => {
       </Landing>
 
       <Section
-        heading={<h2><span>Competence</span>  Management  System</h2>}
+        heading={<h2><span>Competence</span>  Management  System (CMS)</h2>}
         keywords="Competence"
         className={styles.cms}
       >
         <h3>A good quality CMS will bring real and lasting benefits to any diving organization.</h3>
-        <p>
-          Blended learning allows on-line studies complimented with on-site work place skills development for all members of staff with a structured, measured system that gives the organisation confidence that all personnel appointed to safety-critical and other relevant positions can carry out their jobs in an effective manner.
-        </p>
-        <p>
-          D+MER keeps track of performance. You can be satisfied that personnel have demonstrated their competence on the job and track and report performance.
-        </p>
+        <p>A good quality Competence Management System will bring real and lasting benefits to any
+          diving organization. Blended learning allows online studies complimented with on-site
+          workplace skills development for all members of staff. The structured, measured system will
+          ensure full confidence to the organisation, that all personnel appointed to safety-critical and
+          other relevant positions can carry out their jobs in an effective manner.</p>
+
+        <p> D+MER keeps track of performance, where you can be satisfied that your personnel have
+          demonstrated their competence for the job!</p>
+
         <ul>
           <li>
             <i className="icon-square"></i>
@@ -57,7 +60,7 @@ const About = () => {
           </li>
           <li>
             <i className="icon-square"></i>
-            Allow access to on-line resources
+            Allows access to on-line resources
           </li>
         </ul>
       </Section>
@@ -68,16 +71,18 @@ const About = () => {
       >
         <h3>Designed to meet audit compliance and strengthen operational dive teams.</h3>
         <p>
-          D+MER offers blended learning and keeps track of performance. The combination of on-line learning with on-site skills assessment ensures easy accessibility to all.
-
+          D+MER offers blended learning, which keeps track of performance. The combination of online
+          learning with on-site skills assessment ensures easy accessibility to all.
         </p>
         <ul>
           <li>
             <i className="icon-square"></i>
-            Employees can learn in their own time at their own pace</li>
+            Employees can learn in their own time, at their own pace</li>
           <li>
             <i className="icon-square"></i>
-            Employers can track progress to ensure organization funded training and professional development activities are cost-effective, goal-oriented and productive</li>
+            Employers can track progress to ensure organization funded training and professional
+            development activities are cost-effective, goal-oriented and productive
+          </li>
         </ul>
         <p>
           Tracking performance and collecting data is invaluable.
@@ -109,21 +114,21 @@ const About = () => {
               <img src="/images/icons/multiple-users-silhouette.svg" alt="Icon" />
               <h5>People Management</h5>
               <p>
-                For companies to ensure Continuous Professional Development (CPD) the superintendent has a responsibility to manage the provision for training. They are expected to understand the Impact of training, supervision, support and coaching on the safety performance of personnel.
+                For companies to ensure Continuous Professional Development (CPD) the superintendent has  a responsibility to manage the provision for training. They are expected to understand  the impact of training, supervision, support and coaching on the safety performance of  personnel.
               </p>
             </div>
             <div className={styles.block}>
               <img src="/images/icons/verify.svg" alt="Icon" />
               <h5>Industry Alignment</h5>
               <p>
-                D+MER offers quality control and assurance in accordance with IMCA C003: Guidance on competence assurance and assessment.
+                D+MER offers quality control and assurance in accordance with IMCA C003: Guidance on  competence assurance and assessment.
               </p>
             </div>
             <div className={styles.block}>
               <img src="/images/icons/search.svg" alt="Icon" />
               <h5>Quality Assurance</h5>
               <p>
-                D+MER indicates quality assurance, giving industry the confidence in knowing that there is a robust quality check on training which is cross referenced to industry guidance.
+                D+MER indicates quality assurance, giving industry the confidence in knowing that there is a  robust quality check on training, which is cross referenced with industry guidance.
               </p>
             </div>
           </div>
@@ -135,7 +140,8 @@ const About = () => {
         heading={<h2>Promoting <span>Skill</span> Retention <br /><span>+</span><br /> Preventing <span>Skill</span> Fade.</h2>}
         keywords="Competence"
         className={styles.skills}>
-        <h3>D+MER is a powerful tool to ensure an effective common framework for all Commercial Diving job functions to demonstrate knowledge and skills development.</h3>
+        <h3>D+MER is a powerful tool to ensure an effective common framework for all Commercial  Diving job functions to demonstrate knowledge and skills development.
+        </h3>
         <p>
           <span>IMCA Diving Division:</span>
           D+MER specifically addresses all 12 job functions within IMCA C003.
