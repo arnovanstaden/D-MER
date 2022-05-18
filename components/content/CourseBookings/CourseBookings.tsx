@@ -185,6 +185,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
           <div className={styles.paymentDetails}>
             <h4><span>Payment</span></h4>
             <p>After a successful booking, you'll receive a confirmation email with a link to Paypal where you can securely pay for your course in USD ($).</p>
+            <p>Please use your Full Name and Course as payment reference</p>
             <div className={styles.amount}>
               <h5>Total Amount :</h5>
               <p>R {total}</p>
