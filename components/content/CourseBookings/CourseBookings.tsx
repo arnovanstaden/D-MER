@@ -28,7 +28,6 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
   // Config
   const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
   const couponRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const popRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   // State
   const [coupon, setCoupon] = useState<ICoupon>()
@@ -47,7 +46,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     }
     toaster.notify("Validating Code. Hang tight...");
     axios({
-      method: "post",
+      method: "POST",
       url: `${process.env.NEXT_PUBLIC_API_URL}/coupons/validate`,
       data: {
         code
@@ -77,8 +76,9 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     let prevFormData = new FormData(form);
     prevFormData.forEach((value, key) => booking[key] = value);
 
-    // Add 
+    // Add
     if (coupon) {
+      booking['coupon-code'] = coupon;
       booking["Coupon Discount"] = `${coupon.discount}%`;
     }
     booking.Total = total;
@@ -90,30 +90,16 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     })
     booking["Course(s)"] = bookedCourses.join("; ")
 
-    // Remove
-    delete booking["Proof of Payment"];
-
-    let formData = new FormData();
-    formData.append("booking", JSON.stringify(booking))
-
-
-    let fileElement = document.getElementById('ProofOfPayment') as HTMLInputElement;
-    let ProofOfPayment = fileElement.files && fileElement.files[0];
-    formData.append("ProofOfPayment", ProofOfPayment || "");
-
-    formData.forEach((value, key) => console.log(key, value));
-
-
     toaster.notify("Booking Course. Hang tight...");
 
     axios({
       method: "POST",
       url: `${process.env.NEXT_PUBLIC_API_URL}/courses/book`,
-      data: formData
+      data: booking,
     })
       .then(result => {
         form.reset();
-        toaster.notify("Thank you for your course booking. We'll get back to you soon!");
+        toaster.notify("Thank you for your course booking. You will receive a confirmation email with a payment link soon!");
         toggle()
         setCoupon(undefined)
       })
@@ -197,19 +183,12 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
             </div>
           </div>
           <div className={styles.paymentDetails}>
-            <h4><span>Payment</span> Details</h4>
-            <p>Please make an EFT payment using the details below and attach your Proof of Payment.</p>
-            <ul>
-              <li><span>Account Name:</span> DMER Worldwide (Pty) Ltd</li>
-              <li><span>Bank:</span> First National Bank</li>
-              <li><span>Sort Code:</span> 200411</li>
-              <li><span>Account Number:</span> 628 4444 3086</li>
-              <li><span>SWIFT code:</span> FIRNZAJJXXX</li>
-              <li><span>Reference :</span> FULL NAME &amp; COURSE</li>
-              <li><span>Amount :</span>
-                <p>R {total}</p>
-              </li>
-            </ul>
+            <h4><span>Payment</span></h4>
+            <p>After a successful booking, you'll receive a confirmation email with a link to Paypal where you can securely pay for your course in USD ($).</p>
+            <div className={styles.amount}>
+              <h5>Total Amount :</h5>
+              <p>R {total}</p>
+            </div>
             <div className={styles.coupon}>
               <div className={styles.row}>
                 <label>Coupon Code:</label>
@@ -219,10 +198,6 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
                 Apply Code
               </Button>
             </div>
-          </div>
-          <div className={styles.pop}>
-            <label htmlFor="Proof of Payment">Proof of Payment</label>
-            <input type="file" id="ProofOfPayment" name="Proof of Payment" required accept="application/pdf" ref={popRef} />
           </div>
           <div className={styles.submit}>
             <Button fill onClick={handleSubmitBooking}>
