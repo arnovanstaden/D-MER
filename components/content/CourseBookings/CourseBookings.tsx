@@ -144,7 +144,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
           <p>{course.objective}</p>
         </div>
         <div className={styles.price}>
-          <p>R {course.price}</p>
+          <p>$ {course.price}</p>
         </div>
         <div className={styles.check}>
           <Checkbox

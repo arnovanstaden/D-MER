@@ -68,7 +68,7 @@ const Contact = () => {
         <ul>
           <li>
             <i className="icon-phone"></i>
-            <a href="tel:0123456789">012 345 6789</a>
+            <a href="tel:+27760972523">+27 76 097 2523</a>
           </li>
           <li>
             <i className="icon-mail"></i>
@@ -84,7 +84,7 @@ const Contact = () => {
       <Banner image="/images/pages/contact/banner1.jpg">
         <h2>Start <span>Anywhere</span>. Start <span>Anytime</span>.</h2>
         <Button icon link="/courses#book">
-          Book a Course
+          Online Courses
         </Button>
       </Banner>
 

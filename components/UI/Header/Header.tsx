@@ -120,7 +120,7 @@ const Header = () => {
               :
               <Link href="/courses#book">
                 <a>
-                  Book a Course
+                  Online Courses
                   <i className="icon-arrow-right" />
                 </a>
               </Link>}
