@@ -1,0 +1,21 @@
+@import "../../../styles/variables.scss";
+
+.checkbox {
+  border: 2px solid $white;
+  border-radius: 2.5px;
+  width: 0.8rem;
+  height: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 1rem;
+  }
+
+  &.checked {
+    background-color: $red;
+    border-color: $red;
+  }
+}

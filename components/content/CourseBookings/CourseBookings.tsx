@@ -1,15 +1,15 @@
 import { ICourse } from "../../../utils/interfaces";
 import { useRef, useState, useEffect } from "react";
-import toaster from "toasted-notes";
 import axios from "axios"
+import { toast } from 'react-toastify';
 
 // Components
 import Container from "../../UI/Library/Container/Container"
 import Button from "../../UI/Library/Button/Button"
-import Checkbox from '@material-ui/core/Checkbox/Checkbox';
 
 // Style
 import styles from "./bookings.module.scss";
+import Checkbox from '../../UI/Checkbox';
 
 interface IProps {
   courses: ICourse[],
@@ -42,9 +42,9 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     e.preventDefault();
     const code = couponRef.current.value.trim();
     if (code === "") {
-      return toaster.notify("Please enter a valid coupon code");
+      return toast("Please enter a valid coupon code");
     }
-    toaster.notify("Validating Code. Hang tight...");
+    toast("Validating Code. Hang tight...");
     axios({
       method: "POST",
       url: `${process.env.NEXT_PUBLIC_API_URL}/coupons/validate`,
@@ -52,7 +52,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
         code
       }
     }).then(result => {
-      toaster.notify(result.data.message);
+      toast(result.data.message);
       setCoupon({
         discount: result.data.discount,
         code: result.data.code
@@ -60,7 +60,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     })
       .catch(err => {
         console.log(err)
-        toaster.notify(err.response.data.message);
+        toast(err.response.data.message);
       })
   }
 
@@ -69,7 +69,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     const form = formRef.current
 
     if (form.checkValidity() === false) {
-      return toaster.notify("Please fill in all the required fields correctly.");
+      return toast("Please fill in all the required fields correctly.");
     }
 
     let booking: any = {}
@@ -90,7 +90,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     })
     booking["Course(s)"] = bookedCourses.join("; ")
 
-    toaster.notify("Booking Course. Hang tight...");
+    toast("Booking Course. Hang tight...");
 
     axios({
       method: "POST",
@@ -99,7 +99,7 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     })
       .then(result => {
         form.reset();
-        toaster.notify("Thank you for your course booking. You will receive a confirmation email with a payment link soon!");
+        toast("Thank you for your course booking. You will receive a confirmation email with a payment link soon!");
         toggle()
         setCoupon(undefined)
       })

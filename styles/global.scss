@@ -157,12 +157,20 @@ a {
   }
 }
 
+.notification {
 
-// Checkboxes 
-.MuiCheckbox-colorSecondary.Mui-checked {
-  color: $red !important;
-}
+  >div {
+    background-color: transparent !important;
+    margin-bottom: 1rem;
+    background-color: $red;
+    padding: 0;
+  }
 
-.MuiCheckbox-root {
-  color: $white !important;
+  &_body {
+    background-color: $red;
+    color: $white !important;
+    font-size: 0.9rem;
+    margin: 0 !important;
+    padding: 0 1rem !important;
+  }
 }
