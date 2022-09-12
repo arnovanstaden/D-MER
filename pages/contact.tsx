@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import toaster from "toasted-notes";
+import { toast } from 'react-toastify';
 import axios from "axios"
 
 // Components
@@ -22,7 +22,7 @@ const Contact = () => {
     const form = formRef.current
 
     if (form.checkValidity() === false) {
-      return toaster.notify("Please fill in all the required fields correctly.");
+      return toast("Please fill in all the required fields correctly.");
     }
 
     let enquiry: any = {}
@@ -36,7 +36,7 @@ const Contact = () => {
     })
       .then(result => {
         form.reset()
-        toaster.notify("Thank you for your message. We'll get back to you soon!");
+        toast("Thank you for your message. We'll get back to you soon!");
       })
       .catch(err => console.log(err))
   }
