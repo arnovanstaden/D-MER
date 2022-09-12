@@ -9,6 +9,7 @@ import Button from "../../UI/Library/Button/Button"
 
 // Style
 import styles from "./bookings.module.scss";
+import Checkbox from '../../UI/Checkbox';
 
 interface IProps {
   courses: ICourse[],

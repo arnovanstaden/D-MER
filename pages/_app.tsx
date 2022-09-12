@@ -17,8 +17,6 @@ import "typeface-poppins";
 // Fonts
 
 function MyApp({ Component, pageProps }: AppProps) {
-  toast('hello')
-
   return (
     <>
       <Header />
