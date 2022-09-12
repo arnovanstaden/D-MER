@@ -29,8 +29,7 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
   const handleUpdateTicked = (course_id: string) => {
     let updatedTicked: string[] = [];
     if (ticked.includes(course_id)) {
-      updatedTicked = ticked.splice(ticked.indexOf(course_id) - 1, 1);
-      setTicked(updatedTicked)
+      return;
     } else {
       updatedTicked = [...ticked, course_id]
       setTicked(updatedTicked)

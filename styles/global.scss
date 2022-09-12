@@ -158,9 +158,10 @@ a {
 }
 
 .notification {
+
   >div {
     background-color: transparent !important;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     background-color: $red;
     padding: 0;
   }

@@ -23,14 +23,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       <ToastContainer
         position="top-center"
-        autoClose={20000}
+        autoClose={5000}
         closeOnClick
         hideProgressBar
         icon={false}
         className="notification"
         bodyClassName="notification_body"
         closeButton={false}
-        limit={1}
+        limit={2}
       />
       <Footer />
     </>
