@@ -35,11 +35,11 @@ const Footer = () => {
                   <a>Courses</a>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="https://www.c-doc.co.za/shop">
                   <a>Shop</a>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contact">
                   <a>Contact</a>

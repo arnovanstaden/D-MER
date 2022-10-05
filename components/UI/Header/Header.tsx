@@ -61,14 +61,14 @@ const Header = () => {
             </a>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link href="https://www.c-doc.co.za/shop">
 
             <a>
               Our Products
             </a>
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link href="/contact">
 
