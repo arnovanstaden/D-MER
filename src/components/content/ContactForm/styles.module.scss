@@ -1,0 +1,39 @@
+.ContactForm {
+  form {
+    width: 100%;
+    text-align: left;
+
+    .row {
+      margin-bottom: 1rem;
+
+      label {
+        display: block;
+        font-weight: 500;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+      }
+
+      input,
+      textarea {
+        resize: none;
+        font-family: $font;
+        background-color: transparent;
+        border: 2px solid $lightgrey;
+        width: 100%;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        outline: none;
+        color: $white;
+      }
+
+      textarea {
+        height: 100px;
+      }
+    }
+  }
+
+  button {
+    border-color: $red;
+    float: right;
+  }
+}

@@ -1,12 +1,14 @@
-import { useRouter } from "next/router";
+'use client';
+
+import { usePathname } from 'next/navigation';
 
 // Components
-import Container from "../Library/Container/Container";
-import NextImage from "../Library/NextImage/NextImage";
-import Button from "../Library/Button/Button";
+import Container from '../Library/Container/Container';
+import NextImage from '../Library/NextImage/NextImage';
+import Button from '../Library/Button/Button';
 
 // Styles
-import styles from "./landing.module.scss";
+import styles from './landing.module.scss';
 
 interface IProps {
   image: string;
@@ -16,7 +18,7 @@ interface IProps {
 const Landing = ({ children, image }: IProps) => {
 
   // Config
-  const router = useRouter()
+  const pathname = usePathname() as string;
 
   return (
     <section className={styles.landing}>
@@ -33,7 +35,7 @@ const Landing = ({ children, image }: IProps) => {
         <div className={styles.content}>
           {children}
           <hr />
-          {router.pathname === "/shop"
+          {pathname === '/shop'
             ? <Button icon link="/cart">
               Your Cart
             </Button>

@@ -1,7 +1,7 @@
-import Link from "next/link";
-import ClassNames from "classnames";
+import Link from 'next/link';
+import ClassNames from 'classnames';
 
-import styles from "./button.module.scss";
+import styles from './button.module.scss';
 
 interface IProps {
   link?: string;
@@ -12,7 +12,6 @@ interface IProps {
 }
 
 const Button = ({ link, children, icon, onClick, fill }: IProps) => {
-
   const classes = ClassNames(
     styles.button,
     fill ? styles.fill : null

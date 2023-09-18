@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import ClassNames from "classnames";
+import ClassNames from 'classnames';
 
-import styles from "./next-image.module.scss";
+import styles from './next-image.module.scss';
 
 interface IProps {
   src: string;

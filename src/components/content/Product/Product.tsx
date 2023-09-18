@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { IProduct } from "../../../utils/interfaces";
+import Link from 'next/link';
+import { IProduct } from '@types';
 
 // Styles 
-import styles from "./product.module.scss";
+import styles from './product.module.scss';
 
 export default function Product(product: IProduct) {
 
@@ -17,7 +17,7 @@ export default function Product(product: IProduct) {
         <img src={product.thumbnail} alt="" />
       </div>
       <h4>{product.name}</h4>
-      <p>{product.price > 0 ? `R ${product.price}` : `Free`}</p>
+      <p>{product.price > 0 ? `R ${product.price}` : 'Free'}</p>
     </Link>
   )
 }

@@ -1,28 +1,30 @@
-import Link from "next/link";
-import { useRef, useState, useEffect } from "react";
-import { useRouter } from 'next/router';
+'use client';
+
+import Link from 'next/link';
+import { useRef, useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 // Components
-import Container from "../Library/Container/Container"
+import Container from '../Library/Container/Container'
 
 // Styles
-import styles from "./header.module.scss";
+import styles from './header.module.scss';
 
 const Header = () => {
   // Config
   const headerRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const mobileNavRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const router = useRouter()
+  const pathname = usePathname() as string;
 
   // State
   const [inShop, setInShop] = useState(false);
 
   useEffect(() => {
-    const verifyShop = router.pathname.includes("/shop") || router.pathname.includes("/cart");
+    const verifyShop = pathname.includes('/shop') || pathname.includes('/cart');
     setInShop(verifyShop)
   })
 
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     let prevScrollpos = window.pageYOffset;
     window.onscroll = () => {
       let currentScrollPos = window.pageYOffset;

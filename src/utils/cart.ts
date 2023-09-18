@@ -1,5 +1,5 @@
 // Interfaces
-import { ICartItem, IProduct } from "./interfaces";
+import { ICartItem, IProduct } from '@types';
 import { toast } from 'react-toastify';
 
 // INTERNAL HELPER FUNCTIONS
@@ -27,7 +27,7 @@ export const searchCart = (productID: string): number => {
 
 export const showCart = () => {
   let currentCart = getCart();
-  console.log(`Current Cart:`);
+  console.log('Current Cart:');
   console.log(currentCart)
 }
 
@@ -67,9 +67,9 @@ export const updateCart = (product: IProduct, quantity: number) => {
 
   // Save
   if (typeof window !== 'undefined') {
-    localStorage.setItem("dmer-cart", JSON.stringify(currentCart));
+    localStorage.setItem('dmer-cart', JSON.stringify(currentCart));
   }
-  toast("Cart Updated")
+  toast('Cart Updated')
 }
 
 export const removeFromCart = (productID: string, notify?: boolean) => {
@@ -80,18 +80,18 @@ export const removeFromCart = (productID: string, notify?: boolean) => {
   // Update Cart
   currentCart.splice(index, 1);
   if (typeof window !== 'undefined') {
-    localStorage.setItem("dmer-cart", JSON.stringify(currentCart));
+    localStorage.setItem('dmer-cart', JSON.stringify(currentCart));
   }
   // updateCartCounter();
   if (notify) {
-    toast("Item removed from cart")
+    toast('Item removed from cart')
   }
 }
 
 export const getCart = (): ICartItem[] => {
   let currentCart
   if (typeof window !== 'undefined') {
-    currentCart = JSON.parse(localStorage.getItem("dmer-cart") || "[]");
+    currentCart = JSON.parse(localStorage.getItem('dmer-cart') || '[]');
   }
   return currentCart
 }
@@ -130,7 +130,7 @@ export const getCartTotal = (): number => {
 
 export const clearCart = (): void => {
   if (typeof window !== 'undefined') {
-    localStorage.removeItem("dmer-cart");
+    localStorage.removeItem('dmer-cart');
   }
 }
 

@@ -1,8 +1,8 @@
-import ClassNames from "classnames";
+import ClassNames from 'classnames';
 
 // Components
-import Head from "../Head/Head";
-import Landing from "../Landing/Landing";
+import Head from '../Head/Head';
+import Landing from '../Landing/Landing';
 
 interface IProps {
     children: React.ReactNode;

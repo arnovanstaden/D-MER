@@ -1,19 +1,20 @@
+'use client';
+
 import { GetStaticProps } from 'next';
-import { ICourse } from "../utils/interfaces";
-import { useState } from "react"
+import { ICourse } from '@types';
+import { useState } from 'react'
 
 // Components
-import Page from "../components/UI/Page/Page";
-import Landing from "../components/UI/Landing/Landing";
-import Container from "../components/UI/Library/Container/Container";
-import Course from "../components/content/Course/Course";
-import Bookings from "../components/content/CourseBookings/CourseBookings"
+import Page from '@components/UI/Page/Page';
+import Landing from '@components/UI/Landing/Landing';
+import Container from '@components/UI/Library/Container/Container';
+import Course from '@components/content/Course/Course';
+import Bookings from '@components/content/CourseBookings/CourseBookings'
 // Styles
-import styles from "../styles/pages/courses.module.scss";
+import styles from '@styles/pages/courses.module.scss';
 
 
 const Courses = ({ courses }: { courses: ICourse[] }) => {
-
   const [showBookings, setShowBookings] = useState(false)
   const [ticked, setTicked] = useState<string[]>([])
 
@@ -39,9 +40,9 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
   return (
     <Page
       head={{
-        title: "Courses | D-MER",
-        description: "Book an online CPD course.",
-        canonical: "/courses",
+        title: 'Courses | D-MER',
+        description: 'Book an online CPD course.',
+        canonical: '/courses',
       }}
       className={styles.courses}
     >

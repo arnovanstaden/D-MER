@@ -16,7 +16,7 @@ export default function Head(props: THead) {
             <title>{props.title}</title>
             <link rel="icon" type="image/png" href="/images/logos/favicon.png" />
             <meta name="description" content={props.description} />
-            <meta name="robots" content={props.robots === false ? "noindex, nofollow" : "index, follow"} />
+            <meta name="robots" content={props.robots === false ? 'noindex, nofollow' : 'index, follow'} />
             {props.canonical ? <link rel="canonical" href={`https://www.dmerworldwide.com${props.canonical}`} /> : null}
 
 
