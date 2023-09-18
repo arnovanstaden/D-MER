@@ -1,5 +1,4 @@
 // Components
-import Page from '@components/UI/Page/Page';
 import Landing from '@components/UI/Landing/Landing';
 import Section from '@components/UI/Section/Section';
 import Banner from '@components/UI/Banner/Banner';

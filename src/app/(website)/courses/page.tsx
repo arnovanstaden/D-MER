@@ -5,7 +5,6 @@ import { ICourse } from '@types';
 import { useState } from 'react'
 
 // Components
-import Page from '@components/UI/Page/Page';
 import Landing from '@components/UI/Landing/Landing';
 import Container from '@components/UI/Library/Container/Container';
 import Course from '@components/content/Course/Course';

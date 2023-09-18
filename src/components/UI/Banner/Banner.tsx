@@ -1,7 +1,7 @@
-import { Parallax } from 'react-parallax';
 import ClassNames from 'classnames';
 import Container from '../Library/Container/Container';
 import styles from './banner.module.scss';
+import Image from 'next/image';
 
 interface IProps {
   image: string;
@@ -16,6 +16,12 @@ const Banner = ({ children, image, reverse }: IProps) => {
   )
   return (
     <section className={classes}>
+      <Image
+        src={image}
+        alt="Parallax Image"
+        className={styles.image}
+        fill
+      />
       <Container>
         <div className={styles.inner}>
           <div className={styles.content}>
