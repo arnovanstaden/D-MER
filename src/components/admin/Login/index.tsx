@@ -7,6 +7,7 @@ import { useAuth } from '@hooks/auth';
 import { ILogin } from '@types';
 import Button from '@components/UI/Library/Button/Button';
 import Input from '@components/UI/Library/Input';
+import Notification from '@components/UI/Notifications';
 
 const AdminLoginForm = (): JSX.Element | null => {
   const { login } = useAuth();
@@ -36,6 +37,8 @@ const AdminLoginForm = (): JSX.Element | null => {
           <Button>Login</Button>
         </form>
       </div>
+
+      <Notification />
     </div>
   );
 };

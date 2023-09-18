@@ -1,13 +1,14 @@
+import CourseList from '@components/admin/CourseList';
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Admin | D-MER Worldwide',
+  title: 'Courses | D-MER Worldwide',
   robots: {
     index: false,
     follow: false,
   }
 }
 
-const AdminDashboard = (): JSX.Element | null => <h1>Courses</h1>;
+const AdminDashboard = (): JSX.Element | null => <CourseList />;
 
 export default AdminDashboard;

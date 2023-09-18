@@ -1,0 +1,22 @@
+.CourseList {
+  @include reset-list;
+  padding: 1rem;
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    background-color: $darkgrey;
+    padding: 0.25rem 1rem;
+    border: 1px solid transparent;
+    transition: 0.3s ease-in-out;
+
+    >p:first-child {
+      font-weight: 500;
+    }
+
+    &:hover {
+      border-color: $red;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { Montserrat, Poppins } from 'next/font/google'
 import classNames from 'classnames';
 import '@styles/global.scss';
-import { ToastContainer } from 'react-toastify';
+import Notifications from '@components/UI/Notifications';
 
 // If loading a variable font, you don't need to specify the font weight
 const montserrat = Montserrat({
@@ -27,17 +27,6 @@ export default function RootLayout({
       <link rel="icon" type="image/png" href="/images/logos/favicon.png" />
       <body>
         {children}
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          closeOnClick
-          hideProgressBar
-          icon={false}
-          className="notification"
-          bodyClassName="notification_body"
-          closeButton={false}
-          limit={2}
-        />
       </body>
     </html>
   )

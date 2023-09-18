@@ -142,26 +142,9 @@ a {
   }
 }
 
-.Toaster__alert {
-  background-color: $red !important;
-
-  .Toaster__alert_text {
-    color: $white !important;
-    font-family: $font !important;
-    font-size: 0.9rem;
-  }
-
-  .Toaster__alert_close {
-    opacity: 0.75;
-
-    span {
-      color: $white !important;
-      font-weight: 500;
-    }
-  }
-}
-
 .notification {
+  position: absolute;
+  top: 1rem;
 
   >div {
     background-color: transparent !important;

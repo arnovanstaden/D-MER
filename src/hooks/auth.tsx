@@ -12,7 +12,6 @@ interface IUseAuth {
 }
 
 export const useAuth = (): IUseAuth => {
-  toast('test')
   const nextRouter = useRouter();
   const pathname = usePathname()
   const [user, setUser] = useState<User | null>(null);

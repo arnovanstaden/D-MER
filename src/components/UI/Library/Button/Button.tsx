@@ -9,11 +9,13 @@ interface IProps {
   icon?: boolean;
   onClick?: any;
   fill?: boolean;
+  className?: string;
 }
 
-const Button = ({ link, children, icon, onClick, fill }: IProps) => {
+const Button = ({ link, children, icon, onClick, fill, className }: IProps) => {
   const classes = ClassNames(
     styles.button,
+    className,
     fill ? styles.fill : null
   )
 
