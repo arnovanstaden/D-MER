@@ -24,7 +24,6 @@ const Landing = ({ children, image }: IProps) => {
         <NextImage
           src={image}
           alt="Diver"
-          width={1920}
           background
           priority
         />

@@ -47,44 +47,25 @@ const Header = () => {
       <ul className={styles.menu}>
         <li>
           <Link href="/about">
-
-            <a>
-              Who We Are
-            </a>
+            Who We Are
           </Link>
         </li>
         <li>
           <Link href="/courses">
-
-            <a>
-              Our Courses
-            </a>
+            Our Courses
           </Link>
         </li>
-        {/* <li>
-          <Link href="https://www.c-doc.co.za/shop">
-
-            <a>
-              Our Products
-            </a>
-          </Link>
-        </li> */}
         <li>
           <Link href="/contact">
-
-            <a>
-              Contact Us
-            </a>
+            Contact Us
           </Link>
         </li>
         {
           inShop ?
             <li className={styles.cartLink}>
               <Link href="/cart">
-                <a>
-                  Your Cart
-                  <i className="icon-cart"></i>
-                </a>
+                Your Cart
+                <i className="icon-cart"></i>
               </Link>
             </li>
             : null
@@ -103,26 +84,20 @@ const Header = () => {
         <nav className={styles.nav}>
           <div className={styles.logo}>
             <Link href="/">
-              <a>
-                <img src="/images/logos/Dmer-Logo.svg" alt="D-MER Logo" />
-              </a>
+              <img src="/images/logos/Dmer-Logo.svg" alt="D-MER Logo" />
             </Link>
           </div>
           <Menu />
           <div className={styles.options}>
             {inShop ?
               <Link href="/cart">
-                <a>
-                  Your Cart
-                  <i className="icon-cart"></i>
-                </a>
+                Your Cart
+                <i className="icon-cart"></i>
               </Link>
               :
               <Link href="/courses#book">
-                <a>
-                  Online Courses
-                  <i className="icon-arrow-right" />
-                </a>
+                Online Courses
+                <i className="icon-arrow-right" />
               </Link>}
           </div>
           <i className={`icon-menu ${styles.mobileButton}`} onClick={handleToggleMobileNav}></i>
