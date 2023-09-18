@@ -1,5 +1,4 @@
 // Components
-import Page from '@components/UI/Page/Page';
 import Landing from '@components/UI/Landing/Landing';
 import Section from '@components/UI/Section/Section';
 import Banner from '@components/UI/Banner/Banner';
@@ -9,15 +8,16 @@ import Button from '@components/UI/Library/Button/Button';
 import styles from './styles.module.scss';
 import ContactForm from '@components/content/ContactForm';
 
+
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Contact | D-MER',
+  description: 'Have a burning question? Get in touch!',
+}
+
 const Contact = () => (
-  <Page
-    head={{
-      title: 'Contact | D-MER',
-      description: 'Have a burning question? Get in touch!',
-      canonical: '/contact',
-    }}
-    className={styles.contact}
-  >
+  <main className={styles.contact}  >
 
     <Landing
       image="/images/pages/contact/landing.jpg">
@@ -65,8 +65,7 @@ const Contact = () => (
     >
       <iframe src="https://snazzymaps.com/embed/313974" />
     </Section>
-
-  </Page>
+  </main>
 );
 
 export default Contact

@@ -14,6 +14,14 @@ import Bookings from '@components/content/CourseBookings/CourseBookings'
 import styles from './styles.module.scss';
 
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Courses | D-MER',
+  description: 'Book an online CPD course.',
+}
+
+
 const Courses = ({ courses }: { courses: ICourse[] }) => {
   const [showBookings, setShowBookings] = useState(false)
   const [ticked, setTicked] = useState<string[]>([])
@@ -38,14 +46,7 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
   }
 
   return (
-    <Page
-      head={{
-        title: 'Courses | D-MER',
-        description: 'Book an online CPD course.',
-        canonical: '/courses',
-      }}
-      className={styles.courses}
-    >
+    <main className={styles.courses}>
 
       <Landing
         image="/images/pages/courses/landing.jpg">
@@ -61,7 +62,7 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
       </section>
 
       <Bookings show={showBookings} toggle={handleBookingToggle} courses={courses} ticked={ticked} handleTick={handleUpdateTicked} />
-    </Page>
+    </main>
   )
 }
 

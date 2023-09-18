@@ -5,16 +5,16 @@ import Section from '@components/UI/Section/Section';
 import Banner from '@components/UI/Banner/Banner';
 import Button from '@components/UI/Library/Button/Button';
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'D-MER Worldwide',
+  description: 'D-MER Worldwide is an Online learning platform and competence management system',
+}
+
 const Home = () => {
   return (
-    <Page
-      head={{
-        title: 'D-MER Worldwide',
-        description: 'D-MER Worldwide is an Online learning platform and competence management system',
-        canonical: '/',
-      }}
-    >
-
+    <main>
       <Landing
         image="/images/pages/home/landing.jpg">
         <h1>Online <span>learning platform</span> and competence management system</h1>
@@ -91,7 +91,7 @@ const Home = () => {
           Diver Medic, Supervisor and Dive Superintendent to the appointed DMA.</p>
       </Section>
 
-    </Page >
+    </main >
   )
 }
 

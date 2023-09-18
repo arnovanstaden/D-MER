@@ -10,17 +10,16 @@ import Container from '@components/UI/Library/Container/Container'
 // Styles
 import styles from './styles.module.scss';
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About | D-MER',
+  description: 'Skills Development - Accessible To All.',
+}
+
 const About = () => {
   return (
-    <Page
-      head={{
-        title: 'About | D-MER',
-        description: 'Skills Development - Accessible To All.',
-        canonical: '/contact',
-      }}
-      className={styles.about}
-    >
-
+    <main className={styles.about}>
       <Landing
         image="/images/pages/about/landing.jpg"
       >
@@ -241,7 +240,7 @@ const About = () => {
                 </div>
             </Section> */}
 
-    </Page>
+    </main>
   )
 }
 

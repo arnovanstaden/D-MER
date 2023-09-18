@@ -1,21 +1,23 @@
 // Components
-import Page from '@components/UI/Page/Page';
 import Button from '@components/UI/Library/Button/Button';
 
 // Styles
 import styles from './styles.module.scss';
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Page Not Found',
+  description: 'Page not found.',
+  robots: {
+    index: false,
+  }
+}
+
+
 const PageNotFound = () => {
   return (
-    <Page
-      head={{
-        title: 'Page Not Found',
-        canonical: '/404',
-        description: 'Page not found.',
-        robots: false
-      }}
-      className={styles.PageNotFound}
-    >
+    <main className={styles.PageNotFound} >
       <div className={styles.error}>
         <h1>4</h1>
         <img src="/images/logos/Dmer-Logomark.svg" alt="" />
@@ -23,7 +25,7 @@ const PageNotFound = () => {
       </div>
       <p>The page you are looking for does not exist.</p>
       <Button link="/" icon>Go Home</Button>
-    </Page>
+    </main>
   )
 }
 

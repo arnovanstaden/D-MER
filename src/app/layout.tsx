@@ -23,6 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={classNames(montserrat.variable, poppins.variable)}>
+      <link rel="icon" type="image/png" href="/images/logos/favicon.png" />
       <body>{children}</body>
     </html>
   )
