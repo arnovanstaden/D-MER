@@ -1,0 +1,23 @@
+.inputGroup {
+
+  label {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    border: 1px solid $red;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    background-color: transparent;
+    outline: none;
+    transition: 0.2s ease-in-out;
+
+    &::placeholder {
+      font-style: italic;
+    }
+  }
+}
