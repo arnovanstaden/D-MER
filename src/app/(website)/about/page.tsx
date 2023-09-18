@@ -8,7 +8,7 @@ import NextImage from '@components/UI/Library/NextImage/NextImage'
 import Container from '@components/UI/Library/Container/Container'
 
 // Styles
-import styles from '@styles/pages/about.module.scss';
+import styles from './styles.module.scss';
 
 const About = () => {
   return (

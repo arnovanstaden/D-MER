@@ -6,7 +6,7 @@ import Banner from '@components/UI/Banner/Banner';
 import Button from '@components/UI/Library/Button/Button';
 
 // Styles
-import styles from '@styles/pages/contact.module.scss';
+import styles from './styles.module.scss';
 import ContactForm from '@components/content/ContactForm';
 
 const Contact = () => (

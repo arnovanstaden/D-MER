@@ -5,9 +5,6 @@ import Section from '@components/UI/Section/Section';
 import Banner from '@components/UI/Banner/Banner';
 import Button from '@components/UI/Library/Button/Button';
 
-// Styles
-import styles from '@styles/pages/index.module.scss';
-
 const Home = () => {
   return (
     <Page
@@ -16,7 +13,6 @@ const Home = () => {
         description: 'D-MER Worldwide is an Online learning platform and competence management system',
         canonical: '/',
       }}
-      className={styles.home}
     >
 
       <Landing

@@ -11,7 +11,7 @@ import Container from '@components/UI/Library/Container/Container';
 import Course from '@components/content/Course/Course';
 import Bookings from '@components/content/CourseBookings/CourseBookings'
 // Styles
-import styles from '@styles/pages/courses.module.scss';
+import styles from './styles.module.scss';
 
 
 const Courses = ({ courses }: { courses: ICourse[] }) => {
