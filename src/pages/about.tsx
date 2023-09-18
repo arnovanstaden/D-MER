@@ -22,7 +22,8 @@ const About = () => {
     >
 
       <Landing
-        image="/images/pages/about/landing.jpg">
+        image="/images/pages/about/landing.jpg"
+      >
         <h1>Skills Development <span>+</span> Accessible To All</h1>
       </Landing>
 
