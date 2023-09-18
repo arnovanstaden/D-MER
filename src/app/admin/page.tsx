@@ -1,14 +1,13 @@
-import { GetStaticProps } from 'next';
+import type { Metadata } from 'next'
 
-const AdminDashboard = (): JSX.Element | null => <h1>Admin</h1>;
-
-export default AdminDashboard;
-
-export const getStaticProps: GetStaticProps = (ctx) => {
-
-  return {
-    props: {
-      noLayout: true,
-    }
+export const metadata: Metadata = {
+  title: 'Admin | D-MER Worldwide',
+  robots: {
+    index: false,
+    follow: false,
   }
 }
+
+const AdminDashboard = (): JSX.Element | null => <h1>Courses</h1>;
+
+export default AdminDashboard;

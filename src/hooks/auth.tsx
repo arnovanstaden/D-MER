@@ -1,10 +1,10 @@
 
 import { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword, User } from 'firebase/auth';
-import { useRouter } from 'next/router';
 import { auth } from '@lib/firebase'
 import { ILogin } from '@types';
 import { toast } from 'react-toastify';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface IUseAuth {
   user: any,
@@ -12,7 +12,9 @@ interface IUseAuth {
 }
 
 export const useAuth = (): IUseAuth => {
+  toast('test')
   const nextRouter = useRouter();
+  const pathname = usePathname()
   const [user, setUser] = useState<User | null>(null);
 
   const authStateChanged = async (user: User | null) => {
@@ -23,7 +25,7 @@ export const useAuth = (): IUseAuth => {
     }
 
     setUser(user);
-    if (nextRouter.pathname === '/admin/login') {
+    if (pathname === '/admin/login') {
       nextRouter.replace('/admin')
     }
   };
@@ -39,9 +41,7 @@ export const useAuth = (): IUseAuth => {
         toast('Welcome back!')
       })
       .catch(() => {
-        toast('Incorrect Login Credentials', {
-          type: 'error',
-        });
+        toast('Incorrect Login Credentials');
         throw Error('Incorrect Login Credentials');
       })
   };

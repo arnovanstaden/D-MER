@@ -1,10 +1,20 @@
+'use client';
+
+import { useAuth } from '@hooks/auth';
 import styles from './styles.module.scss';
 
-const AdminLayout = (): JSX.Element | null => {
+const AdminLayout = ({ children }: { children: React.ReactNode }): JSX.Element | null => {
+  useAuth();
+
   return (
-    <div className={styles.AdminLayout}>
-      AdminLayout
-    </div>
+    <main className={styles.AdminLayout}>
+      <header>
+        <img src="/images/logos/Dmer-Logo.svg" alt="D-MER Logo" />
+      </header>
+      <div className={styles.content}>
+        {children}
+      </div>
+    </main>
   );
 };
 
