@@ -13,7 +13,8 @@ interface IUseAuth {
 
 export const useAuth = (): IUseAuth => {
   const nextRouter = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
+
   const [user, setUser] = useState<User | null>(null);
 
   const authStateChanged = async (user: User | null) => {
@@ -25,7 +26,8 @@ export const useAuth = (): IUseAuth => {
 
     setUser(user);
     if (pathname === '/admin/login') {
-      nextRouter.replace('/admin')
+      console.log('here')
+      nextRouter.replace('/admin');
     }
   };
 

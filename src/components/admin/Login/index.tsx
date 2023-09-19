@@ -25,12 +25,18 @@ const AdminLoginForm = (): JSX.Element | null => {
         <h1>Login</h1>
         <form onSubmit={handleSubmit(handleLogin)}>
           <Input
-            type='email'
+            inputProps={{
+              type: 'email',
+              autoComplete: 'email'
+            }}
             name='email'
             register={{ ...register('email') }}
           />
           <Input
-            type='password'
+            inputProps={{
+              type: 'password',
+              autoComplete: 'password'
+            }}
             name='password'
             register={{ ...register('password') }}
           />
