@@ -2,12 +2,15 @@
 import { UseFormRegisterReturn } from 'react-hook-form';
 import styles from './styles.module.scss';
 import { ReactPropTypes } from 'react';
+import { ICourse } from '@types';
 
 interface IProps {
   name: string;
   label?: string;
-  register: UseFormRegisterReturn,
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>
+  register?: UseFormRegisterReturn,
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>,
+  value: string | number;
+  onChange: (newValue: number | string) => void;
 }
 
 const Input = (props: IProps): JSX.Element | null => {
@@ -15,6 +18,8 @@ const Input = (props: IProps): JSX.Element | null => {
     <div className={styles.inputGroup}>
       <label htmlFor={props.name}>{props.label}</label>
       <input
+        value={props.value}
+        onChange={(e) => props.onChange(e.target.value)}
         {...props.register}
         {...props.inputProps}
       />

@@ -6,8 +6,10 @@ import { ReactPropTypes } from 'react';
 interface IProps {
   name: string;
   label?: string;
-  register: UseFormRegisterReturn,
+  register?: UseFormRegisterReturn,
   inputProps?: React.TextareaHTMLAttributes<HTMLTextAreaElement>
+  value: string | number;
+  onChange: (newValue: number | string) => void;
 }
 
 const TextArea = (props: IProps): JSX.Element | null => {
@@ -15,6 +17,8 @@ const TextArea = (props: IProps): JSX.Element | null => {
     <div className={styles.inputGroup}>
       <label htmlFor={props.name}>{props.label}</label>
       <textarea
+        value={props.value}
+        onChange={(e) => props.onChange(e.target.value)}
         {...props.register}
         {...props.inputProps}
       />
