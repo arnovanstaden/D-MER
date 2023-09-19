@@ -1,0 +1,14 @@
+.Course {
+  .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+  }
+
+  form {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+}

@@ -1,5 +1,4 @@
 .inputGroup {
-
   label {
     font-weight: 500;
     font-size: 0.95rem;
@@ -7,7 +6,7 @@
     display: block;
   }
 
-  input {
+  textarea {
     width: 100%;
     border: 1px solid $lightgrey;
     padding: 0.5rem;
@@ -16,7 +15,6 @@
     outline: none;
     transition: 0.3s ease-in-out;
     font-family: $font;
-
 
     &::placeholder {
       font-style: italic;

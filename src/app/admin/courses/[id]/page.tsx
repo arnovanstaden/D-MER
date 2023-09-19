@@ -1,3 +1,4 @@
+import Course from '@components/admin/Course';
 import CourseList from '@components/admin/CourseList';
 import type { Metadata } from 'next'
 
@@ -9,6 +10,6 @@ export const metadata: Metadata = {
   }
 }
 
-const CoursePage = (): JSX.Element | null => <h1>Course</h1>;
+const CoursePage = (): JSX.Element | null => <Course />
 
 export default CoursePage;

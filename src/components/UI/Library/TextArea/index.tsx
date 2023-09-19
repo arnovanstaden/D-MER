@@ -7,14 +7,14 @@ interface IProps {
   name: string;
   label?: string;
   register: UseFormRegisterReturn,
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>
+  inputProps?: React.TextareaHTMLAttributes<HTMLTextAreaElement>
 }
 
-const Input = (props: IProps): JSX.Element | null => {
+const TextArea = (props: IProps): JSX.Element | null => {
   return (
     <div className={styles.inputGroup}>
       <label htmlFor={props.name}>{props.label}</label>
-      <input
+      <textarea
         {...props.register}
         {...props.inputProps}
       />
@@ -22,4 +22,4 @@ const Input = (props: IProps): JSX.Element | null => {
   );
 };
 
-export default Input;
+export default TextArea;

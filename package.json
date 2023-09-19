@@ -14,6 +14,7 @@
     "eslint-config-next": "^13.4.19",
     "firebase": "10.4.0",
     "next": "^13.4.19",
+    "nodemailer": "^6.9.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.46.1",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.6.2",
+    "@types/nodemailer": "^6.4.10",
     "@types/react": "^18.2.21",
     "@types/react-responsive": "^8.0.5",
     "next-sitemap": "^4.2.3",
