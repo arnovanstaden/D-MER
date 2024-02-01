@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 // Components
-import Container from "../Library/Container/Container"
+import Container from '../Library/Container/Container'
 
 // Styles
-import styles from "./footer.module.scss";
+import styles from './footer.module.scss';
 
 const Footer = () => {
   return (

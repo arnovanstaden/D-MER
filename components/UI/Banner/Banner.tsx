@@ -1,9 +1,9 @@
 import { Parallax } from 'react-parallax';
-import ClassNames from "classnames";
+import ClassNames from 'classnames';
 
-import Container from "../Library/Container/Container";
+import Container from '../Library/Container/Container';
 
-import styles from "./banner.module.scss";
+import styles from './banner.module.scss';
 
 interface IProps {
     image: string;
@@ -19,7 +19,7 @@ const Banner = ({ children, image, reverse }: IProps) => {
     return (
         <section className={classes}>
             <Parallax strength={100} bgImage={image} bgImageAlt="Parallax Image"
-                bgImageStyle={{ objectFit: "center center" }}
+                bgImageStyle={{ objectFit: 'center center' }}
             >
                 <Container>
                     <div className={styles.inner}>

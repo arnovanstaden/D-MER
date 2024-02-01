@@ -1,5 +1,5 @@
 // Interfaces
-import { ICartItem, IProduct } from "./interfaces";
+import { ICartItem, IProduct } from './interfaces';
 import { toast } from 'react-toastify';
 
 // INTERNAL HELPER FUNCTIONS
@@ -13,7 +13,7 @@ export const getCartLength = (): number => {
 }
 
 export const searchCart = (productID: string): number => {
-  let currentCart = getCart();
+  const currentCart = getCart();
   let searchResults = 0;
   if (currentCart !== null) {
     currentCart.forEach(item => {
@@ -25,22 +25,16 @@ export const searchCart = (productID: string): number => {
   return searchResults
 }
 
-export const showCart = () => {
-  let currentCart = getCart();
-  console.log(`Current Cart:`);
-  console.log(currentCart)
-}
-
 // CART FUNCTIONS
 
-export const updateCart = (product: IProduct, quantity: number) => {
+export const updateCart = (product: IProduct, quantity: number): void => {
   // Get Current Cart
   let currentCart = getCart();
 
   // If already in cart
   if (searchCart(product.id) > 0) {
     //Find index
-    let index = currentCart.findIndex((item => item.id === product.id));
+    const index = currentCart.findIndex((item => item.id === product.id));
 
     // Update Item
     currentCart[index].quantity = quantity;
@@ -48,7 +42,7 @@ export const updateCart = (product: IProduct, quantity: number) => {
   // If not in cart
   else {
     // Add new Item
-    let newItem = {
+    const newItem = {
       id: product.id,
       quantity: quantity,
       price: product.price
@@ -67,37 +61,37 @@ export const updateCart = (product: IProduct, quantity: number) => {
 
   // Save
   if (typeof window !== 'undefined') {
-    localStorage.setItem("dmer-cart", JSON.stringify(currentCart));
+    localStorage.setItem('dmer-cart', JSON.stringify(currentCart));
   }
-  toast("Cart Updated")
+  toast('Cart Updated')
 }
 
-export const removeFromCart = (productID: string, notify?: boolean) => {
+export const removeFromCart = (productID: string, notify?: boolean): void => {
   // Get Current Cart & Index of Item
-  let currentCart = getCart();
-  let index = currentCart.findIndex((item => item.id === productID));
+  const currentCart = getCart();
+  const index = currentCart.findIndex((item => item.id === productID));
 
   // Update Cart
   currentCart.splice(index, 1);
   if (typeof window !== 'undefined') {
-    localStorage.setItem("dmer-cart", JSON.stringify(currentCart));
+    localStorage.setItem('dmer-cart', JSON.stringify(currentCart));
   }
   // updateCartCounter();
   if (notify) {
-    toast("Item removed from cart")
+    toast('Item removed from cart')
   }
 }
 
 export const getCart = (): ICartItem[] => {
   let currentCart
   if (typeof window !== 'undefined') {
-    currentCart = JSON.parse(localStorage.getItem("dmer-cart") || "[]");
+    currentCart = JSON.parse(localStorage.getItem('dmer-cart') || '[]');
   }
   return currentCart
 }
 
-export const checkCartValidity = (products: IProduct[]) => {
-  let currentCart = getCart();
+export const checkCartValidity = (products: IProduct[]): void => {
+  const currentCart = getCart();
 
   if (currentCart) {
     currentCart.forEach(item => {
@@ -117,7 +111,7 @@ export const checkCartValidity = (products: IProduct[]) => {
 }
 
 export const getCartTotal = (): number => {
-  let currentCart = getCart();
+  const currentCart = getCart();
   let total = 0;
   if (currentCart) {
     currentCart.forEach(item => {
@@ -130,7 +124,7 @@ export const getCartTotal = (): number => {
 
 export const clearCart = (): void => {
   if (typeof window !== 'undefined') {
-    localStorage.removeItem("dmer-cart");
+    localStorage.removeItem('dmer-cart');
   }
 }
 

@@ -1,10 +1,10 @@
-import ClassNames from "classnames"
+import ClassNames from 'classnames'
 
 // Components
-import Container from "../Library/Container/Container";
+import Container from '../Library/Container/Container';
 
 // Styles
-import styles from "./section.module.scss";
+import styles from './section.module.scss';
 
 interface IProps {
     children: React.ReactNode;

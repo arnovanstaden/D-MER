@@ -1,7 +1,7 @@
-import Link from "next/link";
-import ClassNames from "classnames";
+import Link from 'next/link';
+import ClassNames from 'classnames';
 
-import styles from "./button.module.scss";
+import styles from './button.module.scss';
 
 interface IProps {
   link?: string;

@@ -1,12 +1,12 @@
-import Link from "next/link";
-import { useRef, useState, useEffect } from "react";
+import Link from 'next/link';
+import { useRef, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 // Components
-import Container from "../Library/Container/Container"
+import Container from '../Library/Container/Container'
 
 // Styles
-import styles from "./header.module.scss";
+import styles from './header.module.scss';
 
 const Header = () => {
   // Config
@@ -18,14 +18,14 @@ const Header = () => {
   const [inShop, setInShop] = useState(false);
 
   useEffect(() => {
-    const verifyShop = router.pathname.includes("/shop") || router.pathname.includes("/cart");
+    const verifyShop = router.pathname.includes('/shop') || router.pathname.includes('/cart');
     setInShop(verifyShop)
   })
 
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     let prevScrollpos = window.pageYOffset;
     window.onscroll = () => {
-      let currentScrollPos = window.pageYOffset;
+      const currentScrollPos = window.pageYOffset;
 
       if (currentScrollPos > 0) {
         headerRef.current.classList.add(styles.fixed)

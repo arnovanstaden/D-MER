@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import ClassNames from "classnames";
+import ClassNames from 'classnames';
 
-import styles from "./next-image.module.scss";
+import styles from './next-image.module.scss';
 
 interface IProps {
   src: string;
@@ -31,7 +31,7 @@ const NextImage = ({ src, alt, width, background, priority, alignTop }: IProps) 
       <div className={containerClasses}>
         <Image
           src={src}
-          alt={`Picture of ${styles.image}`}
+          alt={`Picture of ${alt}`}
           layout="fill"
           className={imageClasses}
           priority={priority}
@@ -44,7 +44,7 @@ const NextImage = ({ src, alt, width, background, priority, alignTop }: IProps) 
     <div className={styles.container}>
       <Image
         src={src}
-        alt={`Picture of ${styles.image}`}
+        alt={`Picture of ${alt}`}
         layout="fill"
         className={imageClasses}
         priority={priority}

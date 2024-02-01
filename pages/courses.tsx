@@ -1,15 +1,15 @@
 import { GetStaticProps } from 'next';
-import { ICourse } from "../utils/interfaces";
-import { useState } from "react"
+import { ICourse } from '../utils/interfaces';
+import { useState } from 'react'
 
 // Components
-import Page from "../components/UI/Page/Page";
-import Landing from "../components/UI/Landing/Landing";
-import Container from "../components/UI/Library/Container/Container";
-import Course from "../components/content/Course/Course";
-import Bookings from "../components/content/CourseBookings/CourseBookings"
+import Page from '../components/UI/Page/Page';
+import Landing from '../components/UI/Landing/Landing';
+import Container from '../components/UI/Library/Container/Container';
+import Course from '../components/content/Course/Course';
+import Bookings from '../components/content/CourseBookings/CourseBookings'
 // Styles
-import styles from "../styles/pages/courses.module.scss";
+import styles from '../styles/pages/courses.module.scss';
 
 
 const Courses = ({ courses }: { courses: ICourse[] }) => {
@@ -21,17 +21,17 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
     setShowBookings(prev => !prev);
   }
 
-  const handleUpdateAndToggle = (course_id: string) => {
-    handleUpdateTicked(course_id);
+  const handleUpdateAndToggle = (courseId: string) => {
+    handleUpdateTicked(courseId);
     handleBookingToggle()
   }
 
-  const handleUpdateTicked = (course_id: string) => {
+  const handleUpdateTicked = (courseId: string) => {
     let updatedTicked: string[] = [];
-    if (ticked.includes(course_id)) {
+    if (ticked.includes(courseId)) {
       return;
     } else {
-      updatedTicked = [...ticked, course_id]
+      updatedTicked = [...ticked, courseId]
       setTicked(updatedTicked)
     }
   }
@@ -39,9 +39,9 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
   return (
     <Page
       head={{
-        title: "Courses | D-MER",
-        description: "Book an online CPD course.",
-        canonical: "/courses",
+        title: 'Courses | D-MER',
+        description: 'Book an online CPD course.',
+        canonical: '/courses',
       }}
       className={styles.courses}
     >
