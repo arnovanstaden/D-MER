@@ -9,12 +9,12 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: var(--font-poppins) Tahoma, Geneva, sans-serif;
 }
 
 body {
   background-color: $grey;
   font-size: 1rem;
+  font-family: $font;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -31,6 +31,15 @@ body {
     height: 100vh;
     overflow: hidden;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font;
 }
 
 a {
@@ -169,4 +178,10 @@ a {
     margin: 0 !important;
     padding: 0 1rem !important;
   }
+}
+
+input,
+textarea {
+  resize: none;
+  font-family: $font;
 }

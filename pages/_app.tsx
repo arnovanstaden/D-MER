@@ -35,7 +35,7 @@ const poppins = Poppins({
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <div className={classNames(poppins.variable, montserrat.variable)}>
+    <div className={classNames(poppins.className, montserrat.variable)}>
       <Header />
       <Component {...pageProps} />
       <ToastContainer
