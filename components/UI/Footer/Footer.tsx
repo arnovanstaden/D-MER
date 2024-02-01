@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 // Components
-import Container from "../Library/Container/Container"
+import Container from '../Library/Container/Container'
 
 // Styles
-import styles from "./footer.module.scss";
+import styles from './footer.module.scss';
 
 const Footer = () => {
   return (
@@ -13,36 +13,29 @@ const Footer = () => {
         <div className={styles.inner}>
           <div className={styles.logo}>
             <Link href="/">
-              <a>
-                <img src="/images/logos/Dmer-Logo.svg" alt="D-MER Logo" />
-              </a>
+              <img src="/images/logos/Dmer-Logo.svg" alt="D-MER Logo" />
             </Link>
           </div>
           <div className={styles.content}>
             <ul className={styles.menu}>
               <li>
                 <Link href="/">
-                  <a>Home</a>
+                  Home
                 </Link>
               </li>
               <li>
                 <Link href="/about">
-                  <a>About</a>
+                  About
                 </Link>
               </li>
               <li>
                 <Link href="/courses">
-                  <a>Courses</a>
+                  Courses
                 </Link>
               </li>
-              {/* <li>
-                <Link href="https://www.c-doc.co.za/shop">
-                  <a>Shop</a>
-                </Link>
-              </li> */}
               <li>
                 <Link href="/contact">
-                  <a>Contact</a>
+                  Contact
                 </Link>
               </li>
             </ul>

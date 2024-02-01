@@ -1,14 +1,14 @@
-import { ICourse } from "../../../utils/interfaces";
-import { useRef, useState, useEffect } from "react";
-import axios from "axios"
+import { ICourse } from '../../../utils/interfaces';
+import { useRef, useState, useEffect } from 'react';
+import axios from 'axios'
 import { toast } from 'react-toastify';
 
 // Components
-import Container from "../../UI/Library/Container/Container"
-import Button from "../../UI/Library/Button/Button"
+import Container from '../../UI/Library/Container/Container'
+import Button from '../../UI/Library/Button/Button'
 
 // Style
-import styles from "./bookings.module.scss";
+import styles from './bookings.module.scss';
 import Checkbox from '../../UI/Checkbox';
 
 interface IProps {
@@ -41,12 +41,12 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
   const handleCouponVerification = (e: Event) => {
     e.preventDefault();
     const code = couponRef.current.value.trim();
-    if (code === "") {
-      return toast("Please enter a valid coupon code");
+    if (code === '') {
+      return toast('Please enter a valid coupon code');
     }
-    toast("Validating Code. Hang tight...");
+    toast('Validating Code. Hang tight...');
     axios({
-      method: "POST",
+      method: 'POST',
       url: `${process.env.NEXT_PUBLIC_API_URL}/coupons/validate`,
       data: {
         code
@@ -59,7 +59,6 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
       })
     })
       .catch(err => {
-        console.log(err)
         toast(err.response.data.message);
       })
   }
@@ -69,17 +68,17 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     const form = formRef.current
 
     if (form.checkValidity() === false) {
-      return toast("Please fill in all the required fields correctly.");
+      return toast('Please fill in all the required fields correctly.');
     }
 
-    let booking: any = {}
-    let prevFormData = new FormData(form);
+    const booking: any = {}
+    const prevFormData = new FormData(form);
     prevFormData.forEach((value, key) => booking[key] = value);
 
     // Add
     if (coupon) {
       booking['coupon-code'] = coupon;
-      booking["Coupon Discount"] = `${coupon.discount}%`;
+      booking['Coupon Discount'] = `${coupon.discount}%`;
     }
     booking.Total = total;
     const bookedCourses = ticked!.map(item => {
@@ -88,22 +87,22 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
         return `${course.name}`
       }
     })
-    booking["Course(s)"] = bookedCourses.join("; ")
+    booking['Course(s)'] = bookedCourses.join('; ')
 
-    toast("Booking Course. Hang tight...");
+    toast('Booking Course. Hang tight...');
 
     axios({
-      method: "POST",
+      method: 'POST',
       url: `${process.env.NEXT_PUBLIC_API_URL}/courses/book`,
       data: booking,
     })
-      .then(result => {
+      .then(() => {
         form.reset();
-        toast("Thank you for your course booking. You will receive a confirmation email with a payment link soon!");
+        toast('Thank you for your course booking. You will receive a confirmation email with a payment link soon!');
         toggle()
         setCoupon(undefined)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
   }
 
   function handleUpdateTotal(): number {

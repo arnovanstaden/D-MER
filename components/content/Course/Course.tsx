@@ -1,11 +1,11 @@
-import { ICourse } from "../../../utils/interfaces";
+import { ICourse } from '../../../utils/interfaces';
 
 
 // Components
-import Button from "../../UI/Library/Button/Button"
+import Button from '../../UI/Library/Button/Button'
 
 // Styles
-import styles from "./course.module.scss";
+import styles from './course.module.scss';
 
 
 const Course = ({ course, toggle }: { course: ICourse, toggle: () => any }) => {

@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 // Components
 import Header from '../components/UI/Header/Header';
@@ -7,18 +7,35 @@ import Footer from '../components/UI/Footer/Footer';
 
 // Global Styles
 import '../styles/global.scss';
-import "../assets/icons/style.css";
+import '../assets/icons/style.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Fonts
-import "typeface-montserrat";
-import "typeface-poppins";
+import { Montserrat, Poppins } from 'next/font/google'
+import classNames from 'classnames';
 
 // Fonts
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  preload: true,
+  variable: '--font-montserrat',
+  display: 'swap',
+});
 
-function MyApp({ Component, pageProps }: AppProps) {
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  preload: true,
+  variable: '--font-poppins',
+  display: 'swap',
+});
+
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <>
+    <div className={classNames(poppins.className, montserrat.variable)}>
       <Header />
       <Component {...pageProps} />
       <ToastContainer
@@ -33,7 +50,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         limit={2}
       />
       <Footer />
-    </>
+    </div>
   )
 }
 

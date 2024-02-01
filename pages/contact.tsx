@@ -1,16 +1,16 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 import { toast } from 'react-toastify';
-import axios from "axios"
+import axios from 'axios'
 
 // Components
-import Page from "../components/UI/Page/Page";
-import Landing from "../components/UI/Landing/Landing";
-import Section from "../components/UI/Section/Section";
-import Banner from "../components/UI/Banner/Banner";
-import Button from "../components/UI/Library/Button/Button";
+import Page from '../components/UI/Page/Page';
+import Landing from '../components/UI/Landing/Landing';
+import Section from '../components/UI/Section/Section';
+import Banner from '../components/UI/Banner/Banner';
+import Button from '../components/UI/Library/Button/Button';
 
 // Styles
-import styles from "../styles/pages/contact.module.scss";
+import styles from '../styles/pages/contact.module.scss';
 
 const Contact = () => {
   // Config
@@ -22,31 +22,31 @@ const Contact = () => {
     const form = formRef.current
 
     if (form.checkValidity() === false) {
-      return toast("Please fill in all the required fields correctly.");
+      return toast('Please fill in all the required fields correctly.');
     }
 
-    let enquiry: any = {}
+    const enquiry: any = {}
     const formData = new FormData(form);
     formData.forEach((value, key) => enquiry[key] = value);
 
     axios({
-      method: "POST",
+      method: 'POST',
       url: `${process.env.NEXT_PUBLIC_API_URL}/enquiry/contact`,
       data: enquiry
     })
-      .then(result => {
+      .then(() => {
         form.reset()
-        toast("Thank you for your message. We'll get back to you soon!");
+        toast('Thank you for your message. We\'ll get back to you soon!');
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
   }
 
   return (
     <Page
       head={{
-        title: "Contact | D-MER",
-        description: "Have a burning question? Get in touch!",
-        canonical: "/contact",
+        title: 'Contact | D-MER',
+        description: 'Have a burning question? Get in touch!',
+        canonical: '/contact',
       }}
       className={styles.contact}
     >

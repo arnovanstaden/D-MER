@@ -1,22 +1,21 @@
 // Components
-import Page from "../components/UI/Page/Page";
-import Landing from "../components/UI/Landing/Landing";
-import Section from "../components/UI/Section/Section";
-import Banner from "../components/UI/Banner/Banner";
-import Button from "../components/UI/Library/Button/Button";
-import NextImage from "../components/UI/Library/NextImage/NextImage"
-import Container from "../components/UI/Library/Container/Container"
+import Page from '../components/UI/Page/Page';
+import Landing from '../components/UI/Landing/Landing';
+import Section from '../components/UI/Section/Section';
+import Banner from '../components/UI/Banner/Banner';
+import Button from '../components/UI/Library/Button/Button';
+import Container from '../components/UI/Library/Container/Container'
 
 // Styles
-import styles from "../styles/pages/about.module.scss";
+import styles from '../styles/pages/about.module.scss';
 
 const About = () => {
   return (
     <Page
       head={{
-        title: "About | D-MER",
-        description: "Skills Development - Accessible To All.",
-        canonical: "/contact",
+        title: 'About | D-MER',
+        description: 'Skills Development - Accessible To All.',
+        canonical: '/contact',
       }}
       className={styles.about}
     >
