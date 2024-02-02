@@ -4,8 +4,8 @@ import { getFirestore } from 'firebase/firestore';
 
 // Types
 const firebaseConfig: FirebaseOptions = {
-  apiKey: 'AIzaSyCAmVZA3dK7xA9cQh3tVEC-XOWUwWUIJVg',
-  projectId: 'c-doc-92c86',
+  apiKey: 'AIzaSyBWP1yBhuoOU1t6elPyZ-k7UCLIoswgMn4',
+  projectId: 'd-mer-9d8b1',
 };
 
 let app;

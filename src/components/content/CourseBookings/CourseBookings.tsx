@@ -8,7 +8,7 @@ import Container from '../../UI/Library/Container/Container'
 import Button from '../../UI/Library/Button/Button'
 
 // Style
-import styles from './bookings.module.scss';
+import styles from './CourseBookings.module.scss';
 import Checkbox from '../../UI/Checkbox';
 
 interface IProps {
