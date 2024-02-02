@@ -31,9 +31,9 @@ const NextImage = ({ src, alt, width, background, priority, alignTop }: IProps) 
       <div className={containerClasses}>
         <Image
           src={src}
-          alt={`Picture of ${styles.image}`}
+          alt={`Picture of ${alt}`}
+          layout="fill"
           className={imageClasses}
-          width={width}
           priority={priority}
           fill
         />
@@ -45,7 +45,8 @@ const NextImage = ({ src, alt, width, background, priority, alignTop }: IProps) 
     <div className={styles.container}>
       <Image
         src={src}
-        alt={`Picture of ${styles.image}`}
+        alt={`Picture of ${alt}`}
+        layout="fill"
         className={imageClasses}
         priority={priority}
         fill

@@ -31,6 +31,7 @@ const AdminLoginForm = (): JSX.Element | null => {
             }}
             name='email'
             register={{ ...register('email') }}
+            value=""
           />
           <Input
             inputProps={{
@@ -39,6 +40,7 @@ const AdminLoginForm = (): JSX.Element | null => {
             }}
             name='password'
             register={{ ...register('password') }}
+            value=""
           />
           <Button>Login</Button>
         </form>

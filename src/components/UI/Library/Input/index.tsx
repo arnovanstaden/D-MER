@@ -10,7 +10,7 @@ interface IProps {
   register?: UseFormRegisterReturn,
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>,
   value: string | number;
-  onChange: (newValue: number | string) => void;
+  onChange?: (newValue: number | string) => void;
 }
 
 const Input = (props: IProps): JSX.Element | null => {
@@ -19,7 +19,7 @@ const Input = (props: IProps): JSX.Element | null => {
       <label htmlFor={props.name}>{props.label}</label>
       <input
         value={props.value}
-        onChange={(e) => props.onChange(e.target.value)}
+        onChange={(e) => props.onChange ? props.onChange(e.target.value) : undefined}
         {...props.register}
         {...props.inputProps}
       />

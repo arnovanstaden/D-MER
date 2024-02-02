@@ -27,7 +27,7 @@ const Header = () => {
   if (typeof window !== 'undefined') {
     let prevScrollpos = window.pageYOffset;
     window.onscroll = () => {
-      let currentScrollPos = window.pageYOffset;
+      const currentScrollPos = window.pageYOffset;
 
       if (currentScrollPos > 0) {
         headerRef.current.classList.add(styles.fixed)

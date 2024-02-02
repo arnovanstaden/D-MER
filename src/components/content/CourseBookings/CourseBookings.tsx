@@ -59,7 +59,6 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
       })
     })
       .catch(err => {
-        console.log(err)
         toast(err.response.data.message);
       })
   }
@@ -72,8 +71,8 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
       return toast('Please fill in all the required fields correctly.');
     }
 
-    let booking: any = {}
-    let prevFormData = new FormData(form);
+    const booking: any = {}
+    const prevFormData = new FormData(form);
     prevFormData.forEach((value, key) => booking[key] = value);
 
     // Add
@@ -97,13 +96,13 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
       url: `${process.env.NEXT_PUBLIC_API_URL}/courses/book`,
       data: booking,
     })
-      .then(result => {
+      .then(() => {
         form.reset();
         toast('Thank you for your course booking. You will receive a confirmation email with a payment link soon!');
         toggle()
         setCoupon(undefined)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
   }
 
   function handleUpdateTotal(): number {

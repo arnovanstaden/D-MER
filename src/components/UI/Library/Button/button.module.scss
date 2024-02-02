@@ -1,42 +1,41 @@
 @import "../../../../styles/variables.scss";
 
 .button {
-    border: 2px solid $lightgrey;
-    color: $white;
-    background-color: transparent;
-    outline: none;
-    text-transform: uppercase;
-    padding: 0.75rem 2rem;
-    font-family: $font;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
+  border: 2px solid $lightgrey;
+  color: $white;
+  background-color: transparent;
+  outline: none;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  font-weight: 500;
+
+  i {
+    margin-left: 0.5rem;
+    color: $red;
+    font-size: 1rem;
+    vertical-align: middle;
+    transition: inherit;
+  }
+
+  &:hover {
+    background-color: $red;
+    border-color: $red;
 
     i {
-        margin-left: 0.5rem;
-        color: $red;
-        font-size: 1rem;
-        vertical-align: middle;
-        transition: inherit;
+      color: $darkgrey;
+      margin-left: 1rem;
     }
+  }
+
+  &.fill {
+    background-color: $red;
+    border-color: $red;
 
     &:hover {
-        background-color: $red;
-        border-color: $red;
-
-        i {
-            color: $darkgrey;
-            margin-left: 1rem;
-        }
+      background-color: transparent;
     }
-
-    &.fill {
-        background-color: $red;
-        border-color: $red;
-
-        &:hover {
-            background-color: transparent;
-        }
-    }
+  }
 }

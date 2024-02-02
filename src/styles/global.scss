@@ -17,8 +17,8 @@ html {
 
 body {
   background-color: $grey;
-  font-family: $font;
   font-size: 1rem;
+  font-family: $font;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -27,9 +27,6 @@ body {
   transition: 0.3s ease-out;
   scroll-behavior: smooth;
   min-height: 100vh;
-}
-
-body {
   position: relative;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -40,6 +37,14 @@ body {
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font;
+}
 
 a {
   text-decoration: none;
@@ -160,4 +165,10 @@ a {
     margin: 0 !important;
     padding: 0 1rem !important;
   }
+}
+
+input,
+textarea {
+  resize: none;
+  font-family: $font;
 }

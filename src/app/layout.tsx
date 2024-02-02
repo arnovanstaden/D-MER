@@ -7,13 +7,13 @@ import Notifications from '@components/UI/Notifications';
 const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--heading-font',
+  variable: '--font-montserrat',
 })
 
 const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font',
+  variable: '--font-poppins',
   weight: ['300', '400', '500', '600'],
 })
 

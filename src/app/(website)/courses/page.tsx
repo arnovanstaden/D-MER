@@ -29,17 +29,17 @@ const Courses = ({ courses }: { courses: ICourse[] }) => {
     setShowBookings(prev => !prev);
   }
 
-  const handleUpdateAndToggle = (course_id: string) => {
-    handleUpdateTicked(course_id);
+  const handleUpdateAndToggle = (courseId: string) => {
+    handleUpdateTicked(courseId);
     handleBookingToggle()
   }
 
-  const handleUpdateTicked = (course_id: string) => {
+  const handleUpdateTicked = (courseId: string) => {
     let updatedTicked: string[] = [];
-    if (ticked.includes(course_id)) {
+    if (ticked.includes(courseId)) {
       return;
     } else {
-      updatedTicked = [...ticked, course_id]
+      updatedTicked = [...ticked, courseId]
       setTicked(updatedTicked)
     }
   }

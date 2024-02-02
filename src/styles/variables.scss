@@ -3,14 +3,8 @@ $darkgrey: #222222;
 $grey: #333333;
 $lightgrey: #768a93;
 $white: #ffffff;
-$font: var(--font),
-Tahoma,
-Geneva,
-sans-serif;
-$heading-font: var(--heading-font),
-Tahoma,
-Geneva,
-sans-serif;
+$font: var(--font-poppins);
+$heading-font: var(--font-montserrat);
 
 @mixin reset-list {
   list-style: none;
