@@ -2,13 +2,13 @@
 import { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword, User } from 'firebase/auth';
 import { auth } from '@lib/firebase'
-import { ILogin } from '@types';
+import { LoginCredentials } from '@types';
 import { toast } from 'react-toastify';
 import { usePathname, useRouter } from 'next/navigation';
 
 interface IUseAuth {
   user: any,
-  login: (loginData: ILogin) => void;
+  login: (loginData: LoginCredentials) => void;
 }
 
 export const useAuth = (): IUseAuth => {
@@ -36,7 +36,7 @@ export const useAuth = (): IUseAuth => {
     return () => unsubscribe()
   }, []);
 
-  const login = async (loginData: ILogin) => {
+  const login = async (loginData: LoginCredentials) => {
     signInWithEmailAndPassword(auth, loginData.email, loginData.password)
       .then(async (userCredential) => {
         toast('Welcome back!')

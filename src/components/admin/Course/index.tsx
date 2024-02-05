@@ -5,11 +5,11 @@ import styles from './styles.module.scss';
 import TextArea from '@components/UI/Library/TextArea';
 import Button from '@components/UI/Library/Button/Button';
 import { useState } from 'react';
-import { ICourse } from '@types';
+import { CourseProps } from '@types';
 
-const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
+const Course = ({ course }: { course?: CourseProps }): JSX.Element | null => {
   const isNewCourse = !course;
-  const [updatedCourse, setUpdatedCourse] = useState<ICourse>(course || {
+  const [updatedCourse, setUpdatedCourse] = useState<CourseProps>(course || {
     _id: '',
     name: '',
     objective: '',
@@ -17,7 +17,7 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
     price: 0,
   });
 
-  const updateCourse = (update: Partial<ICourse>) => setUpdatedCourse((prev) => ({
+  const updateCourse = (update: Partial<CourseProps>) => setUpdatedCourse((prev) => ({
     ...prev,
     ...update,
   }));

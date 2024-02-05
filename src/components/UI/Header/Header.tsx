@@ -14,15 +14,6 @@ const Header = () => {
   // Config
   const headerRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const mobileNavRef = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const pathname = usePathname() as string;
-
-  // State
-  const [inShop, setInShop] = useState(false);
-
-  useEffect(() => {
-    const verifyShop = pathname.includes('/shop') || pathname.includes('/cart');
-    setInShop(verifyShop)
-  })
 
   if (typeof window !== 'undefined') {
     let prevScrollpos = window.pageYOffset;
@@ -62,16 +53,6 @@ const Header = () => {
             Contact Us
           </Link>
         </li>
-        {
-          inShop ?
-            <li className={styles.cartLink}>
-              <Link href="/cart">
-                Your Cart
-                <i className="icon-cart"></i>
-              </Link>
-            </li>
-            : null
-        }
       </ul >
     )
   }
@@ -91,16 +72,10 @@ const Header = () => {
           </div>
           <Menu />
           <div className={styles.options}>
-            {inShop ?
-              <Link href="/cart">
-                Your Cart
-                <i className="icon-cart"></i>
-              </Link>
-              :
-              <Link href="/courses#book">
-                Online Courses
-                <i className="icon-arrow-right" />
-              </Link>}
+            <Link href="/courses/book">
+              Book a Course
+              <i className="icon-arrow-right" />
+            </Link>
           </div>
           <i className={`icon-menu ${styles.mobileButton}`} onClick={handleToggleMobileNav}></i>
           <div className={styles.mobile} ref={mobileNavRef}>

@@ -101,7 +101,7 @@ const About = () => {
 
       <Banner image="/images/pages/about/banner1.jpg">
         <h2> <span>Online</span> Continuous Professional Development <span>Courses</span>.</h2>
-        <Button icon link="/courses#book">
+        <Button icon link="/courses/book">
           Online Courses
         </Button>
       </Banner>

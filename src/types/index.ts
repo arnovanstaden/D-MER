@@ -1,27 +1,9 @@
-export interface ILogin {
-  email: string, password: string
+export interface LoginCredentials {
+  email: string,
+  password: string
 }
 
-export interface ICartItem {
-  id: string;
-  quantity: number;
-  price: number;
-}
-
-export interface IProduct {
-  id: string;
-  name: string;
-  description: string;
-  details: string;
-  visibility: boolean;
-  price: number;
-  category: string
-  thumbnail: string;
-  digital?: boolean;
-  document?: string
-}
-
-export interface ICourse {
+export interface CourseProps {
   _id: string;
   name: string;
   objective: string;
@@ -29,14 +11,10 @@ export interface ICourse {
   price: number;
 }
 
-export interface ICheckout {
-  shopSettings: any;
-  products: any;
-  total: number
-}
-
-export interface IOrder {
-  cart_items: ICartItem[],
-  amount_gross: number,
-  [key: string]: any
+export interface CouponProps {
+  email: string;
+  code: string;
+  discount: number;
+  expiry: Date;
+  redeemed: boolean;
 }

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { FieldValues, useForm } from 'react-hook-form';
 import styles from './styles.module.scss';
 import { useAuth } from '@hooks/auth';
-import { ILogin } from '@types';
+import { LoginCredentials } from '@types';
 import Button from '@components/UI/Library/Button/Button';
 import Input from '@components/UI/Library/Input';
 import Notification from '@components/UI/Notifications';
@@ -17,7 +17,7 @@ const AdminLoginForm = (): JSX.Element | null => {
     handleSubmit,
   } = useForm();
 
-  const handleLogin = async (loginData: FieldValues) => login(loginData as ILogin)
+  const handleLogin = async (loginData: FieldValues) => login(loginData as LoginCredentials)
 
   return (
     <div className={styles.AdminLogin}>

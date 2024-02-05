@@ -1,10 +1,10 @@
-import { ICourse } from '@types';
+import { CourseProps } from '@types';
 import styles from './styles.module.scss';
 import Link from 'next/link';
 import Button from '@components/UI/Library/Button/Button';
 
 const CourseList = (): JSX.Element | null => {
-  const courses: ICourse[] = [{
+  const courses: CourseProps[] = [{
     _id: '60ae7165adc08e5cfc2081a1',
     name: 'DMAC 11 First Aid for the Commercial Dive Team CPD',
     objective: 'Provision of first aid and the training of divers, supervisors and members of dive teams in first aid.\n\nThis is a CPD course to refresh your first aid theory',

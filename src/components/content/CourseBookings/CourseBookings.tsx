@@ -1,4 +1,6 @@
-import { ICourse } from '@types';
+'use client';
+
+import { CouponProps, CourseProps } from '@types';
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios'
 import { toast } from 'react-toastify';
@@ -10,32 +12,43 @@ import Button from '../../UI/Library/Button/Button'
 // Style
 import styles from './CourseBookings.module.scss';
 import Checkbox from '../../UI/Checkbox';
+import Link from 'next/link';
 
-interface IProps {
-  courses: ICourse[],
-  toggle: () => void,
-  show: boolean,
-  ticked?: string[],
-  handleTick: (course_id: string) => void
-}
+const Course: React.FC<CourseProps> = (course) => {
+  return (
+    <div className={styles.course}>
+      <div className={styles.text}>
+        <h5>{course.name}</h5>
+        <p>{course.objective}</p>
+      </div>
+      <div className={styles.price}>
+        <p>$ {course.price}</p>
+      </div>
+      <div className={styles.check}>
+        <Checkbox
+          // onChange={() => handleTick(course._id)}
+          // checked={ticked!.includes(course._id)
+          onChange={() => { }}
+          checked={false}
+        />
+      </div>
+    </div>
+  )
+};
 
-interface ICoupon {
-  discount: number;
-  code: string;
-}
-
-const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) => {
+const CourseBookings: React.FC<{ courses: CourseProps[] }> = ({ courses }) => {
   // Config
   const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
   const couponRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   // State
-  const [coupon, setCoupon] = useState<ICoupon>()
-  const [total, setTotal] = useState<number>(handleUpdateTotal())
+  const [coupon, setCoupon] = useState<CouponProps>()
+  const [total, setTotal] = useState<number>(0)
+  const [ticked, setTicked] = useState<string[]>([])
 
-  useEffect(() => {
-    setTotal(handleUpdateTotal())
-  }, [ticked, coupon])
+  // useEffect(() => {
+  //   setTotal(handleUpdateTotal())
+  // }, [ticked, coupon])
 
   // Handlers
   const handleCouponVerification = (e: Event) => {
@@ -53,10 +66,10 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
       }
     }).then(result => {
       toast(result.data.message);
-      setCoupon({
-        discount: result.data.discount,
-        code: result.data.code
-      })
+      // setCoupon({
+      //   discount: result.data.discount,
+      //   code: result.data.code
+      // })
     })
       .catch(err => {
         toast(err.response.data.message);
@@ -99,13 +112,13 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
       .then(() => {
         form.reset();
         toast('Thank you for your course booking. You will receive a confirmation email with a payment link soon!');
-        toggle()
+        // toggle()
         setCoupon(undefined)
       })
       .catch(err => console.error(err))
   }
 
-  function handleUpdateTotal(): number {
+  const handleUpdateTotal = (): number => {
     let total = 0;
     ticked && ticked.forEach(item => {
       const course = courses.find(course => course._id === item)
@@ -121,33 +134,8 @@ const CourseBookings = ({ courses, toggle, show, ticked, handleTick }: IProps) =
     return total
   }
 
-  const Course = (course: ICourse) => {
-    return (
-      <div className={styles.course}>
-        <div className={styles.text}>
-          <h5>{course.name}</h5>
-          <p>{course.objective}</p>
-        </div>
-        <div className={styles.price}>
-          <p>$ {course.price}</p>
-        </div>
-        <div className={styles.check}>
-          <Checkbox
-            onChange={() => handleTick(course._id)}
-            checked={ticked!.includes(course._id)}
-          />
-        </div>
-      </div>
-    )
-  }
-
-  if (!show) {
-    return null
-  }
-
   return (
     <section className={styles.bookings}>
-      <i className="icon-clear" onClick={toggle}></i>
       <Container>
         <div className={styles.heading}>
           <h2>Book <span>Courses</span></h2>

@@ -1,35 +1,34 @@
 import { CourseProps } from '@types';
 
-// Components
-import Landing from '@components/UI/Landing/Landing';
-
-
 // Styles
 import styles from './styles.module.scss';
 
 
 import type { Metadata } from 'next'
 import { getFirestoreDocumentCollection } from '@lib/firestore';
-import CourseList from '@components/content/CourseList/CourseList';
+import CourseBookings from '@components/content/CourseBookings/CourseBookings';
+import Landing from '@components/UI/Landing/Landing';
 
 export const metadata: Metadata = {
-  title: 'Courses | D-MER',
+  title: 'Course Bookings | D-MER',
   description: 'Book an online CPD course.',
 }
 
-const Courses = async () => {
+const CoursesBookings = async () => {
   const courses = await getFirestoreDocumentCollection<CourseProps>('courses');
 
   return (
     <main className={styles.courses}>
       <Landing
-        image="/images/pages/courses/landing.jpg">
-        <h1><span>Online</span> Continuous Professional Development <span>Courses</span></h1>
+        image="/images/pages/courses/landing.jpg"
+        withCTA={false}
+      >
+        <h1><span>Book</span> a Course</h1>
       </Landing>
 
-      <CourseList courses={courses} />
+      <CourseBookings courses={courses} />
     </main>
   )
 }
 
-export default Courses;
+export default CoursesBookings;

@@ -13,9 +13,10 @@ import styles from './landing.module.scss';
 interface IProps {
   image: string;
   children: React.ReactNode;
+  withCTA?: boolean;
 }
 
-const Landing = ({ children, image }: IProps) => {
+const Landing = ({ children, image, withCTA = true }: IProps) => {
 
   // Config
   const pathname = usePathname() as string;
@@ -34,15 +35,14 @@ const Landing = ({ children, image }: IProps) => {
       <Container>
         <div className={styles.content}>
           {children}
-          <hr />
-          {pathname === '/shop'
-            ? <Button icon link="/cart">
-              Your Cart
-            </Button>
-            : <Button icon link="/courses#book">
-              Online Courses
-            </Button>
-          }
+          {withCTA && (
+            <>
+              <hr />
+              <Button icon link="/courses/book">
+                Online Courses
+              </Button></>
+
+          )}
         </div>
       </Container>
       <div className={styles.social}>

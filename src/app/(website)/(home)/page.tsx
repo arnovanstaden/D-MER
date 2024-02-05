@@ -65,7 +65,7 @@ const Home = () => {
 
       <Banner image="/images/pages/home/banner2.jpg" reverse>
         <h2>Start <span>Anywhere</span>. Start <span>Anytime</span>.</h2>
-        <Button icon link="/courses#book">
+        <Button icon link="/courses/book">
           Online Courses
         </Button>
       </Banner>
