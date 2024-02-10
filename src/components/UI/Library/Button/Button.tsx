@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import ClassNames from 'classnames';
-
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import styles from './button.module.scss';
 
 interface IProps {
@@ -23,7 +23,7 @@ const Button = ({ link, children, icon, onClick, fill, className }: IProps) => {
     return (
       <button className={classes} onClick={onClick}>
         {children}
-        {icon ? <i className="icon-arrow-right" /> : null}
+        {icon ? <ArrowForwardIcon className={styles.icon} /> : null}
       </button>
     )
   }

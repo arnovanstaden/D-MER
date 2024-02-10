@@ -37,27 +37,23 @@
           color: $red;
         }
       }
-
-
     }
 
     .options {
-
       a {
         font-size: 0.95rem;
 
-        i {
+        .icon {
           color: $red;
           margin-left: 0.5rem;
           vertical-align: middle;
+          font-size: 1.1rem;
         }
       }
-
     }
 
     .mobileButton {
       font-size: 1.5rem;
-      padding: 0.5rem;
       cursor: pointer;
       transition: 0.3s ease-in-out;
       display: none;
@@ -81,12 +77,11 @@
       box-sizing: border-box;
       transition: 0.3s ease-in-out;
 
-      >i {
+      .closeButton {
         position: absolute;
         top: 1rem;
         right: 1rem;
         font-size: 1.5rem;
-        padding: 0.5rem;
         cursor: pointer;
         transition: 0.3s ease-in-out;
 
@@ -131,7 +126,6 @@
   }
 
   @media screen and (max-width: 768px) {
-
     .nav {
       .mobileButton {
         display: block;
@@ -142,6 +136,5 @@
         display: none;
       }
     }
-
   }
 }

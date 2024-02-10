@@ -5,6 +5,7 @@ import Banner from '@components/UI/Banner/Banner';
 import Button from '@components/UI/Library/Button/Button';
 import NextImage from '@components/UI/Library/NextImage/NextImage'
 import Container from '@components/UI/Library/Container/Container'
+import SquareIcon from '@mui/icons-material/Square';
 
 // Styles
 import styles from './styles.module.scss';
@@ -42,23 +43,23 @@ const About = () => {
 
         <ul>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             Organizes content
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             Addresses learning and assessment
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             Tracks student progression and achievement
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             Offers support and guidance to learners
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             Allows access to on-line resources
           </li>
         </ul>
@@ -75,10 +76,10 @@ const About = () => {
         </p>
         <ul>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             Employees can learn in their own time, at their own pace</li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             Employers can track progress to ensure organization funded training and professional
             development activities are cost-effective, goal-oriented and productive
           </li>
@@ -88,13 +89,13 @@ const About = () => {
         </p>
         <ul>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             It defines patterns</li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             It changes our approach</li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             It changes the way we look at business and training</li>
         </ul>
       </Section>
@@ -147,51 +148,51 @@ const About = () => {
         </p>
         <ul>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D01 -</span> Diving Superintendent
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D02 -</span> Bell Diving Supervisor
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D03 -</span> Air (Surface Supplied) Diving Supervisor
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D04 -</span> Bell (Saturation) Diver
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D05 -</span> Air (Surface Supplied) Diver
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D06 -</span> Life Support Supervisor
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D07 -</span> Life Support Technician
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D08 -</span> Assistant Life Support Technician
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D09 -</span> Tender
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D10 -</span> Senior Dive Technician
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D11 -</span>  Senior Dive Technician (Surface Supplied Only)
           </li>
           <li>
-            <i className="icon-square"></i>
+            <SquareIcon className={styles.icon} />
             <span>D12 -</span> Dive Technician
           </li>
         </ul>

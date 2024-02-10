@@ -3,6 +3,9 @@ import Landing from '@components/UI/Landing/Landing';
 import Section from '@components/UI/Section/Section';
 import Banner from '@components/UI/Banner/Banner';
 import Button from '@components/UI/Library/Button/Button';
+import EmailIcon from '@mui/icons-material/Email';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 // Styles
 import styles from './styles.module.scss';
@@ -35,15 +38,15 @@ const Contact = () => (
       </p>
       <ul>
         <li>
-          <i className="icon-phone"></i>
+          <LocalPhoneIcon className={styles.icon} />
           <a href="tel:+27760972523">+27 76 097 2523</a>
         </li>
         <li>
-          <i className="icon-mail"></i>
+          <EmailIcon className={styles.icon} />
           <a href="mailto:info@dmerworldwide.com">info@dmerworldwide.com</a>
         </li>
         <li>
-          <i className="icon-pin"></i>
+          <LocationOnIcon className={styles.icon} />
           <a href="https://goo.gl/maps/XLbwP14yF4yy43w2A" target="blank">23 Main Rd, Saldanha, 7395, Western Cape, South Africa</a>
         </li>
       </ul>

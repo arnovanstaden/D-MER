@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { useRef, useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { useRef } from 'react';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 // Components
 import Container from '../Library/Container/Container'
@@ -74,12 +76,12 @@ const Header = () => {
           <div className={styles.options}>
             <Link href="/courses/book">
               Book a Course
-              <i className="icon-arrow-right" />
+              <ArrowForwardIcon className={styles.icon} />
             </Link>
           </div>
-          <i className={`icon-menu ${styles.mobileButton}`} onClick={handleToggleMobileNav}></i>
+          <MenuIcon className={styles.mobileButton} onClick={handleToggleMobileNav} />
           <div className={styles.mobile} ref={mobileNavRef}>
-            <i className="icon-clear" onClick={handleToggleMobileNav}></i>
+            <CloseIcon onClick={handleToggleMobileNav} className={styles.closeButton} />
             <div className={styles.inner} onClick={handleToggleMobileNav}>
               <Menu />
             </div>

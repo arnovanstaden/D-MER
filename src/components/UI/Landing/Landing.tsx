@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 import Container from '../Library/Container/Container';
 import NextImage from '../Library/NextImage/NextImage';
 import Button from '../Library/Button/Button';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 // Styles
 import styles from './landing.module.scss';
@@ -47,10 +49,10 @@ const Landing = ({ children, image, withCTA = true }: IProps) => {
       </Container>
       <div className={styles.social}>
         <a href="https://www.facebook.com/DMERWorldwide/" target="blank">
-          <i className="icon-facebook"></i>
+          <FacebookIcon />
         </a>
         <a href="https://www.linkedin.com/feed/" target="blank">
-          <i className="icon-linkedin"></i>
+          <LinkedInIcon />
         </a>
       </div>
     </section>

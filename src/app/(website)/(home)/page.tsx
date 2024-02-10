@@ -3,7 +3,8 @@ import Landing from '@components/UI/Landing/Landing';
 import Section from '@components/UI/Section/Section';
 import Banner from '@components/UI/Banner/Banner';
 import Button from '@components/UI/Library/Button/Button';
-
+import AddIcon from '@mui/icons-material/Add';
+import styles from './styles.module.scss'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -43,9 +44,18 @@ const Home = () => {
 
       <Banner image="/images/pages/home/banner1.jpg">
         <h2>The D-MER <span>Golden Thread</span></h2>
-        <p> <i className="icon-plus"></i> The Right People</p>
-        <p> <i className="icon-plus"></i> The Right Equipment</p>
-        <p> <i className="icon-plus"></i> The Right Training</p>
+        <p>
+          <AddIcon className={styles.icon} />
+          The Right People
+        </p>
+        <p>
+          <AddIcon className={styles.icon} />
+          The Right Equipment
+        </p>
+        <p>
+          <AddIcon className={styles.icon} />
+          The Right Training
+        </p>
       </Banner>
 
       <Section

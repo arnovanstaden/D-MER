@@ -6,6 +6,7 @@ import Button from '../../UI/Library/Button/Button'
 
 // Styles
 import styles from './course.module.scss';
+import Link from 'next/link';
 
 interface Props {
   course: CourseProps,
@@ -35,7 +36,9 @@ const Course: React.FC<Props> = ({ course, toggle }) => {
           <p>$ {course.price}</p>
         </div>
         <div className={styles.button}>
-          <Button icon onClick={toggle}>Book</Button>
+          <Link href="/courses/book">
+            <Button>Book</Button>
+          </Link>
         </div>
       </div>
     </article>

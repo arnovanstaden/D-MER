@@ -2,6 +2,8 @@ import Link from 'next/link';
 
 // Components
 import Container from '../Library/Container/Container'
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 // Styles
 import styles from './footer.module.scss';
@@ -41,10 +43,10 @@ const Footer = () => {
             </ul>
             <div className={styles.social}>
               <a href="https://www.facebook.com/DMERWorldwide/" target="blank">
-                <i className="icon-facebook"></i>
+                <FacebookIcon />
               </a>
               <a href="https://www.linkedin.com/feed/" target="blank">
-                <i className="icon-linkedin"></i>
+                <LinkedInIcon />
               </a>
             </div>
           </div>
