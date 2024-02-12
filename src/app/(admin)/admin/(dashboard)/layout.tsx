@@ -23,6 +23,13 @@ const AdminLayout = ({ children }: { children: React.ReactNode }): JSX.Element |
           Courses
         </Button>
         <Button
+          fill={pathname === '/admin/bookings'}
+          link="/admin/bookings"
+          className={styles.button}
+        >
+          Bookings
+        </Button>
+        <Button
           fill={pathname === '/admin/coupons'}
           link="/admin/coupons"
           className={styles.button}

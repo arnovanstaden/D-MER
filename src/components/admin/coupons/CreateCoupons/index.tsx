@@ -52,11 +52,6 @@ const CreateCoupons: React.FC = (props) => {
   return (
     <div className={styles.CreateCoupons}>
       <div className={styles.actions}>
-        <Link href="/admin/coupons">
-          <Button>
-            Cancel
-          </Button>
-        </Link>
         <Button fill onClick={handleCreateCoupon}>
           Create Coupon
         </Button>

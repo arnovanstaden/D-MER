@@ -24,3 +24,15 @@ export interface INewCoupon {
   expiry: Date,
   discount: number,
 }
+
+export interface IBooking {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  country: string;
+  couponUsed: boolean;
+  total: string;
+  courses: string[];
+  date: Date;
+}

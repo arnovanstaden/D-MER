@@ -1,7 +1,7 @@
 import { collection, getDocs, doc, getDoc, query, orderBy, limit, setDoc, deleteDoc } from 'firebase/firestore';
 import { firestoreDb } from './firebase';
 
-type FirestoreCollectionId = 'courses' | 'coupons';
+type FirestoreCollectionId = 'courses' | 'coupons' | 'bookings';
 
 export const getFirestoreDocument = async <T>(category: FirestoreCollectionId, id: string): Promise<T | undefined> => {
   const docRef = doc(firestoreDb, category, id)
@@ -16,10 +16,15 @@ export const getFirestoreDocument = async <T>(category: FirestoreCollectionId, i
 export const getFirestoreDocumentCollection = async <T>(category: FirestoreCollectionId, search?: boolean): Promise<T[]> => {
   const collectionRef = collection(firestoreDb, category);
   const querySnapshot = await getDocs(collectionRef);
-  const data = querySnapshot.docs.map((doc) => ({
-    ...doc.data(),
-    id: doc.id,
-  }));
+  const data = querySnapshot.docs.map((doc) => {
+    const docData = doc.data();
+
+    return {
+      ...docData,
+      id: doc.id,
+      ...(docData.date && { date: docData.date.toDate() })
+    }
+  });
 
   return data as T[];
 }
