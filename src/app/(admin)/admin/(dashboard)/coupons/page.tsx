@@ -1,3 +1,4 @@
+import CreateCoupons from '@components/admin/coupons/CreateCoupons';
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,6 +9,6 @@ export const metadata: Metadata = {
   }
 }
 
-const AdminDashboard = (): JSX.Element | null => <h1>Coupons</h1>;
+const AdminDashboard = (): JSX.Element | null => <CreateCoupons />;
 
 export default AdminDashboard;

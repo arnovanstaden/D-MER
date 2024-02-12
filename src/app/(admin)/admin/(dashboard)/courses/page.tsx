@@ -1,4 +1,4 @@
-import CourseList from '@components/admin/CourseList';
+import CourseList from '@components/admin/courses/CourseList';
 import type { Metadata } from 'next';
 
 export const revalidate = 0;

@@ -27,6 +27,7 @@ export default function RootLayout({
       <link rel="icon" type="image/png" href="/images/logos/favicon.png" />
       <body>
         {children}
+        <Notifications />
       </body>
     </html>
   )

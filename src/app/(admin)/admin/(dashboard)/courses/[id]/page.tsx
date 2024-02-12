@@ -1,4 +1,4 @@
-import Course from '@components/admin/Course';
+import Course from '@components/admin/courses/Course';
 import { getCourse } from '@lib/courses';
 import type { Metadata } from 'next'
 

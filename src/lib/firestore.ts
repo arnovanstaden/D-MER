@@ -1,7 +1,7 @@
 import { collection, getDocs, doc, getDoc, query, orderBy, limit, setDoc, deleteDoc } from 'firebase/firestore';
 import { firestoreDb } from './firebase';
 
-type FirestoreCollectionId = 'courses';
+type FirestoreCollectionId = 'courses' | 'coupons';
 
 export const getFirestoreDocument = async <T>(category: FirestoreCollectionId, id: string): Promise<T | undefined> => {
   const docRef = doc(firestoreDb, category, id)
@@ -31,8 +31,7 @@ export const addFirestoreDocument = async <T>(category: FirestoreCollectionId, d
 }
 
 export const updateFirestoreDocument = async <T>(category: FirestoreCollectionId, id: string, data: T): Promise<void> => {
-  const docRef = doc(collection(firestoreDb, category, id))
-  await setDoc(docRef, data as object);
+  await setDoc(doc(firestoreDb, category, id), data as object);
 }
 
 export const deleteFirestoreDocument = async (category: FirestoreCollectionId, id: string): Promise<void> => {

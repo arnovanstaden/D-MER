@@ -2,7 +2,7 @@
 
 import { ToastContainer } from 'react-toastify';
 
-const Notification = (): JSX.Element | null => <ToastContainer
+const Notification: React.FC = () => <ToastContainer
   position="top-center"
   autoClose={3000}
   closeOnClick

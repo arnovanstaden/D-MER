@@ -8,9 +8,10 @@ import { useState } from 'react';
 import { ICourse } from '@types';
 import Link from 'next/link';
 import { Box, Modal, Typography } from '@mui/material';
-import { createCourse, deleteCourse } from '@lib/courses';
+import { createCourse, deleteCourse, updateCourse } from '@lib/courses';
 import { useRouter } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
+import Loader from '@components/UI/Loader';
+import { toast } from 'react-toastify';
 
 const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
   const router = useRouter();
@@ -23,26 +24,36 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
     price: 0,
   });
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const updateCourse = (update: Partial<ICourse>) => setUpdatedCourse((prev) => ({
+  const updateCourseState = (update: Partial<ICourse>) => setUpdatedCourse((prev) => ({
     ...prev,
     ...update,
   }));
 
   const handleCreateCourse = async () => {
+    setLoading(true);
     await createCourse(updatedCourse);
+    setLoading(false);
+    toast('Course Created');
     router.replace('/admin/courses');
   }
 
   const handleUpdateCourse = async () => {
-    updateCourse(updatedCourse)
+    setLoading(true);
+    await updateCourse(updatedCourse)
+    setLoading(false);
+    toast('Course Updated');
     router.replace('/admin/courses');
   }
 
   const handleDeleteCourse = async () => {
     if (!course) return;
     setOpenDeleteModal(false);
+    setLoading(true);
     await deleteCourse(course.id);
+    setLoading(false);
+    toast('Course Deleted');
     router.replace('/admin/courses');
   }
 
@@ -71,27 +82,30 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
           name="name"
           inputProps={{ required: true }}
           value={updatedCourse.name}
-          onChange={(newValue) => updateCourse({ name: newValue as string })}
+          onChange={(newValue) => updateCourseState({ name: newValue as string })}
         />
         <Input
           label='Price'
           name="price"
-          inputProps={{ required: true }}
+          inputProps={{
+            required: true,
+            type: 'number',
+          }}
           value={updatedCourse.price}
-          onChange={(newValue) => updateCourse({ price: newValue as number })}
+          onChange={(newValue) => updateCourseState({ price: newValue as number })}
         />
         <TextArea
           label='Objective'
           name="objective" inputProps={{ required: true, rows: 4 }}
           value={updatedCourse.objective}
-          onChange={(newValue) => updateCourse({ objective: newValue as string })}
+          onChange={(newValue) => updateCourseState({ objective: newValue as string })}
         />
         <TextArea
           label='Description'
           name="description"
           inputProps={{ required: true, rows: 5 }}
           value={updatedCourse.description}
-          onChange={(newValue) => updateCourse({ description: newValue as string })}
+          onChange={(newValue) => updateCourseState({ description: newValue as string })}
         />
       </form>
       <Modal
@@ -117,6 +131,7 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
           </div>
         </Box>
       </Modal>
+      <Loader open={loading} />
     </div>
   );
 };

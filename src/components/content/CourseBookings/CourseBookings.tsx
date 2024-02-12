@@ -12,7 +12,6 @@ import Button from '../../UI/Library/Button/Button'
 // Style
 import styles from './CourseBookings.module.scss';
 import Checkbox from '../../UI/Checkbox';
-import Link from 'next/link';
 
 const Course: React.FC<ICourse> = (course) => {
   return (

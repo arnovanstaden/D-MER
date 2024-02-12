@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { FieldValues, useForm } from 'react-hook-form';
 import styles from './styles.module.scss';
 import { useAuth } from '@hooks/auth';
@@ -45,8 +44,6 @@ const AdminLoginForm = (): JSX.Element | null => {
           <Button>Login</Button>
         </form>
       </div>
-
-      <Notification />
     </div>
   );
 };

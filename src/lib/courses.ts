@@ -20,7 +20,6 @@ export const updateCourse = async (updatedCourse: ICourse): Promise<void> => {
   await updateFirestoreDocument('courses', updatedCourse.id, updatedCourse);
 }
 
-
 export const deleteCourse = async (id: string): Promise<void> => {
   await deleteFirestoreDocument('courses', id);
   revalidatePath('/admin/courses', 'page');

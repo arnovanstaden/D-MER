@@ -18,3 +18,9 @@ export interface ICoupon {
   expiry: Date;
   redeemed: boolean;
 }
+
+export interface INewCoupon {
+  email: string,
+  expiry: Date,
+  discount: number,
+}
