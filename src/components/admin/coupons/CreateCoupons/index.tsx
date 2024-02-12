@@ -4,9 +4,8 @@ import Input from '@components/UI/Library/Input';
 import styles from './styles.module.scss';
 import { useState } from 'react';
 import { INewCoupon } from '@types';
-import Link from 'next/link';
 import Button from '@components/UI/Library/Button/Button';
-import { toast } from 'react-toastify';
+import { enqueueSnackbar } from 'notistack';
 import { createCoupon } from '@lib/coupons';
 import Loader from '@components/UI/Loader';
 
@@ -27,12 +26,12 @@ const CreateCoupons: React.FC = (props) => {
 
   const validateForm = (): boolean => {
     if (coupon.discount < 1) {
-      toast('Invalid Discount');
+      enqueueSnackbar('Invalid Discount');
       return false;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(coupon.email)) {
-      toast('Invalid Email')
+      enqueueSnackbar('Invalid Email')
       return false;
     }
 
@@ -45,7 +44,7 @@ const CreateCoupons: React.FC = (props) => {
     setLoading(true);
     await createCoupon(coupon)
     setCoupon(initialState);
-    toast('Coupon created & sent to client');
+    enqueueSnackbar('Coupon created & sent to client');
     setLoading(false);
   }
 

@@ -1,9 +1,7 @@
 'use client';
 
-import { ICoupon, ICourse } from '@types';
+import { IBooking, ICoupon, ICourse } from '@types';
 import { useRef, useState, useEffect } from 'react';
-import axios from 'axios'
-import { toast } from 'react-toastify';
 
 // Components
 import Container from '../../UI/Library/Container/Container'
@@ -12,8 +10,20 @@ import Button from '../../UI/Library/Button/Button'
 // Style
 import styles from './CourseBookings.module.scss';
 import Checkbox from '../../UI/Checkbox';
+import Loader from '@components/UI/Loader';
+import { getCouponByCode } from '@lib/coupons';
+import { enqueueSnackbar } from 'notistack';
+import { FieldValues, useForm } from 'react-hook-form';
+import Input from '@components/UI/Library/Input';
+import { createBooking } from '@lib/bookings';
 
-const Course: React.FC<ICourse> = (course) => {
+interface CourseProps {
+  course: ICourse;
+  handleTick: (id: string) => void;
+  checked: boolean;
+}
+
+const Course: React.FC<CourseProps> = ({ course, handleTick, checked }) => {
   return (
     <div className={styles.course}>
       <div className={styles.text}>
@@ -25,96 +35,89 @@ const Course: React.FC<ICourse> = (course) => {
       </div>
       <div className={styles.check}>
         <Checkbox
-          // onChange={() => handleTick(course._id)}
-          // checked={ticked!.includes(course._id)
-          onChange={() => { }}
-          checked={false}
+          onChange={() => handleTick(course.id)}
+          checked={checked}
         />
       </div>
     </div>
   )
 };
 
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  country: string;
+};
+
 const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
   // Config
-  const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
   const couponRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  const {
+    register,
+    handleSubmit,
+  } = useForm<FormData>();
 
   // State
   const [coupon, setCoupon] = useState<ICoupon>()
   const [total, setTotal] = useState<number>(0)
   const [ticked, setTicked] = useState<string[]>([])
+  const [loading, setLoading] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   setTotal(handleUpdateTotal())
-  // }, [ticked, coupon])
-
-  // Handlers
-  const handleCouponVerification = (e: Event) => {
-    e.preventDefault();
-    const code = couponRef.current.value.trim();
-    if (code === '') {
-      return toast('Please enter a valid coupon code');
-    }
-    toast('Validating Code. Hang tight...');
-    axios({
-      method: 'POST',
-      url: `${process.env.NEXT_PUBLIC_API_URL}/coupons/validate`,
-      data: {
-        code
+  const handleTick = (id: string) => {
+    setTicked((prev) => {
+      if (!prev.includes(id)) {
+        return [...prev, id]
       }
-    }).then(result => {
-      toast(result.data.message);
-      // setCoupon({
-      //   discount: result.data.discount,
-      //   code: result.data.code
-      // })
+      return prev.filter((prevId) => prevId !== id);
     })
-      .catch(err => {
-        toast(err.response.data.message);
-      })
   }
 
-  const handleSubmitBooking = (e: Event) => {
+  // Handlers
+  const handleCouponVerification = async (e: Event) => {
+    enqueueSnackbar('Validating Coupon. Hang tight...');
     e.preventDefault();
-    const form = formRef.current
+    const code = couponRef.current.value.trim();
 
-    if (form.checkValidity() === false) {
-      return toast('Please fill in all the required fields correctly.');
+    if (code === '') {
+      return enqueueSnackbar('Please enter a valid coupon code');
     }
 
-    const booking: any = {}
-    const prevFormData = new FormData(form);
-    prevFormData.forEach((value, key) => booking[key] = value);
+    setLoading(true);
+    enqueueSnackbar('Validating Coupon. Hang tight...');
+    const couponData = await getCouponByCode(code);
+    setLoading(false);
 
-    // Add
-    if (coupon) {
-      booking['coupon-code'] = coupon;
-      booking['Coupon Discount'] = `${coupon.discount}%`;
+    if (!couponData) {
+      enqueueSnackbar('Coupon is Invalid');
+      couponRef.current.value = '';
+      return;
     }
-    booking.Total = total;
-    const bookedCourses = ticked!.map(item => {
-      const course = courses.find(course => course.id === item)
-      if (course) {
-        return `${course.name}`
-      }
-    })
-    booking['Course(s)'] = bookedCourses.join('; ')
+    setCoupon(couponData)
+    setLoading(false);
+    enqueueSnackbar('Coupon Validated Successfully');
+  }
 
-    toast('Booking Course. Hang tight...');
-
-    axios({
-      method: 'POST',
-      url: `${process.env.NEXT_PUBLIC_API_URL}/courses/book`,
-      data: booking,
-    })
-      .then(() => {
-        form.reset();
-        toast('Thank you for your course booking. You will receive a confirmation email with a payment link soon!');
-        // toggle()
-        setCoupon(undefined)
-      })
-      .catch(err => console.error(err))
+  const handleSubmitBooking = async (bookingData: FormData) => {
+    const booking: Omit<IBooking, 'id'> = {
+      ...bookingData,
+      date: new Date(),
+      courses: ticked,
+      total,
+      ...(coupon && { coupon: coupon.code }),
+    }
+    console.log(booking)
+    setLoading(true);
+    enqueueSnackbar('Booking Course. Hang tight...');
+    try {
+      await createBooking(booking);
+      setLoading(false);
+      enqueueSnackbar('Thank you for your course booking. You will receive a confirmation email with a payment link soon!')
+    } catch {
+      setLoading(false);
+      enqueueSnackbar('Oops... Something went wrong with your booking')
+    }
   }
 
   const handleUpdateTotal = (): number => {
@@ -133,6 +136,10 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
     return total
   }
 
+  useEffect(() => {
+    setTotal(handleUpdateTotal())
+  }, [ticked, coupon])
+
   return (
     <section className={styles.bookings}>
       <Container>
@@ -142,29 +149,62 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
         </div>
         <div className={styles.grid}>
           {courses.map((course, index) => (
-            <Course {...course} key={index} />
+            <Course
+              course={course}
+              key={index}
+              handleTick={handleTick}
+              checked={ticked.includes(course.id)}
+            />
           ))}
         </div>
 
-        <form className={styles.form} ref={formRef}>
+        <form className={styles.form} onSubmit={handleSubmit(handleSubmitBooking)}>
           <div className={styles.contact}>
             <h4>Your <span>Details</span></h4>
             <div className={styles.grid}>
               <div className={styles.row}>
-                <label htmlFor="Name">Name</label>
-                <input type="text" name="Name" required />
+                <Input
+                  inputProps={{
+                    type: 'text',
+                    autoComplete: 'name'
+                  }}
+                  name='name'
+                  register={{ ...register('name', { required: true }) }}
+                  label="Full Name"
+                />
               </div>
               <div className={styles.row}>
-                <label htmlFor="Email">Email</label>
-                <input type="email" name="Email" required />
+                <Input
+                  inputProps={{
+                    type: 'email',
+                    autoComplete: 'email'
+                  }}
+                  name='email'
+                  register={{ ...register('email', { required: true }) }}
+                  label="Email"
+                />
               </div>
               <div className={styles.row}>
-                <label htmlFor="Phone">Phone</label>
-                <input type="phone" name="Phone" required />
+                <Input
+                  inputProps={{
+                    type: 'phone',
+                    autoComplete: 'phone'
+                  }}
+                  name='email'
+                  register={{ ...register('phone', { required: true }) }}
+                  label="Phone"
+                />
               </div>
               <div className={styles.row}>
-                <label htmlFor="Country">Country</label>
-                <input type="text" name="Country" required />
+                <Input
+                  inputProps={{
+                    type: 'text',
+                    autoComplete: 'country'
+                  }}
+                  name='country'
+                  register={{ ...register('country', { required: true }) }}
+                  label="Country"
+                />
               </div>
             </div>
           </div>
@@ -174,7 +214,7 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
             <p>Please use your Full Name and Course as payment reference</p>
             <div className={styles.amount}>
               <h5>Total Amount :</h5>
-              <p>R {total}</p>
+              <p>$ {total}</p>
             </div>
             <div className={styles.coupon}>
               <div className={styles.row}>
@@ -187,12 +227,13 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
             </div>
           </div>
           <div className={styles.submit}>
-            <Button fill onClick={handleSubmitBooking}>
+            <Button fill disabled={ticked.length < 1}>
               Submit Booking
             </Button>
           </div>
         </form>
       </Container>
+      <Loader open={loading} />
     </section >
   )
 }

@@ -25,7 +25,7 @@ const Booking: React.FC<IBooking> = (booking) => {
             <a target="_blank" href={`tel:${booking.phone}`}>{booking.phone}</a>
           </p>
           <p><b>Country: </b> {booking.country} </p>
-          <p><b>Coupon Used: </b> {booking.couponUsed === true ? 'True' : 'False'} </p>
+          <p><b>Coupon Used: </b> {!!booking.coupon ? 'True' : 'False'} </p>
           <p><b>Courses: </b>
             <ul className={styles.courses}>
               {booking.courses.map((course) => (

@@ -10,9 +10,10 @@ interface IProps {
   onClick?: any;
   fill?: boolean;
   className?: string;
+  disabled?: boolean;
 }
 
-const Button = ({ link, children, icon, onClick, fill, className }: IProps) => {
+const Button = ({ link, children, icon, onClick, fill, className, disabled }: IProps) => {
   const classes = ClassNames(
     styles.button,
     className,
@@ -21,7 +22,7 @@ const Button = ({ link, children, icon, onClick, fill, className }: IProps) => {
 
   const Inner = () => {
     return (
-      <button className={classes} onClick={onClick}>
+      <button className={classes} onClick={onClick} disabled={disabled}>
         {children}
         {icon ? <ArrowForwardIcon className={styles.icon} /> : null}
       </button>

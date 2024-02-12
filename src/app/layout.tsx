@@ -1,7 +1,7 @@
 import { Montserrat, Poppins } from 'next/font/google'
 import classNames from 'classnames';
 import '@styles/global.scss';
-import Notifications from '@components/UI/Notifications';
+import ProviderWrapper from 'src/context/ProviderWrapper';
 
 // If loading a variable font, you don't need to specify the font weight
 const montserrat = Montserrat({
@@ -26,8 +26,9 @@ export default function RootLayout({
     <html lang="en" className={classNames(montserrat.variable, poppins.variable)}>
       <link rel="icon" type="image/png" href="/images/logos/favicon.png" />
       <body>
-        {children}
-        <Notifications />
+        <ProviderWrapper>
+          {children}
+        </ProviderWrapper>
       </body>
     </html>
   )

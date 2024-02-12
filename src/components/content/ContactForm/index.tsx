@@ -4,7 +4,7 @@ import Section from '@components/UI/Section/Section';
 import styles from './styles.module.scss';
 import Button from '@components/UI/Library/Button/Button';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { enqueueSnackbar } from 'notistack';
 import { useRef } from 'react';
 
 const ContactForm = (): JSX.Element | null => {
@@ -17,7 +17,7 @@ const ContactForm = (): JSX.Element | null => {
     const form = formRef.current
 
     if (form.checkValidity() === false) {
-      return toast('Please fill in all the required fields correctly.');
+      return enqueueSnackbar('Please fill in all the required fields correctly.');
     }
 
     let enquiry: any = {}
@@ -31,7 +31,7 @@ const ContactForm = (): JSX.Element | null => {
     })
       .then(result => {
         form.reset()
-        toast('Thank you for your message. We\'ll get back to you soon!');
+        enqueueSnackbar('Thank you for your message. We\'ll get back to you soon!');
       })
       .catch(err => console.log(err))
   }

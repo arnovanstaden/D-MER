@@ -147,30 +147,12 @@ a {
   }
 }
 
-.notification {
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-
-  >div {
-    background-color: transparent !important;
-    margin-bottom: 1rem;
-    background-color: $red;
-    padding: 0;
-  }
-
-  &_body {
-    background-color: $red;
-    color: $white !important;
-    font-size: 0.9rem;
-    margin: 0 !important;
-    padding: 0.5rem 1.5rem !important;
-  }
-}
-
 input,
 textarea {
   resize: none;
   font-family: $font;
+}
+
+.notistack-MuiContent {
+  background-color: $red !important;
 }

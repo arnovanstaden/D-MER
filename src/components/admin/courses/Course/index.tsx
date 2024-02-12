@@ -11,7 +11,7 @@ import { Box, Modal, Typography } from '@mui/material';
 import { createCourse, deleteCourse, updateCourse } from '@lib/courses';
 import { useRouter } from 'next/navigation';
 import Loader from '@components/UI/Loader';
-import { toast } from 'react-toastify';
+import { enqueueSnackbar } from 'notistack';
 
 const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
   const router = useRouter();
@@ -35,7 +35,7 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
     setLoading(true);
     await createCourse(updatedCourse);
     setLoading(false);
-    toast('Course Created');
+    enqueueSnackbar('Course Created');
     router.replace('/admin/courses');
   }
 
@@ -43,7 +43,7 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
     setLoading(true);
     await updateCourse(updatedCourse)
     setLoading(false);
-    toast('Course Updated');
+    enqueueSnackbar('Course Updated');
     router.replace('/admin/courses');
   }
 
@@ -53,7 +53,7 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
     setLoading(true);
     await deleteCourse(course.id);
     setLoading(false);
-    toast('Course Deleted');
+    enqueueSnackbar('Course Deleted');
     router.replace('/admin/courses');
   }
 

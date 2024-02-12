@@ -1,4 +1,4 @@
-import { collection, getDocs, doc, getDoc, query, orderBy, limit, setDoc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, query, orderBy, limit, setDoc, deleteDoc, where } from 'firebase/firestore';
 import { firestoreDb } from './firebase';
 
 type FirestoreCollectionId = 'courses' | 'coupons' | 'bookings';
@@ -11,6 +11,21 @@ export const getFirestoreDocument = async <T>(category: FirestoreCollectionId, i
     ...docData,
     id: docSnap.id,
   } as T;
+}
+
+export const queryFirestoreDocument = async <T>(category: FirestoreCollectionId, field: string, value: string | number): Promise<T | undefined> => {
+  const q = query(collection(firestoreDb, category), where(field, '==', value));
+  const querySnapshot = await getDocs(q);
+  const data = querySnapshot.docs.map((doc) => {
+    const docData = doc.data();
+
+    return {
+      ...docData,
+      id: doc.id,
+      ...(docData.date && { date: docData.date.toDate() })
+    }
+  });
+  return data[0] as T;
 }
 
 export const getFirestoreDocumentCollection = async <T>(category: FirestoreCollectionId, search?: boolean): Promise<T[]> => {

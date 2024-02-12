@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword, User } from 'firebase/auth';
 import { auth } from '@lib/firebase'
 import { LoginCredentials } from '@types';
-import { toast } from 'react-toastify';
+import { enqueueSnackbar } from 'notistack';
 import { usePathname, useRouter } from 'next/navigation';
 
 interface IUseAuth {
@@ -38,10 +38,10 @@ export const useAuth = (): IUseAuth => {
   const login = async (loginData: LoginCredentials) => {
     signInWithEmailAndPassword(auth, loginData.email, loginData.password)
       .then(async (userCredential) => {
-        toast('Welcome back!')
+        enqueueSnackbar('Welcome back!')
       })
       .catch(() => {
-        toast('Incorrect Login Credentials');
+        enqueueSnackbar('Incorrect Login Credentials');
         throw Error('Incorrect Login Credentials');
       })
   };

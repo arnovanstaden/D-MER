@@ -6,7 +6,6 @@ import { useAuth } from '@hooks/auth';
 import { LoginCredentials } from '@types';
 import Button from '@components/UI/Library/Button/Button';
 import Input from '@components/UI/Library/Input';
-import Notification from '@components/UI/Notifications';
 
 const AdminLoginForm = (): JSX.Element | null => {
   const { login } = useAuth();
@@ -29,8 +28,7 @@ const AdminLoginForm = (): JSX.Element | null => {
               autoComplete: 'email'
             }}
             name='email'
-            register={{ ...register('email') }}
-            value=""
+            register={{ ...register('email', { required: true }) }}
           />
           <Input
             inputProps={{
@@ -38,8 +36,7 @@ const AdminLoginForm = (): JSX.Element | null => {
               autoComplete: 'password'
             }}
             name='password'
-            register={{ ...register('password') }}
-            value=""
+            register={{ ...register('password', { required: true }) }}
           />
           <Button>Login</Button>
         </form>

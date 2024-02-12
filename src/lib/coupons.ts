@@ -1,11 +1,10 @@
 'use server';
 
 import { ICoupon, INewCoupon } from '@types';
-import { addFirestoreDocument, getFirestoreDocument, updateFirestoreDocument } from './firestore';
+import { addFirestoreDocument, getFirestoreDocument, queryFirestoreDocument, updateFirestoreDocument } from './firestore';
 import voucherCodes from 'voucher-code-generator';
 
-
-export const getCoupon = async (id: string): Promise<ICoupon | undefined> => await getFirestoreDocument<ICoupon>('coupons', id);
+export const getCouponByCode = async (code: string): Promise<ICoupon | undefined> => await queryFirestoreDocument<ICoupon>('coupons', 'code', code);
 
 export const createCoupon = async (newCoupon: INewCoupon): Promise<void> => {
   const coupon: ICoupon = {

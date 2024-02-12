@@ -34,8 +34,16 @@
     background-color: $red;
     border-color: $red;
 
-    &:hover {
-      background-color: transparent;
+    &:not(:disabled) {
+      &:hover {
+        background-color: transparent;
+      }
     }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    user-select: none;
+    cursor: default;
   }
 }

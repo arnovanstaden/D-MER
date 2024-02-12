@@ -31,8 +31,8 @@ export interface IBooking {
   email: string;
   phone: string;
   country: string;
-  couponUsed: boolean;
-  total: string;
+  total: number;
   courses: string[];
   date: Date;
+  coupon?: string;
 }
