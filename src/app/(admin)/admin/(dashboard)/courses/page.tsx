@@ -1,5 +1,7 @@
 import CourseList from '@components/admin/CourseList';
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
+
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: 'Courses | D-MER Worldwide',
@@ -9,6 +11,6 @@ export const metadata: Metadata = {
   }
 }
 
-const AdminDashboard = (): JSX.Element | null => <CourseList />;
+const CourseListPage = (): JSX.Element | null => <CourseList />;
 
-export default AdminDashboard;
+export default CourseListPage;

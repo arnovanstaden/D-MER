@@ -3,15 +3,15 @@ export interface LoginCredentials {
   password: string
 }
 
-export interface CourseProps {
-  _id: string;
+export interface ICourse {
+  id: string;
   name: string;
   objective: string;
   description: string;
   price: number;
 }
 
-export interface CouponProps {
+export interface ICoupon {
   email: string;
   code: string;
   discount: number;

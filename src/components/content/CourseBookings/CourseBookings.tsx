@@ -1,6 +1,6 @@
 'use client';
 
-import { CouponProps, CourseProps } from '@types';
+import { ICoupon, ICourse } from '@types';
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios'
 import { toast } from 'react-toastify';
@@ -14,7 +14,7 @@ import styles from './CourseBookings.module.scss';
 import Checkbox from '../../UI/Checkbox';
 import Link from 'next/link';
 
-const Course: React.FC<CourseProps> = (course) => {
+const Course: React.FC<ICourse> = (course) => {
   return (
     <div className={styles.course}>
       <div className={styles.text}>
@@ -36,13 +36,13 @@ const Course: React.FC<CourseProps> = (course) => {
   )
 };
 
-const CourseBookings: React.FC<{ courses: CourseProps[] }> = ({ courses }) => {
+const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
   // Config
   const formRef = useRef() as React.MutableRefObject<HTMLFormElement>;
   const couponRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   // State
-  const [coupon, setCoupon] = useState<CouponProps>()
+  const [coupon, setCoupon] = useState<ICoupon>()
   const [total, setTotal] = useState<number>(0)
   const [ticked, setTicked] = useState<string[]>([])
 
@@ -95,7 +95,7 @@ const CourseBookings: React.FC<{ courses: CourseProps[] }> = ({ courses }) => {
     }
     booking.Total = total;
     const bookedCourses = ticked!.map(item => {
-      const course = courses.find(course => course._id === item)
+      const course = courses.find(course => course.id === item)
       if (course) {
         return `${course.name}`
       }
@@ -121,7 +121,7 @@ const CourseBookings: React.FC<{ courses: CourseProps[] }> = ({ courses }) => {
   const handleUpdateTotal = (): number => {
     let total = 0;
     ticked && ticked.forEach(item => {
-      const course = courses.find(course => course._id === item)
+      const course = courses.find(course => course.id === item)
       if (course) {
         total += course.price
       }
@@ -138,7 +138,7 @@ const CourseBookings: React.FC<{ courses: CourseProps[] }> = ({ courses }) => {
     <section className={styles.bookings}>
       <Container>
         <div className={styles.heading}>
-          <h2>Book <span>Courses</span></h2>
+          <h2>Book <span>Online Courses</span></h2>
           <p>Please select the courses you would like to book</p>
         </div>
         <div className={styles.grid}>

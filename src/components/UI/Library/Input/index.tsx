@@ -2,7 +2,7 @@
 import { UseFormRegisterReturn } from 'react-hook-form';
 import styles from './styles.module.scss';
 import { ReactPropTypes } from 'react';
-import { CourseProps } from '@types';
+import { ICourse } from '@types';
 
 interface IProps {
   name: string;

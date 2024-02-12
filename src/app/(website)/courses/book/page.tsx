@@ -1,13 +1,13 @@
-import { CourseProps } from '@types';
+import { ICourse } from '@types';
 
 // Styles
 import styles from './styles.module.scss';
 
 
 import type { Metadata } from 'next'
-import { getFirestoreDocumentCollection } from '@lib/firestore';
 import CourseBookings from '@components/content/CourseBookings/CourseBookings';
 import Landing from '@components/UI/Landing/Landing';
+import { getCourseList } from '@lib/courses';
 
 export const metadata: Metadata = {
   title: 'Course Bookings | D-MER',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 const CoursesBookings = async () => {
-  const courses = await getFirestoreDocumentCollection<CourseProps>('courses');
+  const courses = await getCourseList();
 
   return (
     <main className={styles.courses}>

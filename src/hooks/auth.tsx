@@ -26,7 +26,6 @@ export const useAuth = (): IUseAuth => {
 
     setUser(user);
     if (pathname === '/admin/login') {
-      console.log('here')
       nextRouter.replace('/admin');
     }
   };

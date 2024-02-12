@@ -1,5 +1,4 @@
-import { CourseProps } from '@types';
-
+import { ICourse } from '@types';
 
 // Components
 import Button from '../../UI/Library/Button/Button'
@@ -8,13 +7,7 @@ import Button from '../../UI/Library/Button/Button'
 import styles from './course.module.scss';
 import Link from 'next/link';
 
-interface Props {
-  course: CourseProps,
-  toggle: () => any
-}
-
-
-const Course: React.FC<Props> = ({ course, toggle }) => {
+const Course: React.FC<{ course: ICourse }> = ({ course }) => {
   return (
     <article className={styles.course}>
       <div className={styles.image}>

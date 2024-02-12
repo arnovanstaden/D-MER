@@ -1,4 +1,4 @@
-import CourseList from '@components/admin/CourseList';
+import Course from '@components/admin/Course';
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,6 +8,6 @@ export const metadata: Metadata = {
     follow: false,
   }
 }
-const CoursePage = (): JSX.Element | null => <CourseList />
+const CoursePage = (): JSX.Element | null => <Course />
 
 export default CoursePage;
