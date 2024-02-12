@@ -57,6 +57,8 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
   const {
     register,
     handleSubmit,
+    formState: { errors },
+    reset
   } = useForm<FormData>();
 
   // State
@@ -94,8 +96,20 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
       couponRef.current.value = '';
       return;
     }
+
+    if (couponData.expiry < new Date()) {
+      enqueueSnackbar('Coupon is Expired');
+      couponRef.current.value = '';
+      return;
+    }
+
+    if (couponData.redeemed) {
+      enqueueSnackbar('Coupon already redeemed');
+      couponRef.current.value = '';
+      return;
+    }
+
     setCoupon(couponData)
-    setLoading(false);
     enqueueSnackbar('Coupon Validated Successfully');
   }
 
@@ -113,8 +127,10 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
     try {
       await createBooking(booking);
       setLoading(false);
-      enqueueSnackbar('Thank you for your course booking. You will receive a confirmation email with a payment link soon!')
-    } catch {
+      enqueueSnackbar('Thank you for your course booking. You will receive a confirmation email with a payment link soon!');
+      reset();
+    } catch (e) {
+      console.log(e)
       setLoading(false);
       enqueueSnackbar('Oops... Something went wrong with your booking')
     }
@@ -171,7 +187,9 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
                   name='name'
                   register={{ ...register('name', { required: true }) }}
                   label="Full Name"
+                  error={errors.name?.type === 'required' ? 'First name is required' : undefined}
                 />
+                {<p role="alert"></p>}
               </div>
               <div className={styles.row}>
                 <Input
@@ -182,6 +200,7 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
                   name='email'
                   register={{ ...register('email', { required: true }) }}
                   label="Email"
+                  error={errors.email?.type === 'required' ? 'Email is required' : undefined}
                 />
               </div>
               <div className={styles.row}>
@@ -193,6 +212,7 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
                   name='email'
                   register={{ ...register('phone', { required: true }) }}
                   label="Phone"
+                  error={errors.phone?.type === 'required' ? 'Phone is required' : undefined}
                 />
               </div>
               <div className={styles.row}>
@@ -204,6 +224,7 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
                   name='country'
                   register={{ ...register('country', { required: true }) }}
                   label="Country"
+                  error={errors.country?.type === 'required' ? 'Country is required' : undefined}
                 />
               </div>
             </div>

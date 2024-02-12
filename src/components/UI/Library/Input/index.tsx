@@ -11,6 +11,7 @@ interface IInputPropsBase {
 
 interface IPropsRegister extends IInputPropsBase {
   register: UseFormRegisterReturn;
+  error?: string;
 }
 
 interface IPropsManual extends IInputPropsBase {
@@ -37,6 +38,7 @@ const Input: React.FC<IPropsRegister | IPropsManual> = (props): JSX.Element => {
       <div className={styles.inputGroup}>
         <label htmlFor={props.name}>{props.label}</label>
         <input {...props.inputProps} {...props.register} />
+        {props.error && <small>{props.error}</small>}
       </div>
     );
   }

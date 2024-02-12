@@ -1,13 +1,13 @@
 'use server';
 
 import { ICoupon, INewCoupon } from '@types';
-import { addFirestoreDocument, getFirestoreDocument, queryFirestoreDocument, updateFirestoreDocument } from './firestore';
+import { addFirestoreDocument, queryFirestoreDocument, updateFirestoreDocument } from './firestore';
 import voucherCodes from 'voucher-code-generator';
 
 export const getCouponByCode = async (code: string): Promise<ICoupon | undefined> => await queryFirestoreDocument<ICoupon>('coupons', 'code', code);
 
 export const createCoupon = async (newCoupon: INewCoupon): Promise<void> => {
-  const coupon: ICoupon = {
+  const coupon: Omit<ICoupon, 'id'> = {
     ...newCoupon,
     expiry: new Date(newCoupon.expiry),
     redeemed: false,
@@ -16,11 +16,13 @@ export const createCoupon = async (newCoupon: INewCoupon): Promise<void> => {
       count: 1
     })[0]
   }
-  await addFirestoreDocument<ICoupon>('coupons', coupon);
+  await addFirestoreDocument<Omit<ICoupon, 'id'>>('coupons', coupon);
 }
 
-export const expireCoupon = async (id: string): Promise<void> => {
-  await updateFirestoreDocument('coupons', id, {
-    expired: true,
+export const expireCoupon = async (code: string): Promise<void> => {
+  const coupon = await getCouponByCode(code);
+  if (!coupon) return;
+  await updateFirestoreDocument('coupons', coupon.id, {
+    redeemed: true,
   });
 }

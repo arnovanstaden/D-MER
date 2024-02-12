@@ -12,6 +12,7 @@ export interface ICourse {
 }
 
 export interface ICoupon {
+  id: string;
   email: string;
   code: string;
   discount: number;
