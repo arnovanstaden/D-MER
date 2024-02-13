@@ -37,3 +37,9 @@ export interface IBooking {
   date: Date;
   coupon?: string;
 }
+
+export type TContactMessage = {
+  name: string;
+  email: string;
+  message: string;
+};

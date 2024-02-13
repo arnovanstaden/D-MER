@@ -13,7 +13,7 @@ import Checkbox from '../../UI/Checkbox';
 import Loader from '@components/UI/Loader';
 import { getCouponByCode } from '@lib/coupons';
 import { enqueueSnackbar } from 'notistack';
-import { FieldValues, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import Input from '@components/UI/Library/Input';
 import { createBooking } from '@lib/bookings';
 
@@ -121,7 +121,7 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
       total,
       ...(coupon && { coupon: coupon.code }),
     }
-    console.log(booking)
+
     setLoading(true);
     enqueueSnackbar('Booking Course. Hang tight...');
     try {
@@ -189,7 +189,6 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
                   label="Full Name"
                   error={errors.name?.type === 'required' ? 'First name is required' : undefined}
                 />
-                {<p role="alert"></p>}
               </div>
               <div className={styles.row}>
                 <Input
