@@ -1,3 +1,5 @@
+'use server';
+
 import { collection, getDocs, doc, getDoc, query, orderBy, limit, setDoc, deleteDoc, where, updateDoc } from 'firebase/firestore';
 import { firestoreDb } from './firebase';
 

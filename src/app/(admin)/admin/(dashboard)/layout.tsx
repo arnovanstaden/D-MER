@@ -3,16 +3,25 @@
 import { useAuth } from '@hooks/auth';
 import styles from './styles.module.scss';
 import Button from '@components/UI/Library/Button/Button';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const AdminLayout = ({ children }: { children: React.ReactNode }): JSX.Element | null => {
-  useAuth();
+  const { logout, user } = useAuth();
   const pathname = usePathname();
+  const nextRouter = useRouter();
+
+  if (!user) {
+    nextRouter.replace('/admin/login');
+    return null
+  };
 
   return (
     <main className={styles.AdminLayout}>
       <header>
+        <div />
         <img src="/images/logos/Dmer-Logo.svg" alt="D-MER Logo" />
+        <LogoutIcon onClick={logout} />
       </header>
       <nav>
         <Button

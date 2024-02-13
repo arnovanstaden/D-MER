@@ -6,16 +6,23 @@ import { useAuth } from '@hooks/auth';
 import { LoginCredentials } from '@types';
 import Button from '@components/UI/Library/Button/Button';
 import Input from '@components/UI/Library/Input';
+import Loader from '@components/UI/Loader';
+import { useState } from 'react';
 
 const AdminLoginForm = (): JSX.Element | null => {
   const { login } = useAuth();
-
+  const [loading, setLoading] = useState<boolean>(false);
+  console.log(loading)
   const {
     register,
     handleSubmit,
   } = useForm();
 
-  const handleLogin = async (loginData: FieldValues) => login(loginData as LoginCredentials)
+  const handleLogin = async (loginData: FieldValues) => {
+    setLoading(true);
+    await login(loginData as LoginCredentials);
+    setLoading(false);
+  }
 
   return (
     <div className={styles.AdminLogin}>
@@ -41,6 +48,7 @@ const AdminLoginForm = (): JSX.Element | null => {
           <Button>Login</Button>
         </form>
       </div>
+      <Loader open={loading} />
     </div>
   );
 };
