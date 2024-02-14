@@ -16,14 +16,16 @@ export const createBooking = async (booking: Omit<IBooking, 'id'>): Promise<void
   }
 
   // Merchant Email
+  const merchantEmailBody = await buildCourseBookingEmailMerchant(booking);
   await sendEmail({
     subject: 'Website Course Booking',
-    body: buildCourseBookingEmailMerchant(booking),
+    body: merchantEmailBody,
   });
 
+  const userEmailBody = await buildCourseBookingEmailUser(booking);
   await sendEmail({
     subject: 'D-MER Course Booking',
-    body: buildCourseBookingEmailUser(booking),
+    body: userEmailBody,
     recipient: booking.email,
   });
   revalidatePath('/admin/bookings')

@@ -1,3 +1,4 @@
+import { getCourseList } from '@lib/courses';
 import { IBooking, ICoupon, TContactMessage } from '@types';
 
 export const buildContactEmail = (message: TContactMessage): string => {
@@ -42,12 +43,16 @@ export const buildCouponEmail = (coupon: Omit<ICoupon, 'id'>) => {
         </body>`
 };
 
-export const buildCourseBookingEmailUser = (booking: Omit<IBooking, 'id'>) => {
+export const buildCourseBookingEmailUser = async (booking: Omit<IBooking, 'id'>) => {
   let body = '';
-  const keys = Object.keys(booking);
+  const keys = Object.keys(booking).filter((key) => key !== 'courses');
   keys.forEach(key => {
     body += `<p> <span style="font-weight: 600;">${key.toUpperCase()}</span>: ${booking[key as keyof Omit<IBooking, 'id'>]}</p>`
   });
+
+  const courses = await getCourseList();
+  const courseNames = courses.filter((course) => booking.courses.includes(course.id)).map((course) => course.name).join(', ');
+  body += `<p> <span style="font-weight: 600;">Courses</span>: ${courseNames}</p>`
 
   return `
   <p> Dear ${booking.name} </p>
@@ -63,12 +68,16 @@ export const buildCourseBookingEmailUser = (booking: Omit<IBooking, 'id'>) => {
   `
 };
 
-export const buildCourseBookingEmailMerchant = (booking: Omit<IBooking, 'id'>) => {
+export const buildCourseBookingEmailMerchant = async (booking: Omit<IBooking, 'id'>) => {
   let body = '';
-  const keys = Object.keys(booking);
+  const keys = Object.keys(booking).filter((key) => key !== 'courses');
   keys.forEach(key => {
     body += `<p> <span style="font-weight: 600;">${key.toUpperCase()}</span>: ${booking[key as keyof Omit<IBooking, 'id'>]}</p>`
   });
+
+  const courses = await getCourseList();
+  const courseNames = courses.filter((course) => booking.courses.includes(course.id)).map((course) => course.name).join(', ');
+  body += `<p> <span style="font-weight: 600;">Courses</span>: ${courseNames}</p>`
 
   return `
   <p> Dear D-MER </p>
