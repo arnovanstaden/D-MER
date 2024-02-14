@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import Loader from '@components/UI/Loader';
 import { enqueueSnackbar } from 'notistack';
 import { useForm } from 'react-hook-form';
+import { errorNotification } from '@utils/notifications';
 
 const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
   const router = useRouter();
@@ -30,29 +31,49 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
 
   const handleCreateCourse = async (newCourse: ICourse) => {
     setLoading(true);
-    await createCourse(newCourse);
-    setLoading(false);
-    enqueueSnackbar('Course Created');
-    router.replace('/admin/courses');
-    reset();
+
+    try {
+      await createCourse(newCourse);
+      enqueueSnackbar('Course Created');
+      router.replace('/admin/courses');
+      reset();
+    } catch (e) {
+      console.error(e)
+      errorNotification('Error Creating Course. Please try again.', e);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const handleUpdateCourse = async (updatedCourse: ICourse) => {
     setLoading(true);
-    await updateCourse(updatedCourse)
-    setLoading(false);
-    enqueueSnackbar('Course Updated');
-    router.replace('/admin/courses');
+    try {
+      await updateCourse(updatedCourse)
+      enqueueSnackbar('Course Updated');
+      router.replace('/admin/courses');
+    } catch (e) {
+      console.error(e)
+      errorNotification('Error Updating Course. Please try again.', e);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const handleDeleteCourse = async () => {
     if (!course) return;
     setOpenDeleteModal(false);
     setLoading(true);
-    await deleteCourse(course.id);
-    setLoading(false);
-    enqueueSnackbar('Course Deleted');
-    router.replace('/admin/courses');
+
+    try {
+      await deleteCourse(course.id);
+      enqueueSnackbar('Course Deleted');
+      router.replace('/admin/courses');
+    } catch (e) {
+      console.error(e)
+      errorNotification('Error Deleted Course. Please try again.', e);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -104,8 +125,8 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
           label='Description'
           name="description"
           textareaProps={{ rows: 5 }}
-          register={{ ...register('description', { required: true, value: course?.objective }) }}
-          error={errors.description?.type === 'objective' ? 'Description is required' : undefined}
+          register={{ ...register('description', { required: true, value: course?.description }) }}
+          error={errors.description?.type === 'required' ? 'Description is required' : undefined}
         />
       </form>
       <Modal

@@ -9,6 +9,7 @@ import { enqueueSnackbar } from 'notistack';
 import { createCoupon } from '@lib/coupons';
 import Loader from '@components/UI/Loader';
 import { useForm } from 'react-hook-form';
+import { errorNotification } from '@utils/notifications';
 
 const CreateCoupons: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -22,11 +23,20 @@ const CreateCoupons: React.FC = () => {
 
   const handleCreateCoupon = async (coupon: ICoupon) => {
     setLoading(true);
-    await createCoupon(coupon)
-    enqueueSnackbar('Coupon created & sent to client');
-    setLoading(false);
-    reset()
+    try {
+      await createCoupon(coupon)
+      enqueueSnackbar('Coupon created & sent to client');
+      reset()
+    } catch (e) {
+      console.error(e)
+      errorNotification('Error creating Coupon', e)
+    } finally {
+      setLoading(false);
+    }
   }
+
+  const currentDate = new Date();
+  const threeMonthsLater = new Date(currentDate.getFullYear(), currentDate.getMonth() + 3, currentDate.getDate());
 
   return (
     <div className={styles.CreateCoupons}>
@@ -59,8 +69,9 @@ const CreateCoupons: React.FC = () => {
           name="expiry"
           inputProps={{
             type: 'date',
+            defaultValue: threeMonthsLater.toISOString().substring(0, 10)
           }}
-          register={{ ...register('expiry', { required: true }) }}
+          register={{ ...register('expiry', { required: true, }) }}
           error={errors.expiry?.type === 'required' ? 'Expiry is required' : undefined}
         />
       </form>

@@ -5,6 +5,7 @@ import { LoginCredentials } from '@types'; // Ensure this type is correctly defi
 import { useRouter } from 'next/navigation'; // Correct import path
 import { auth } from '@lib/firebase'; // Ensure Firebase is correctly initialized here
 import Loader from '@components/UI/Loader';
+import { errorNotification } from '@utils/notifications';
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -37,9 +38,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       await signInWithEmailAndPassword(auth, loginData.email, loginData.password);
       enqueueSnackbar('Welcome back!', { variant: 'success' });
       router.push('/admin');
-    } catch (error) {
-      enqueueSnackbar('Incorrect Login Credentials', { variant: 'error' });
-      throw new Error('Incorrect Login Credentials');
+    } catch (e) {
+      console.error(e)
+      errorNotification('Error logging in. Please try again.', e);
     } finally {
       setIsLoading(false);
     }

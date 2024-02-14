@@ -126,13 +126,13 @@ const CourseBookings: React.FC<{ courses: ICourse[] }> = ({ courses }) => {
     enqueueSnackbar('Booking Course. Hang tight...');
     try {
       await createBooking(booking);
-      setLoading(false);
       enqueueSnackbar('Thank you for your course booking. You will receive a confirmation email with a payment link soon!');
       reset();
     } catch (e) {
       console.error(e)
+      enqueueSnackbar('Oops... Something went wrong with your booking. Please try again');
+    } finally {
       setLoading(false);
-      enqueueSnackbar('Oops... Something went wrong with your booking')
     }
   }
 

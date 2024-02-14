@@ -26,13 +26,19 @@ const ContactForm = (): JSX.Element | null => {
   // Handlers
   const handleSubmitContactForm = async (data: TContactMessage) => {
     setLoading(true);
-    await sendEmail({
-      subject: 'Website Contact Message',
-      body: buildContactEmail(data),
-    });
-    enqueueSnackbar('Thank you for your message. We will be in touch soon.');
-    setLoading(false);
-    reset();
+    try {
+      await sendEmail({
+        subject: 'Website Contact Message',
+        body: buildContactEmail(data),
+      })
+      enqueueSnackbar('Thank you for your message. We will be in touch soon.');
+      reset();
+    } catch (e) {
+      console.error(e)
+      enqueueSnackbar('Error sending message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
