@@ -12,34 +12,32 @@ import { createCourse, deleteCourse, updateCourse } from '@lib/courses';
 import { useRouter } from 'next/navigation';
 import Loader from '@components/UI/Loader';
 import { enqueueSnackbar } from 'notistack';
+import { useForm } from 'react-hook-form';
 
 const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
   const router = useRouter();
   const isNewCourse = !course;
-  const [updatedCourse, setUpdatedCourse] = useState<ICourse>(course || {
-    id: '',
-    name: '',
-    objective: '',
-    description: '',
-    price: 0,
-  });
+
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const updateCourseState = (update: Partial<ICourse>) => setUpdatedCourse((prev) => ({
-    ...prev,
-    ...update,
-  }));
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<ICourse>();
 
-  const handleCreateCourse = async () => {
+  const handleCreateCourse = async (newCourse: ICourse) => {
     setLoading(true);
-    await createCourse(updatedCourse);
+    await createCourse(newCourse);
     setLoading(false);
     enqueueSnackbar('Course Created');
     router.replace('/admin/courses');
+    reset();
   }
 
-  const handleUpdateCourse = async () => {
+  const handleUpdateCourse = async (updatedCourse: ICourse) => {
     setLoading(true);
     await updateCourse(updatedCourse)
     setLoading(false);
@@ -71,7 +69,7 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
               Delete Course
             </Button>
           )}
-          <Button fill onClick={isNewCourse ? handleCreateCourse : handleUpdateCourse}>
+          <Button fill onClick={isNewCourse ? handleSubmit(handleCreateCourse) : handleSubmit(handleUpdateCourse)}>
             {isNewCourse ? 'Create Course' : 'Save Course'}
           </Button>
         </div>
@@ -80,33 +78,34 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
         <Input
           label='Course Name'
           name="name"
-          inputProps={{ required: true }}
-          value={updatedCourse.name}
-          onChange={(newValue) => updateCourseState({ name: newValue as string })}
+          inputProps={{
+            type: 'text',
+          }}
+          register={{ ...register('name', { required: true, value: course?.name }) }}
+          error={errors.name?.type === 'required' ? 'First name is required' : undefined}
         />
         <Input
           label='Price'
           name="price"
           inputProps={{
-            required: true,
             type: 'number',
           }}
-          value={updatedCourse.price}
-          onChange={(newValue) => updateCourseState({ price: newValue as number })}
+          register={{ ...register('price', { required: true, value: course?.price }) }}
+          error={errors.price?.type === 'required' ? 'Price is required' : undefined}
         />
         <TextArea
           label='Objective'
           name="objective"
           textareaProps={{ required: true, rows: 4 }}
-          value={updatedCourse.objective}
-          onChange={(newValue) => updateCourseState({ objective: newValue as string })}
+          register={{ ...register('objective', { required: true, value: course?.objective }) }}
+          error={errors.objective?.type === 'required' ? 'Objective is required' : undefined}
         />
         <TextArea
           label='Description'
           name="description"
-          textareaProps={{ required: true, rows: 5 }}
-          value={updatedCourse.description}
-          onChange={(newValue) => updateCourseState({ description: newValue as string })}
+          textareaProps={{ rows: 5 }}
+          register={{ ...register('description', { required: true, value: course?.objective }) }}
+          error={errors.description?.type === 'objective' ? 'Description is required' : undefined}
         />
       </form>
       <Modal
