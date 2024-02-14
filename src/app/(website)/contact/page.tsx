@@ -1,8 +1,8 @@
 // Components
 import Landing from '@components/UI/Landing/Landing';
-import Section from '@components/UI/Section/Section';
+import Section from '@components/Layout/Section/Section';
 import Banner from '@components/UI/Banner/Banner';
-import Button from '@components/UI/Library/Button/Button';
+import Button from '@components/UI/Button/Button';
 import EmailIcon from '@mui/icons-material/Email';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -13,11 +13,12 @@ import ContactForm from '@components/content/ContactForm';
 
 
 import type { Metadata } from 'next'
+import { generateCustomMetaData } from '@utils/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateCustomMetaData({
   title: 'Contact | D-MER',
   description: 'Have a burning question? Get in touch!',
-}
+})
 
 const Contact = () => (
   <main className={styles.contact}  >

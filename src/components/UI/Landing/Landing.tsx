@@ -1,5 +1,5 @@
-import Container from '../Library/Container/Container';
-import Button from '../Library/Button/Button';
+import Container from '../../Layout/Container/Container';
+import Button from '../Button/Button';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import styles from './landing.module.scss';

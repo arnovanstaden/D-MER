@@ -1,5 +1,5 @@
-import Footer from '@components/UI/Footer/Footer';
-import Header from '@components/UI/Header/Header';
+import Footer from '@components/Layout/Footer/Footer';
+import Header from '@components/Layout/Header/Header';
 
 export const revalidate = false;
 

@@ -1,9 +1,9 @@
 'use client';
 
-import Input from '@components/UI/Library/Input';
+import Input from '@components/UI/Input';
 import styles from './styles.module.scss';
-import TextArea from '@components/UI/Library/TextArea';
-import Button from '@components/UI/Library/Button/Button';
+import TextArea from '@components/UI/TextArea';
+import Button from '@components/UI/Button/Button';
 import { useState } from 'react';
 import { ICourse } from '@types';
 import Link from 'next/link';

@@ -1,7 +1,7 @@
 import ClassNames from 'classnames'
 
 // Components
-import Container from '../Library/Container/Container';
+import Container from '../Container/Container';
 
 // Styles
 import styles from './section.module.scss';

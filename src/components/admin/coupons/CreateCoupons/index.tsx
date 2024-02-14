@@ -1,10 +1,10 @@
 'use client';
 
-import Input from '@components/UI/Library/Input';
+import Input from '@components/UI/Input';
 import styles from './styles.module.scss';
 import { useState } from 'react';
 import { INewCoupon } from '@types';
-import Button from '@components/UI/Library/Button/Button';
+import Button from '@components/UI/Button/Button';
 import { enqueueSnackbar } from 'notistack';
 import { createCoupon } from '@lib/coupons';
 import Loader from '@components/UI/Loader';

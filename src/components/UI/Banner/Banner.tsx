@@ -1,5 +1,5 @@
 import ClassNames from 'classnames';
-import Container from '../Library/Container/Container';
+import Container from '../../Layout/Container/Container';
 import styles from './banner.module.scss';
 import Image from 'next/image';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './styles.module.scss';
-import Button from '@components/UI/Library/Button/Button';
+import Button from '@components/UI/Button/Button';
 import { usePathname } from 'next/navigation';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from 'src/context/AuthProvider';

@@ -1,5 +1,5 @@
 // Components
-import Button from '@components/UI/Library/Button/Button';
+import Button from '@components/UI/Button/Button';
 
 // Styles
 import styles from './styles.module.scss';
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   }
 }
 
-const PageNotFound = () => {
+const NotFound = () => {
   return (
     <main className={styles.PageNotFound} >
       <div className={styles.error}>
@@ -28,4 +28,4 @@ const PageNotFound = () => {
   )
 }
 
-export default PageNotFound
+export default NotFound

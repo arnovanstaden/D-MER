@@ -1,7 +1,7 @@
 import { ICourse } from '@types';
 
 // Components
-import Button from '../../UI/Library/Button/Button'
+import Button from '../../UI/Button/Button'
 
 // Styles
 import styles from './course.module.scss';

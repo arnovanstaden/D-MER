@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 import Link from 'next/link';
-import Button from '@components/UI/Library/Button/Button';
+import Button from '@components/UI/Button/Button';
 import { getCourseList } from '@lib/courses';
 
 const CourseList: React.FC = async () => {

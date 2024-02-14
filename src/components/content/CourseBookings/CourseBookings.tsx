@@ -4,8 +4,8 @@ import { IBooking, ICoupon, ICourse } from '@types';
 import { useRef, useState, useEffect } from 'react';
 
 // Components
-import Container from '../../UI/Library/Container/Container'
-import Button from '../../UI/Library/Button/Button'
+import Container from '../../Layout/Container/Container'
+import Button from '../../UI/Button/Button'
 
 // Style
 import styles from './CourseBookings.module.scss';
@@ -14,7 +14,7 @@ import Loader from '@components/UI/Loader';
 import { getCouponByCode } from '@lib/coupons';
 import { enqueueSnackbar } from 'notistack';
 import { useForm } from 'react-hook-form';
-import Input from '@components/UI/Library/Input';
+import Input from '@components/UI/Input';
 import { createBooking } from '@lib/bookings';
 
 interface CourseProps {

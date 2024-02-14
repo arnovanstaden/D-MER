@@ -1,4 +1,4 @@
-import Container from '@components/UI/Library/Container/Container';
+import Container from '@components/Layout/Container/Container';
 import styles from './CourseList.module.scss';
 import Course from '@components/content/Course/Course';
 import { ICourse } from '@types';

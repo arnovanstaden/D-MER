@@ -1,16 +1,17 @@
 // Components
 import Landing from '@components/UI/Landing/Landing';
-import Section from '@components/UI/Section/Section';
+import Section from '@components/Layout/Section/Section';
 import Banner from '@components/UI/Banner/Banner';
-import Button from '@components/UI/Library/Button/Button';
+import Button from '@components/UI/Button/Button';
 import AddIcon from '@mui/icons-material/Add';
 import styles from './styles.module.scss'
 import type { Metadata } from 'next'
+import { generateCustomMetaData } from '@utils/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateCustomMetaData({
   title: 'D-MER Worldwide',
   description: 'D-MER Worldwide is an Online learning platform and competence management system',
-}
+});
 
 const Home = () => {
   return (

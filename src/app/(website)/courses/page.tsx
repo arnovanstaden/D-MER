@@ -9,11 +9,12 @@ import styles from './styles.module.scss';
 import type { Metadata } from 'next'
 import CourseList from '@components/content/CourseList/CourseList';
 import { getCourseList } from '@lib/courses';
+import { generateCustomMetaData } from '@utils/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateCustomMetaData({
   title: 'Courses | D-MER',
   description: 'Book an online CPD course.',
-}
+})
 
 const Courses = async () => {
   const courses = await getCourseList();

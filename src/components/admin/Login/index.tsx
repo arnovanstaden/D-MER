@@ -3,8 +3,8 @@
 import { FieldValues, useForm } from 'react-hook-form';
 import styles from './styles.module.scss';
 import { LoginCredentials } from '@types';
-import Button from '@components/UI/Library/Button/Button';
-import Input from '@components/UI/Library/Input';
+import Button from '@components/UI/Button/Button';
+import Input from '@components/UI/Input';
 import { useAuth } from 'src/context/AuthProvider';
 import { useRouter } from 'next/navigation';
 

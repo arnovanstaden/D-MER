@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
 // Components
-import Container from '../Library/Container/Container'
+import Container from '../Container/Container'
 
 // Styles
 import styles from './header.module.scss';

@@ -1,13 +1,13 @@
 'use client';
 
-import Section from '@components/UI/Section/Section';
+import Section from '@components/Layout/Section/Section';
 import styles from './styles.module.scss';
-import Button from '@components/UI/Library/Button/Button';
+import Button from '@components/UI/Button/Button';
 import { enqueueSnackbar } from 'notistack';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Loader from '@components/UI/Loader';
-import Input from '@components/UI/Library/Input';
+import Input from '@components/UI/Input';
 import { TContactMessage } from '@types';
 import { buildContactEmail } from '@lib/email/client';
 import { sendEmail } from '@lib/email/server';

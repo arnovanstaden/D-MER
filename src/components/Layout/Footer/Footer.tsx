@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 // Components
-import Container from '../Library/Container/Container'
+import Container from '../Container/Container'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 

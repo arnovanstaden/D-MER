@@ -1,20 +1,21 @@
 // Components
 import Landing from '@components/UI/Landing/Landing';
-import Section from '@components/UI/Section/Section';
+import Section from '@components/Layout/Section/Section';
 import Banner from '@components/UI/Banner/Banner';
-import Button from '@components/UI/Library/Button/Button';
-import Container from '@components/UI/Library/Container/Container'
+import Button from '@components/UI/Button/Button';
+import Container from '@components/Layout/Container/Container'
 import SquareIcon from '@mui/icons-material/Square';
 
 // Styles
 import styles from './styles.module.scss';
 
 import type { Metadata } from 'next'
+import { generateCustomMetaData } from '@utils/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateCustomMetaData({
   title: 'About | D-MER',
   description: 'Skills Development - Accessible To All.',
-}
+})
 
 const About = () => {
   return (
