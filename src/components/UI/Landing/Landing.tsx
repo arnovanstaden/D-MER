@@ -16,8 +16,9 @@ const Landing = ({ children, image, withCTA = true }: IProps) => (
     <div className={styles.image}>
       <Image
         src={image}
-        alt="Diver"
+        alt="Landing Image"
         priority
+        fill
       />
     </div>
     <div className={styles.overlay}></div>
