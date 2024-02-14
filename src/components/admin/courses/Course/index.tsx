@@ -96,14 +96,15 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
         />
         <TextArea
           label='Objective'
-          name="objective" inputProps={{ required: true, rows: 4 }}
+          name="objective"
+          textareaProps={{ required: true, rows: 4 }}
           value={updatedCourse.objective}
           onChange={(newValue) => updateCourseState({ objective: newValue as string })}
         />
         <TextArea
           label='Description'
           name="description"
-          inputProps={{ required: true, rows: 5 }}
+          textareaProps={{ required: true, rows: 5 }}
           value={updatedCourse.description}
           onChange={(newValue) => updateCourseState({ description: newValue as string })}
         />

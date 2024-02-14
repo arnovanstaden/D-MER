@@ -4,7 +4,7 @@ export const buildContactEmail = (message: TContactMessage): string => {
   let body = '';
   const keys = Object.keys(message);
   keys.forEach(key => {
-    body += `<p> ${key}: ${message[key as keyof TContactMessage]}</p>`; // Add 'as keyof TContactMessage' to cast the key to a valid index type
+    body += `<p> <b>${key.toUpperCase()}</b>: ${message[key as keyof TContactMessage]}</p>`; // Add 'as keyof TContactMessage' to cast the key to a valid index type
   });
 
   return `

@@ -51,8 +51,9 @@ export const sendEmail = async ({ subject, body, recipient }: SendEmail): Promis
   await transporter.sendMail(message, (error) => {
     if (error) {
       console.error(error);
+      return;
     }
-  });
 
-  console.log(`Email Sent to ${to}`);
+    console.log(`Email Sent to ${to}`);
+  });
 }

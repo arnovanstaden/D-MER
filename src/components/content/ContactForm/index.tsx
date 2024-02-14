@@ -11,6 +11,7 @@ import Input from '@components/UI/Input';
 import { TContactMessage } from '@types';
 import { buildContactEmail } from '@lib/email/client';
 import { sendEmail } from '@lib/email/server';
+import TextArea from '@components/UI/TextArea';
 
 const ContactForm = (): JSX.Element | null => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -67,10 +68,9 @@ const ContactForm = (): JSX.Element | null => {
           />
         </div>
         <div className={styles.row}>
-          <Input
-            inputProps={{
-              type: 'message',
-              autoComplete: 'message',
+          <TextArea
+            textareaProps={{
+              rows: 5
             }}
             name='message'
             register={{ ...register('message', { required: true }) }}
