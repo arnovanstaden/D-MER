@@ -1,9 +1,9 @@
-import { ICoupon, TContactMessage } from '@types';
+import { IBooking, ICoupon, TContactMessage } from '@types';
 
 export const buildContactEmail = (message: TContactMessage): string => {
   let body = '';
   const keys = Object.keys(message);
-  keys.forEach(key => {
+  keys.forEach((key) => {
     body += `<p> <b>${key.toUpperCase()}</b>: ${message[key as keyof TContactMessage]}</p>`; // Add 'as keyof TContactMessage' to cast the key to a valid index type
   });
 
@@ -40,4 +40,40 @@ export const buildCouponEmail = (coupon: Omit<ICoupon, 'id'>) => {
         </p>
     
         </body>`
+};
+
+export const buildCourseBookingEmailUser = (booking: Omit<IBooking, 'id'>) => {
+  let body = '';
+  const keys = Object.keys(booking);
+  keys.forEach(key => {
+    body += `<p> <span style="font-weight: 600;">${key.toUpperCase()}</span>: ${booking[key as keyof Omit<IBooking, 'id'>]}</p>`
+  });
+
+  return `
+  <p> Dear ${booking.name} </p>
+  <p>We received the following booking from you:</p>
+  ${body}
+  </br>
+  <p><span style="font-weight: 600;">Payment Link</span>:
+   <a href="https://www.paypal.com/paypalme/DMERWorldwide/${booking.total}"> Paypal Payment </>
+   </p>
+   <p span style="font-weight: 600;">Please use your Full Name and Course as payment reference </>
+  <p>We'll be in touch soon!</p>
+  <p>
+  `
+};
+
+export const buildCourseBookingEmailMerchant = (booking: Omit<IBooking, 'id'>) => {
+  let body = '';
+  const keys = Object.keys(booking);
+  keys.forEach(key => {
+    body += `<p> <span style="font-weight: 600;">${key.toUpperCase()}</span>: ${booking[key as keyof Omit<IBooking, 'id'>]}</p>`
+  });
+
+  return `
+  <p> Dear D-MER </p>
+  <p>You received a new course booking via your website:</p>
+  ${body}
+  <p>Remember to check your paypal account to confirm payment</p>
+  `
 };
