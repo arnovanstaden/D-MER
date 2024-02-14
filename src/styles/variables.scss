@@ -6,6 +6,12 @@ $white: #ffffff;
 $font: var(--font-poppins);
 $heading-font: var(--font-montserrat);
 
+// Breakpoints
+$breakpoint-xs: 600px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1200px;
+
 @mixin reset-list {
   list-style: none;
   padding: 0;

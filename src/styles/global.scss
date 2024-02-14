@@ -21,8 +21,7 @@ body {
   font-family: $font;
   padding: 0;
   margin: 0;
-  width: 100%;
-  box-sizing: border-box;
+  width: 100vw;
   color: $white;
   transition: 0.3s ease-out;
   scroll-behavior: smooth;

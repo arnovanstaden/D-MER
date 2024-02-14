@@ -118,7 +118,7 @@
     }
   }
 
-  @media screen and (max-width: 991px) {
+  @media screen and (max-width: $breakpoint-md) {
     .team {
       .grid {
         gap: 2rem;
@@ -132,7 +132,7 @@
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $breakpoint-sm) {
     .blocks {
       .grid {
         grid-template-columns: 1fr;
@@ -145,7 +145,7 @@
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: $breakpoint-xs) {
     .team {
       .grid {
         gap: 3rem;

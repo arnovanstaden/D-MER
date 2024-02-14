@@ -58,13 +58,13 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
-    @media screen and (max-width: 991px) {
+    @media screen and (max-width: $breakpoint-md) {
       .grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: $breakpoint-sm) {
       .grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -79,7 +79,7 @@
       }
     }
 
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: $breakpoint-xs) {
       .grid {
         grid-template-columns: 1fr;
       }

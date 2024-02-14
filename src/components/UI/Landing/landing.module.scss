@@ -75,7 +75,7 @@
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: $breakpoint-xs) {
     .content {
       h1 {
         font-size: 2rem;

@@ -18,8 +18,13 @@ const poppins = Poppins({
 })
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const fontClasses = classNames(
+    montserrat.variable,
+    poppins.variable,
+  )
+
   return (
-    <html lang="en" className={classNames(montserrat.variable, poppins.variable)}>
+    <html lang="en" className={fontClasses}>
       <link rel="icon" type="image/png" href="/images/logos/favicon.png" />
       <body>
         <ProviderWrapper>
