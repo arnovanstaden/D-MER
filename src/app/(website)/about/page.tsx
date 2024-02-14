@@ -3,7 +3,6 @@ import Landing from '@components/UI/Landing/Landing';
 import Section from '@components/UI/Section/Section';
 import Banner from '@components/UI/Banner/Banner';
 import Button from '@components/UI/Library/Button/Button';
-import NextImage from '@components/UI/Library/NextImage/NextImage'
 import Container from '@components/UI/Library/Container/Container'
 import SquareIcon from '@mui/icons-material/Square';
 
@@ -201,45 +200,6 @@ const About = () => {
       <Banner image="/images/pages/about/banner2.jpg" reverse>
         <h2><span>20+</span> Years Industry <span>Experience</span>.</h2>
       </Banner>
-
-      {/* <Section
-                heading={<h2>Our <span>Team</span></h2>}
-                keywords="Our Team."
-                className={styles.team}
-            >
-                <h3>Our team of professionals consist of multiple highly skilled &amp; qualified members with decades of collective team experience.</h3>
-                <div className={styles.grid}>
-                    <div className={styles.member}>
-                        <div className={styles.image}>
-                            <NextImage
-                                src="/images/pages/about/team/bridget.jpg"
-                                alt="Team Member - Bridget"
-                                width={500}
-                                background
-                            />
-                        </div>
-                        <div className={styles.text}>
-                            <h5>Bridget Thomson</h5>
-                            <p>Chief Executive Officer</p>
-                        </div>
-                    </div>
-                    <div className={styles.member}>
-                        <div className={styles.image}>
-                            <NextImage
-                                src="/images/pages/about/team/juliette.jpg"
-                                alt="Team Member - Juliette"
-                                width={500}
-                                background
-                            />
-                        </div>
-                        <div className={styles.text}>
-                            <h5>Juliette van Vuuren</h5>
-                            <p>Operations Manager</p>
-                        </div>
-                    </div>
-                </div>
-            </Section> */}
-
     </main>
   )
 }

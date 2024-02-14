@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 'use server';
-import { TContactMessage } from '@types';
+
 import nodemailer from 'nodemailer';
 
 const getTransporter = async () => {
@@ -21,7 +22,7 @@ const getTransporter = async () => {
 
     await transporter.verify((error) => {
       if (error) {
-        console.log(error);
+        console.error(error);
       } else {
         console.log('Server is ready to take our messages (orders@dmerworldwide.com)');
       }
@@ -40,7 +41,7 @@ interface SendEmail {
 export const sendEmail = async ({ subject, body, recipient }: SendEmail): Promise<void> => {
   const transporter = await getTransporter();
   const to = recipient || process.env.NODEMAILER_CONTACT;
-  let message = {
+  const message = {
     from: 'D-MER <orders@dmerworldwide.com>',
     to,
     subject,

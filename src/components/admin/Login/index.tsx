@@ -2,26 +2,27 @@
 
 import { FieldValues, useForm } from 'react-hook-form';
 import styles from './styles.module.scss';
-import { useAuth } from '@hooks/auth';
 import { LoginCredentials } from '@types';
 import Button from '@components/UI/Library/Button/Button';
 import Input from '@components/UI/Library/Input';
-import Loader from '@components/UI/Loader';
-import { useState } from 'react';
+import { useAuth } from 'src/context/AuthProvider';
+import { useRouter } from 'next/navigation';
 
 const AdminLoginForm = (): JSX.Element | null => {
-  const { login } = useAuth();
-  const [loading, setLoading] = useState<boolean>(false);
-  console.log(loading)
+  const { login, user } = useAuth();
+  const router = useRouter();
+
+  if (user) {
+    router.push('/admin')
+  }
+
   const {
     register,
     handleSubmit,
   } = useForm();
 
   const handleLogin = async (loginData: FieldValues) => {
-    setLoading(true);
     await login(loginData as LoginCredentials);
-    setLoading(false);
   }
 
   return (
@@ -48,7 +49,6 @@ const AdminLoginForm = (): JSX.Element | null => {
           <Button>Login</Button>
         </form>
       </div>
-      <Loader open={loading} />
     </div>
   );
 };

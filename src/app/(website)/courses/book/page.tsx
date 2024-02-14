@@ -1,8 +1,5 @@
-import { ICourse } from '@types';
-
 // Styles
 import styles from './styles.module.scss';
-
 
 import type { Metadata } from 'next'
 import CourseBookings from '@components/content/CourseBookings/CourseBookings';

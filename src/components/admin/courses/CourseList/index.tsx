@@ -1,4 +1,3 @@
-import { ICourse } from '@types';
 import styles from './styles.module.scss';
 import Link from 'next/link';
 import Button from '@components/UI/Library/Button/Button';

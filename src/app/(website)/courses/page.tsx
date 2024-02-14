@@ -1,5 +1,3 @@
-import { ICourse } from '@types';
-
 // Components
 import Landing from '@components/UI/Landing/Landing';
 

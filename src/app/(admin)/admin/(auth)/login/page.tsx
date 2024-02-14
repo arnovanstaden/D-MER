@@ -1,6 +1,5 @@
 import AdminLoginForm from '@components/admin/Login';
 import { Metadata } from 'next';
-import { toast } from 'react-toastify';
 
 export const metadata: Metadata = {
   title: 'Login | D-MER Worldwide',

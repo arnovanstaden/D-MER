@@ -15,7 +15,7 @@ const initialState: INewCoupon = {
   discount: 0,
 }
 
-const CreateCoupons: React.FC = (props) => {
+const CreateCoupons: React.FC = () => {
   const [coupon, setCoupon] = useState<INewCoupon>(initialState);
   const [loading, setLoading] = useState<boolean>(false);
 

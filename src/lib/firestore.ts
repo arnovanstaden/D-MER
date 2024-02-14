@@ -1,6 +1,6 @@
 'use server';
 
-import { collection, getDocs, doc, getDoc, query, orderBy, limit, setDoc, deleteDoc, where, updateDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, query, setDoc, deleteDoc, where, updateDoc } from 'firebase/firestore';
 import { firestoreDb } from './firebase';
 
 type FirestoreCollectionId = 'courses' | 'coupons' | 'bookings';
@@ -30,7 +30,7 @@ export const queryFirestoreDocument = async <T>(category: FirestoreCollectionId,
   return data[0] as T;
 }
 
-export const getFirestoreDocumentCollection = async <T>(category: FirestoreCollectionId, search?: boolean): Promise<T[]> => {
+export const getFirestoreDocumentCollection = async <T>(category: FirestoreCollectionId): Promise<T[]> => {
   const collectionRef = collection(firestoreDb, category);
   const querySnapshot = await getDocs(collectionRef);
   const data = querySnapshot.docs.map((doc) => {

@@ -3,7 +3,6 @@
 import { IBooking } from '@types';
 import styles from './styles.module.scss';
 import { useState } from 'react';
-import classNames from 'classnames';
 import Link from 'next/link';
 
 const Booking: React.FC<IBooking> = (booking) => {

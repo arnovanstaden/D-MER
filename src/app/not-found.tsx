@@ -14,7 +14,6 @@ export const metadata: Metadata = {
   }
 }
 
-
 const PageNotFound = () => {
   return (
     <main className={styles.PageNotFound} >

@@ -1,23 +1,17 @@
 'use client';
 
-import { useAuth } from '@hooks/auth';
 import styles from './styles.module.scss';
 import Button from '@components/UI/Library/Button/Button';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useAuth } from 'src/context/AuthProvider';
 
-const AdminLayout = ({ children }: { children: React.ReactNode }): JSX.Element | null => {
-  const { logout, user } = useAuth();
+const AdminDashboardLayout = ({ children }: { children: React.ReactNode }): JSX.Element | null => {
+  const { logout } = useAuth();
   const pathname = usePathname();
-  const nextRouter = useRouter();
-
-  if (!user) {
-    nextRouter.replace('/admin/login');
-    return null
-  };
 
   return (
-    <main className={styles.AdminLayout}>
+    <main className={styles.AdminDashboardLayout}>
       <header>
         <div />
         <img src="/images/logos/Dmer-Logo.svg" alt="D-MER Logo" />
@@ -53,4 +47,4 @@ const AdminLayout = ({ children }: { children: React.ReactNode }): JSX.Element |
   );
 };
 
-export default AdminLayout;
+export default AdminDashboardLayout;

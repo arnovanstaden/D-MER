@@ -17,11 +17,7 @@ const poppins = Poppins({
   weight: ['300', '400', '500', '600'],
 })
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <html lang="en" className={classNames(montserrat.variable, poppins.variable)}>
       <link rel="icon" type="image/png" href="/images/logos/favicon.png" />
@@ -33,3 +29,4 @@ export default function RootLayout({
     </html>
   )
 }
+export default RootLayout;
