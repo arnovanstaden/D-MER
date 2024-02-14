@@ -8,6 +8,7 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-montserrat',
+  preload: true,
 })
 
 const poppins = Poppins({
@@ -15,6 +16,7 @@ const poppins = Poppins({
   display: 'swap',
   variable: '--font-poppins',
   weight: ['300', '400', '500', '600'],
+  preload: true,
 })
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
