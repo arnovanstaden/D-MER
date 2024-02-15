@@ -8,9 +8,6 @@ if (!firebaseAdmin.apps.length) {
       privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY!.replace(/\\n/g, '\n'),
       clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
     }),
-    databaseAuthVariableOverride: {
-      uid: process.env.FIREBASE_AUTH_VARIABLE,
-    },
   });
 }
 export const firestoreAdminDb = firebaseAdmin.firestore();
