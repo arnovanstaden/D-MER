@@ -29,7 +29,7 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
     reset
   } = useForm<ICourse>();
 
-  const handleCreateCourse = async (newCourse: ICourse) => {
+  const handleCreateCourse = async (newCourse: Omit<ICourse, 'id'>) => {
     setLoading(true);
 
     try {
@@ -45,10 +45,15 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
     }
   }
 
-  const handleUpdateCourse = async (updatedCourse: ICourse) => {
+  const handleUpdateCourse = async (updatedCourse: Omit<ICourse, 'id'>) => {
+    if (!course) return;
+
     setLoading(true);
     try {
-      await updateCourse(updatedCourse)
+      await updateCourse({
+        id: course.id,
+        ...updatedCourse
+      })
       enqueueSnackbar('Course Updated');
       router.replace('/admin/courses');
     } catch (e) {

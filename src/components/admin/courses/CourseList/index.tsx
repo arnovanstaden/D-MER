@@ -13,16 +13,20 @@ const CourseList: React.FC = async () => {
           Create Course
         </Button>
       </div>
-      <ul className={styles.list}>
-        {courses.map((course) => (
-          <Link key={course.id} href={`/admin/courses/${course.id}`}>
-            <li className={styles.item}>
-              <p>{course.name}</p>
-              <p>$ {course.price}</p>
-            </li>
-          </Link>
-        ))}
-      </ul>
+      {courses.length === 0
+        ? <p>You have no courses</p>
+        : (
+          <ul className={styles.list}>
+            {courses.map((course) => (
+              <Link key={course.id} href={`/admin/courses/${course.id}`}>
+                <li className={styles.item}>
+                  <p>{course.name}</p>
+                  <p>$ {course.price}</p>
+                </li>
+              </Link>
+            ))}
+          </ul>
+        )}
     </div>
   );
 };

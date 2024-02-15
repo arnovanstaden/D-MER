@@ -9,9 +9,8 @@ export const getCourse = async (id: string): Promise<ICourse | undefined> => awa
 
 export const getCourseList = async (): Promise<ICourse[]> => await getFirestoreDocumentCollection<ICourse>('courses');
 
-export const createCourse = async (course: ICourse): Promise<void> => {
-  const { id, ...newCourse } = course;
-  await addFirestoreDocument<Omit<ICourse, 'id'>>('courses', newCourse);
+export const createCourse = async (course: Omit<ICourse, 'id'>): Promise<void> => {
+  await addFirestoreDocument<Omit<ICourse, 'id'>>('courses', course);
   revalidatePath('/admin/courses');
   revalidatePath('/courses');
   revalidatePath('/courses/book');
@@ -19,9 +18,14 @@ export const createCourse = async (course: ICourse): Promise<void> => {
 
 export const updateCourse = async (updatedCourse: ICourse): Promise<void> => {
   await updateFirestoreDocument('courses', updatedCourse.id, updatedCourse);
+  revalidatePath('/admin/courses');
+  revalidatePath('/courses');
+  revalidatePath('/courses/book');
 }
 
 export const deleteCourse = async (id: string): Promise<void> => {
   await deleteFirestoreDocument('courses', id);
-  revalidatePath('/admin/courses', 'page');
+  revalidatePath('/admin/courses');
+  revalidatePath('/courses');
+  revalidatePath('/courses/book');
 }

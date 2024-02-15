@@ -6,9 +6,13 @@ const BookingList = async () => {
   const bookings = await getBookingsList();
 
   return (
-    <ul className={styles.BookingList}>
-      {bookings.map((booking) => <Booking key={booking.id} {...booking} />)}
-    </ul>
+    bookings.length === 0
+      ? <p>You have no bookings</p>
+      : (
+        <ul className={styles.BookingList}>
+          {bookings.map((booking) => <Booking key={booking.id} {...booking} />)}
+        </ul>
+      )
   );
 };
 
