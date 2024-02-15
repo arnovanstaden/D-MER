@@ -5,7 +5,15 @@ import styles from './styles.module.scss';
 import { useState } from 'react';
 import Link from 'next/link';
 
-const Booking: React.FC<IBooking> = (booking) => {
+interface IProps {
+  booking: IBooking;
+  courses: {
+    id: string;
+    name: string;
+  }[];
+}
+
+const Booking: React.FC<IProps> = ({ booking, courses }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -27,10 +35,10 @@ const Booking: React.FC<IBooking> = (booking) => {
           <p><b>Coupon Used: </b> {!!booking.coupon ? 'True' : 'False'} </p>
           <p><b>Courses: </b>
             <ul className={styles.courses}>
-              {booking.courses.map((course) => (
-                <li key={course}>
-                  <Link target="_blank" href={`/admin/courses/${course}`}>
-                    {course}
+              {courses.map((course) => (
+                <li key={course.id}>
+                  <Link target="_blank" href={`/admin/courses/${course.id}`}>
+                    {course.name}
                   </Link>
                 </li>
               ))}
