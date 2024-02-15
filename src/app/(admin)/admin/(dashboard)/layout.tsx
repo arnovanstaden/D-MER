@@ -3,19 +3,22 @@
 import styles from './styles.module.scss';
 import Button from '@components/UI/Button/Button';
 import { usePathname } from 'next/navigation';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { useAuth } from 'src/context/AuthProvider';
+import { useAuth } from '@hooks/auth';
 
 const AdminDashboardLayout = ({ children }: { children: React.ReactNode }): JSX.Element | null => {
-  const { logout } = useAuth();
   const pathname = usePathname();
+
+
+  const { user } = useAuth();
+  if (!user) {
+    return null;
+  }
 
   return (
     <main className={styles.AdminDashboardLayout}>
       <header>
         <div />
         <img src="/images/logos/Dmer-Logo.svg" alt="D-MER Logo" />
-        <LogoutIcon onClick={logout} />
       </header>
       <nav>
         <Button

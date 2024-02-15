@@ -5,16 +5,14 @@ import styles from './styles.module.scss';
 import { LoginCredentials } from '@types';
 import Button from '@components/UI/Button/Button';
 import Input from '@components/UI/Input';
-import { useAuth } from 'src/context/AuthProvider';
-import { useRouter } from 'next/navigation';
+import { useAuth } from '@hooks/auth';
+import Loader from '@components/UI/Loader';
+import { useState } from 'react';
 
 const AdminLoginForm = (): JSX.Element | null => {
-  const { login, user } = useAuth();
-  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
 
-  if (user) {
-    router.push('/admin')
-  }
+  const { login } = useAuth();
 
   const {
     register,
@@ -22,7 +20,9 @@ const AdminLoginForm = (): JSX.Element | null => {
   } = useForm();
 
   const handleLogin = async (loginData: FieldValues) => {
+    setLoading(true);
     await login(loginData as LoginCredentials);
+    setLoading(false);
   }
 
   return (
@@ -49,6 +49,7 @@ const AdminLoginForm = (): JSX.Element | null => {
           <Button>Login</Button>
         </form>
       </div>
+      <Loader open={loading} />
     </div>
   );
 };

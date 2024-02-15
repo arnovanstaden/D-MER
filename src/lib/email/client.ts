@@ -45,7 +45,7 @@ export const buildCouponEmail = (coupon: Omit<ICoupon, 'id'>) => {
 
 export const buildCourseBookingEmailUser = async (booking: Omit<IBooking, 'id'>) => {
   let body = '';
-  const keys = Object.keys(booking).filter((key) => key !== 'courses');
+  const keys = Object.keys(booking).filter((key) => !['courses', 'total'].includes(key));
   keys.forEach(key => {
     body += `<p> <span style="font-weight: 600;">${key.toUpperCase()}</span>: ${booking[key as keyof Omit<IBooking, 'id'>]}</p>`
   });
@@ -53,6 +53,7 @@ export const buildCourseBookingEmailUser = async (booking: Omit<IBooking, 'id'>)
   const courses = await getCourseList();
   const courseNames = courses.filter((course) => booking.courses.includes(course.id)).map((course) => course.name).join(', ');
   body += `<p> <span style="font-weight: 600;">Courses</span>: ${courseNames}</p>`
+  body += `<p> <span style="font-weight: 600;">Total</span>: $${booking.total}</p>`
 
   return `
   <p> Dear ${booking.name} </p>
@@ -70,7 +71,7 @@ export const buildCourseBookingEmailUser = async (booking: Omit<IBooking, 'id'>)
 
 export const buildCourseBookingEmailMerchant = async (booking: Omit<IBooking, 'id'>) => {
   let body = '';
-  const keys = Object.keys(booking).filter((key) => key !== 'courses');
+  const keys = Object.keys(booking).filter((key) => !['courses', 'total'].includes(key));
   keys.forEach(key => {
     body += `<p> <span style="font-weight: 600;">${key.toUpperCase()}</span>: ${booking[key as keyof Omit<IBooking, 'id'>]}</p>`
   });
@@ -78,11 +79,12 @@ export const buildCourseBookingEmailMerchant = async (booking: Omit<IBooking, 'i
   const courses = await getCourseList();
   const courseNames = courses.filter((course) => booking.courses.includes(course.id)).map((course) => course.name).join(', ');
   body += `<p> <span style="font-weight: 600;">Courses</span>: ${courseNames}</p>`
+  body += `<p> <span style="font-weight: 600;">Total</span>: $${booking.total}</p>`
 
   return `
   <p> Dear D-MER </p>
   <p>You received a new course booking via your website:</p>
   ${body}
-  <p>Remember to check your paypal account to confirm payment</p>
+  <p>Remember to check your paypal account to confirm payment!</p>
   `
 };
