@@ -1,5 +1,3 @@
-'use client';
-
 import AdminLoginForm from '@components/admin/Login';
 import styles from './styles.module.scss';
 

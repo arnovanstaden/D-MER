@@ -8,7 +8,6 @@ import { useAuth } from '@hooks/auth';
 const AdminDashboardLayout = ({ children }: { children: React.ReactNode }): JSX.Element | null => {
   const pathname = usePathname();
 
-
   const { user } = useAuth();
   if (!user) {
     return null;

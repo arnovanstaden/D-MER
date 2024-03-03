@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
-  const url = 'https://www.dmerwordwide.com';
+  const url = 'https://www.dmerworldwide.com';
 
   const basicPages = ['', 'about', 'courses', 'courses/book', 'contact'];
 
