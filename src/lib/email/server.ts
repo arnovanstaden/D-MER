@@ -40,7 +40,7 @@ interface SendEmail {
 
 export const sendEmail = async ({ subject, body, recipient }: SendEmail): Promise<void> => {
   const transporter = await getTransporter();
-  const to = recipient || process.env.NODEMAILER_CONTACT;
+  const to = recipient || process.env.NODEMAILER_CONTACT_EMAIL;
   const message = {
     from: 'D-MER <orders@dmerworldwide.com>',
     to,
