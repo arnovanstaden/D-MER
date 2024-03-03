@@ -7,10 +7,20 @@ import { revalidatePath } from 'next/cache';
 
 export const getCourse = async (id: string): Promise<ICourse | undefined> => await getFirestoreDocument<ICourse>('courses', id);
 
-export const getCourseList = async (): Promise<ICourse[]> => await getFirestoreDocumentCollection<ICourse>('courses');
+export const getCourseList = async (filterDeleted = true): Promise<ICourse[]> => {
+  const courses = await getFirestoreDocumentCollection<ICourse>('courses');
+  if (filterDeleted) {
+    return courses.filter(course => !course.deleted);
+  }
+
+  return courses;
+}
 
 export const createCourse = async (course: Omit<ICourse, 'id'>): Promise<void> => {
-  await addFirestoreDocument<Omit<ICourse, 'id'>>('courses', course);
+  await addFirestoreDocument<Omit<ICourse, 'id'>>('courses', {
+    ...course,
+    deleted: false,
+  });
   revalidatePath('/admin/courses');
   revalidatePath('/courses');
   revalidatePath('/courses/book');
@@ -23,8 +33,11 @@ export const updateCourse = async (updatedCourse: ICourse): Promise<void> => {
   revalidatePath('/courses/book');
 }
 
-export const deleteCourse = async (id: string): Promise<void> => {
-  await deleteFirestoreDocument('courses', id);
+export const deleteCourse = async (course: ICourse): Promise<void> => {
+  await updateFirestoreDocument('courses', course.id, {
+    ...course,
+    deleted: true,
+  });
   revalidatePath('/admin/courses');
   revalidatePath('/courses');
   revalidatePath('/courses/book');

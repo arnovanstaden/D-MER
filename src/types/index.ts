@@ -9,6 +9,7 @@ export interface ICourse {
   objective: string;
   description: string;
   price: number;
+  deleted: boolean;
 }
 
 export interface ICoupon {

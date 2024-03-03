@@ -6,8 +6,7 @@ import { IBooking } from '@types';
 
 const BookingList = async () => {
   const bookings = await getBookingsList();
-  const courses = await getCourseList();
-
+  const courses = await getCourseList(false);
   const coursesForBooking = (booking: IBooking) => courses.filter((course) => booking.courses.includes(course.id));
 
   return (

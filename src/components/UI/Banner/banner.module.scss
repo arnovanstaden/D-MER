@@ -1,84 +1,90 @@
 @import "../../../styles/variables.scss";
 
 .banner {
-    position: relative;
+  position: relative;
 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+    background-color: $grey;
+    opacity: 0.8;
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 40vh;
+
+    .content {
+      padding: 4rem 0;
+      position: relative;
+      z-index: 2;
+      width: 50%;
+      box-sizing: border-box;
+      padding-right: 2rem;
+
+      h2 {
+        font-weight: 600;
+
+        span {
+          color: $red;
+        }
+      }
+
+      p {
+        font-weight: 500;
+        margin: 0.1rem 0;
+        font-size: 1.1rem;
+
+        i {
+          color: $red;
+        }
+      }
+    }
+
+  }
+
+  &.reverse {
     .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50%;
-        height: 100%;
-        z-index: 1;
-        background-color: $grey;
-        opacity: 0.8;
+      left: 50%;
     }
 
     .inner {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        min-height: 40vh;
+      justify-content: flex-end;
 
-        .content {
-            padding: 4rem 0;
-            position: relative;
-            z-index: 2;
-            width: 50%;
-            box-sizing: border-box;
-            padding-right: 2rem;
+      .content {
+        padding-right: 0;
+        padding-left: 3rem;
+      }
+    }
+  }
 
-            h2 {
-                font-weight: 600;
+  @media screen and (max-width: $breakpoint-xs) {
 
-                span {
-                    color: $red;
-                }
-            }
-
-            p {
-                font-weight: 500;
-                margin: 0.1rem 0;
-                font-size: 1.1rem;
-
-                i {
-                    color: $red;
-                }
-            }
-        }
-
+    .overlay,
+    .inner .content {
+      left: 0;
+      width: 100%;
+      padding: 0 !important;
     }
 
     &.reverse {
-        .overlay {
-            left: 50%;
-        }
-
-        .inner {
-            justify-content: flex-end;
-
-            .content {
-                padding-right: 0;
-                padding-left: 3rem;
-            }
-        }
+      .overlay {
+        left: 0;
+        padding: 0 !important;
+      }
     }
 
-    @media screen and (max-width: $breakpoint-xs) {
-
-        .overlay,
-        .inner .content {
-            left: 0;
-            width: 100%;
-            padding: 0 !important;
-        }
-
-        &.reverse {
-            .overlay {
-                left: 0;
-                padding: 0 !important;
-            }
-        }
-
-    }
+  }
 }

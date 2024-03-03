@@ -14,6 +14,7 @@ import Loader from '@components/UI/Loader';
 import { enqueueSnackbar } from 'notistack';
 import { useForm } from 'react-hook-form';
 import { errorNotification } from '@utils/notifications';
+import DeletedNotice from '@components/admin/atoms/DeletedNotice';
 
 const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
   const router = useRouter();
@@ -70,7 +71,7 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
     setLoading(true);
 
     try {
-      await deleteCourse(course.id);
+      await deleteCourse(course);
       enqueueSnackbar('Course Deleted');
       router.replace('/admin/courses');
     } catch (e) {
@@ -83,23 +84,26 @@ const Course = ({ course }: { course?: ICourse }): JSX.Element | null => {
 
   return (
     <div className={styles.Course}>
-      <div className={styles.actions}>
-        <Link href="/admin/courses">
-          <Button>
-            Cancel
-          </Button>
-        </Link>
-        <div>
-          {!isNewCourse && (
-            <Button onClick={() => setOpenDeleteModal(true)}>
-              Delete Course
+      {course?.deleted
+        ? <DeletedNotice />
+        : (<div className={styles.actions}>
+          <Link href="/admin/courses">
+            <Button>
+              Cancel
             </Button>
-          )}
-          <Button fill onClick={isNewCourse ? handleSubmit(handleCreateCourse) : handleSubmit(handleUpdateCourse)}>
-            {isNewCourse ? 'Create Course' : 'Save Course'}
-          </Button>
-        </div>
-      </div>
+          </Link>
+          <div>
+            {!isNewCourse && (
+              <Button onClick={() => setOpenDeleteModal(true)}>
+                Delete Course
+              </Button>
+            )}
+            <Button fill onClick={isNewCourse ? handleSubmit(handleCreateCourse) : handleSubmit(handleUpdateCourse)}>
+              {isNewCourse ? 'Create Course' : 'Save Course'}
+            </Button>
+          </div>
+        </div>)
+      }
       <form action="">
         <Input
           label='Course Name'

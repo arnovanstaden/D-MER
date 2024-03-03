@@ -52,6 +52,7 @@ export const queryFirestoreDocument = async <T>(category: FirestoreCollectionId,
 export const getFirestoreDocumentCollection = async <T>(category: FirestoreCollectionId): Promise<T[]> => {
   const collectionRef = firestoreAdminDb.collection(category);
   const querySnapshot = await collectionRef.get();
+
   const data = querySnapshot.docs.map((doc) => {
     const docData = doc.data();
 
