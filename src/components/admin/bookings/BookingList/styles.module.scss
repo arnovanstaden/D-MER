@@ -1,0 +1,7 @@
+.BookingList {
+  @include reset-list;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}

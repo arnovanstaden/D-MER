@@ -1,0 +1,155 @@
+// MixIns
+@mixin boxShadow {
+  -moz-box-shadow: inset 0 0 1.5rem $black;
+  -webkit-box-shadow: inset 0 0 1.5rem $black;
+  box-shadow: inset 0 0 1.5rem $black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $grey;
+  font-size: 1rem;
+  font-family: $font;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  color: $white;
+  transition: 0.3s ease-out;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  &.noscroll {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading-font;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  color: unset;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+
+  &-track {
+    background: $white;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  &-thumb {
+    background: $red;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    transition: 0.4s ease-in-out;
+
+    &:hover {
+      background: $darkgrey;
+    }
+  }
+
+}
+
+// Button
+
+.button {
+  background-color: $red;
+  border: 2px solid $red;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+
+  a,
+  p {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1.25rem;
+    color: $white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin: 0;
+
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &:hover {
+    background-color: transparent;
+    transition: 0.3s ease;
+
+    a,
+    p {
+      color: $darkgrey;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &--hollow {
+    background-color: transparent;
+    border-color: transparent;
+
+    a,
+    p {
+      padding: 0.7rem 1.45rem;
+    }
+
+    &:hover {
+      color: $red;
+    }
+
+  }
+
+  &--border {
+    background-color: transparent;
+
+    a,
+    p {
+      color: $red;
+      font-weight: 600;
+    }
+
+    &:hover {
+      background-color: $red;
+
+      a,
+      p {
+        color: $white;
+      }
+    }
+  }
+}
+
+input,
+textarea {
+  resize: none;
+  font-family: $font;
+}
+
+.notistack-MuiContent {
+  background-color: $red !important;
+}
